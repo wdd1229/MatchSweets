@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TTWebGL", "TTWebGL.csproj", "{4CDA89EA-CAFB-FCFA-4563-8605F8464809}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TTLitJson", "TTLitJson.csproj", "{49BE0B00-A2CC-E097-4684-B6431981B647}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{61D54147-2F53-63BB-58D4-3FE90C227BEB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "com.bytedance.ttsdk-editor", "com.bytedance.ttsdk-editor.csproj", "{932689BA-F552-EB69-988D-1FC16F93812D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "com.bytedance.ttsdk.ref", "com.bytedance.ttsdk.ref.csproj", "{10EDBDC6-B420-E9AD-3436-353A42BF42D8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4CDA89EA-CAFB-FCFA-4563-8605F8464809}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CDA89EA-CAFB-FCFA-4563-8605F8464809}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4CDA89EA-CAFB-FCFA-4563-8605F8464809}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4CDA89EA-CAFB-FCFA-4563-8605F8464809}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49BE0B00-A2CC-E097-4684-B6431981B647}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49BE0B00-A2CC-E097-4684-B6431981B647}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49BE0B00-A2CC-E097-4684-B6431981B647}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49BE0B00-A2CC-E097-4684-B6431981B647}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61D54147-2F53-63BB-58D4-3FE90C227BEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61D54147-2F53-63BB-58D4-3FE90C227BEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61D54147-2F53-63BB-58D4-3FE90C227BEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61D54147-2F53-63BB-58D4-3FE90C227BEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{932689BA-F552-EB69-988D-1FC16F93812D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{932689BA-F552-EB69-988D-1FC16F93812D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{932689BA-F552-EB69-988D-1FC16F93812D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{932689BA-F552-EB69-988D-1FC16F93812D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10EDBDC6-B420-E9AD-3436-353A42BF42D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10EDBDC6-B420-E9AD-3436-353A42BF42D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10EDBDC6-B420-E9AD-3436-353A42BF42D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10EDBDC6-B420-E9AD-3436-353A42BF42D8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

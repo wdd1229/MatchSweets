@@ -1,0 +1,103 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Work\\MatchSweets\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{61D54147-2F53-63BB-58D4-3FE90C227BEB}|Assembly-CSharp.csproj|c:\\work\\matchsweets\\assets\\scripts\\gridmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{61D54147-2F53-63BB-58D4-3FE90C227BEB}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\gridmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61D54147-2F53-63BB-58D4-3FE90C227BEB}|Assembly-CSharp.csproj|c:\\work\\matchsweets\\assets\\scripts\\tile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{61D54147-2F53-63BB-58D4-3FE90C227BEB}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\tile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61D54147-2F53-63BB-58D4-3FE90C227BEB}|Assembly-CSharp.csproj|C:\\Work\\MatchSweets\\assets\\scripts\\objectpool.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{61D54147-2F53-63BB-58D4-3FE90C227BEB}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\objectpool.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61D54147-2F53-63BB-58D4-3FE90C227BEB}|Assembly-CSharp.csproj|C:\\Work\\MatchSweets\\assets\\scripts\\mainui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{61D54147-2F53-63BB-58D4-3FE90C227BEB}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\mainui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61D54147-2F53-63BB-58D4-3FE90C227BEB}|Assembly-CSharp.csproj|C:\\Work\\MatchSweets\\assets\\scripts\\loadscenemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{61D54147-2F53-63BB-58D4-3FE90C227BEB}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\loadscenemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Tile.cs",
+              "DocumentMoniker": "C:\\Work\\MatchSweets\\Assets\\Scripts\\Tile.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Tile.cs",
+              "ToolTip": "C:\\Work\\MatchSweets\\Assets\\Scripts\\Tile.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Tile.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAgAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-14T07:27:35.698Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "GridManager.cs",
+              "DocumentMoniker": "C:\\Work\\MatchSweets\\Assets\\Scripts\\GridManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\GridManager.cs",
+              "ToolTip": "C:\\Work\\MatchSweets\\Assets\\Scripts\\GridManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\GridManager.cs",
+              "ViewState": "AgIAAPsAAAAAAAAAAAAiwFcBAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-12T07:53:30.705Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ObjectPool.cs",
+              "DocumentMoniker": "C:\\Work\\MatchSweets\\Assets\\Scripts\\ObjectPool.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\ObjectPool.cs",
+              "ToolTip": "C:\\Work\\MatchSweets\\Assets\\Scripts\\ObjectPool.cs",
+              "RelativeToolTip": "Assets\\Scripts\\ObjectPool.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAuwBQAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-12T06:43:42.655Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "LoadSceneManager.cs",
+              "DocumentMoniker": "C:\\Work\\MatchSweets\\Assets\\Scripts\\LoadSceneManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\LoadSceneManager.cs",
+              "ToolTip": "C:\\Work\\MatchSweets\\Assets\\Scripts\\LoadSceneManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\LoadSceneManager.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAAwBwAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-12T05:28:58.974Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MainUi.cs",
+              "DocumentMoniker": "C:\\Work\\MatchSweets\\Assets\\Scripts\\MainUi.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\MainUi.cs",
+              "ToolTip": "C:\\Work\\MatchSweets\\Assets\\Scripts\\MainUi.cs",
+              "RelativeToolTip": "Assets\\Scripts\\MainUi.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAAwA8AAABQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-12T05:49:06.959Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
