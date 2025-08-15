@@ -7,7 +7,7 @@
       "RelativeMoniker": "D:0:0:{61D54147-2F53-63BB-58D4-3FE90C227BEB}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\gridmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{61D54147-2F53-63BB-58D4-3FE90C227BEB}|Assembly-CSharp.csproj|c:\\work\\matchsweets\\assets\\scripts\\tile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{61D54147-2F53-63BB-58D4-3FE90C227BEB}|Assembly-CSharp.csproj|C:\\Work\\MatchSweets\\assets\\scripts\\tile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{61D54147-2F53-63BB-58D4-3FE90C227BEB}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\tile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -42,8 +42,7 @@
               "RelativeToolTip": "Assets\\Scripts\\Tile.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAuwAgAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-14T07:27:35.698Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-14T07:27:35.698Z"
             },
             {
               "$type": "Document",
@@ -53,7 +52,7 @@
               "RelativeDocumentMoniker": "Assets\\Scripts\\GridManager.cs",
               "ToolTip": "C:\\Work\\MatchSweets\\Assets\\Scripts\\GridManager.cs",
               "RelativeToolTip": "Assets\\Scripts\\GridManager.cs",
-              "ViewState": "AgIAAIsAAAAAAAAAAIAzwIsAAAAXAAAAAAAAAA==",
+              "ViewState": "AgIAANcAAAAAAAAAAAAmwOkAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-08-12T07:53:30.705Z",
               "EditorCaption": ""
@@ -68,8 +67,7 @@
               "RelativeToolTip": "Assets\\Scripts\\ObjectPool.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAuwBQAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-12T06:43:42.655Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-12T06:43:42.655Z"
             },
             {
               "$type": "Document",

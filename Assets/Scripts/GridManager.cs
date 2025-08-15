@@ -1,5 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 using Unity.VisualScripting;
 using UnityEditor.U2D.Aseprite;
 using UnityEngine;
@@ -67,10 +70,206 @@ public class GridManager : MonoBehaviour
 
         CreateCell();
 
-        CheckAllMatchGrid();
+
+        visited = new bool[Row, Column];
+        removableRegions = new List<List<Tile>>();
+
+        StartCoroutine(StartCheck());
+
+        //TODO
+        //removableRegions = CheckForRemovableRegion();
+        //foreach (var region in removableRegions)
+        //{
+        //    foreach (var cell in region)
+        //    {
+        //        cell.gameObject.SetActive(false);
+        //    }
+        //}
     }
 
-    private float tileSize = 1.024f;
+    [ContextMenu("CreateCell")]
+    public void Test()
+    {
+        Array.Clear(visited, 0, visited.Length);
+        removableRegions.Clear();
+        for (int i = 0; i < Row; i++)
+        {
+            for (int j = 0; j < Column; j++)
+            {
+                if (tiles[i, j] != null)
+                {
+                    Destroy(tiles[i, j].gameObject);
+                    tiles[i, j] = null;
+                }
+            }
+        }
+        CreateCell();
+
+        removableRegions = CheckForRemovableRegion();
+       
+    }
+    [ContextMenu("AllMatchDisable")]
+    public void AllMatchDisable()
+    {
+        foreach (var region in removableRegions)
+        {
+            foreach (var cell in region)
+            {
+                cell.gameObject.SetActive(!cell.gameObject.activeSelf);
+            }
+        }
+    }
+
+
+
+    IEnumerator StartCheck()
+    {
+
+        yield return new WaitForSeconds(1.5f);
+
+        removableRegions = CheckForRemovableRegion();
+
+        ClearAllMatchGrid(removableRegions);
+    }
+
+    /// <summary>
+    /// 清除所有已经匹配格子
+    /// </summary>
+    public void ClearAllMatchGrid(List<List<Tile>> matchTiles)
+    {
+        foreach (var items in matchTiles)
+        {
+            foreach (var item in items)
+            {
+                item.SetState(Tile.TileState.Clearing);
+            }
+        }
+        //确定播放结束所有匹配的格子的消除动画
+
+        //删除
+        foreach (var items in matchTiles)
+        {
+            foreach (var item in items)
+            {
+                tiles[item.xIndex,item.yIndex]=null;
+                Destroy(item.gameObject);
+            }
+        }
+
+        RefillBoard();
+    }
+
+    void RefillBoard()
+    {
+        StartCoroutine(RefillBoardRoutine());
+    }
+
+    IEnumerator RefillBoardRoutine()
+    {
+        int emptySpaceCount;
+        for (int i = 0; i < Row; i++)
+        {
+            //空格子数量统计
+            emptySpaceCount = 0;
+
+            for(int j = Column-1; j >= 0; j--)
+            {
+                Tile currTile = tiles[i,j];
+                if (currTile == null) 
+                {
+                    emptySpaceCount++;
+                }else if (emptySpaceCount > 0)
+                {
+                    //有空位 移动方块逻辑
+                    tiles[i,j+emptySpaceCount]=currTile;
+                    tiles[i, j] = null;
+                    currTile.Init(i, j + emptySpaceCount, currTile.gridType);
+                    currTile.StartFalling(emptySpaceCount);
+                }
+            }
+            Debug.LogError($"要创建新的方块数量为:{emptySpaceCount}");
+            yield return new WaitForSeconds(0.2f);
+            //根据空格数量生成新的方块
+            //for (int t = 1; t <= emptySpaceCount; t++)
+            //{
+            //    //创建新方块
+            //    CreateTileAtTop(i, -t, emptySpaceCount);
+            //}
+        }
+
+        // 等待所有方块下落完成
+        yield return new WaitForSeconds(0.4f); // 根据下落动画时长调整
+    }
+    
+    void CreateTileAtTop(int x,int startY,int fallDistance)
+    {       
+
+        GridType curGridType = (GridType)GetRandomTile();
+        GameObject obj = CreatGrid(curGridType);
+        Tile tile = obj.AddComponent<Tile>();
+        obj.transform.localPosition=new Vector3(x*tileSize, -startY*tileSize, 0);
+        tile.Init(x, startY+fallDistance, curGridType);
+        //obj.transform.localPosition = new Vector3(i * tileSize, -j * tileSize, 0);
+        ////obj.name = string.Format($"Grid_{i}_{j}");
+        tiles[x, startY+fallDistance] = tile;
+        tile.StartFalling(fallDistance);//新方块开始掉落
+    }
+
+    public void CheckForMatchesAt(int x,int y)
+    {
+        Tile currentTile = tiles[x, y];
+        if(currentTile == null)return;
+        Debug.LogError("落下之后的检测匹配");
+        List<List<Tile>> matchedTiles = CheckForRemovableRegion();
+
+        if (matchedTiles.Count == 0) 
+        {
+            Debug.LogError("----没有匹配格子了----");
+
+            //没有匹配的格子之后再去生成 
+
+
+            return;
+        }
+
+        ClearAllMatchGrid(matchedTiles);
+    }
+
+    
+
+
+    private List<List<Tile>> removableRegions;
+
+    public static float tileSize = 1.024f;
+
+    /// <summary>
+    /// 检查所有格子判断是否有可消除的
+    /// </summary>
+    /// <returns></returns>
+    public List<List<Tile>> CheckForRemovableRegion()
+    {
+        Array.Clear(visited, 0, visited.Length);
+        removableRegions.Clear();
+        List<Tile> regions;
+        for (int i = 0; i < Row; i++)
+        {
+            for (int j = 0; j < Column; j++)
+            {
+                if (!visited[i, j] && tiles[i, j]!=null)
+                {
+                    regions = new List<Tile>();
+                    int count = DFS(i, j, tiles[i, j].gridType, regions);
+
+                    if (count>=3 && IsLinear(regions))
+                    {
+                        Debug.LogError("------------有可消除");                 
+                        removableRegions.Add(regions);
+                    }
+                }
+            }
+        }
+        return removableRegions;
+    }
 
     /// <summary>
     /// 创建所有空格子 也就是背景格
@@ -112,247 +311,74 @@ public class GridManager : MonoBehaviour
 
 
     }
-
+    Dictionary<int, int> rowCounts = new Dictionary<int, int>();
+    Dictionary<int, int> colCounts = new Dictionary<int, int>();
     /// <summary>
-    /// 检测所有匹配格子
+    /// 用来排除双排双列  一加二
     /// </summary>
-    public void CheckAllMatchGrid()
+    /// <param name="tiles"></param>
+    /// <returns></returns>
+    private bool IsLinear(List<Tile> tiles)
     {
-        List<Tile> matchList=new List<Tile>();
-        for (int i = 0; i < Row; i++)
+        rowCounts.Clear();
+        colCounts.Clear();
+        foreach (var tile in tiles)
         {
-            for (int j = 0; j < Column; j++)
+            if (!rowCounts.ContainsKey(tile.xIndex))
             {
-                 matchList = MatchCalculate(tiles[i,j],i,j);
+                rowCounts[tile.xIndex] = 0;
+            }
+            rowCounts[tile.xIndex]++;
 
-                //Debug.LogError($" 可消除的 x:{matchList[t].xIndex} y:{matchList[t].yIndex} ");
+            if (!colCounts.ContainsKey(tile.yIndex))
+            {
+                colCounts[tile.yIndex] = 0;
+            }
+            colCounts[tile.yIndex]++;
+        }
+
+        foreach (var rowValue in rowCounts.Values)
+        {
+            if (rowValue >= 3)
+            {
+                return true;
             }
         }
-        //if (matchList != null || matchList.Count>0) {
-        //    for (int t = 0; t < matchList.Count; t++)
-        //    {
-        //        Debug.LogError($" 可消除的 x:{matchList[t].xIndex} y:{matchList[t].yIndex} ");
-        //    }
-        //}
-        
+
+        foreach (var colValue in colCounts.Values)
+        {
+            if (colValue >= 3)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
-    private List<Tile> MatchCalculate(Tile tile,int newX,int newY)
+
+    private bool[,] visited; // 访问标记数组
+
+    // 深度优先搜索（DFS）用于统计相连区域的大小
+    private int DFS(int row, int col, GridType tileType,List<Tile> regon)
     {
-        GridType curGridType = tile.gridType;
-        List<Tile> matchRow = new List<Tile>();
-        List<Tile> matchLine = new List<Tile>();
-        List<Tile> finishedMatching = new List<Tile>();
-
-        //行匹配
-        matchRow.Add(tile);
-
-        //i=0代表往左，i=1代表往右
-        for (int i = 0; i <=1; i++) 
+        // 检查边界和Tile类型是否匹配
+        if (row < 0 || row >= Row || col < 0 || col >= Column ||  tiles[row, col] == null || visited[row, col] || tiles[row, col].gridType != tileType)
         {
-            for (int xDistance = 1; xDistance < Column; xDistance++) 
-            {
-                int x;
-                if (i == 0)
-                {
-                    x = newX - xDistance;
-                }
-                else
-                {
-                    x = newX + xDistance;
-                }
-                if (x < 0 || x >= Column)
-                {
-                    break;
-                }
-                if (tiles[x,newY].gridType == curGridType)
-                {
-                    matchRow.Add(tiles[x, newY]);
-                }
-                else
-                {
-                    break;
-                }
-            
-            }
+            return 0;
         }
 
-        if (matchRow.Count >= 3)
-        {
-            for (int i = 0; i < matchRow.Count; i++)
-            {
-                finishedMatching.Add(matchRow[i]);
+        visited[row, col] = true;
 
-            }
-        }
+        regon.Add(tiles[row, col]);
 
-        //列检测
-        if (matchRow.Count >= 3) 
-        {
-            for (int i = 0; i < matchRow.Count; i++)
-            {
-                //行匹配列表中满足匹配条件的每个元素上下一次进行列遍历检测
+        // 向四个方向递归遍历
+        int count = 1;
+        count += DFS(row - 1, col, tileType, regon); // 上
+        count += DFS(row + 1, col, tileType, regon); // 下
+        count += DFS(row, col - 1, tileType, regon); // 左
+        count += DFS(row, col + 1, tileType, regon); // 右
 
-                //0代表上方 1带边下方
-                for (int j = 0; j <= 1; j++)
-                {
-                    for (int yDistance = 0; yDistance < Row; yDistance++)
-                    {
-                        int y;
-                        if (j == 0)
-                        {
-                            y = newY - yDistance;
-                        }
-                        else
-                        {
-                            y = newY + yDistance;
-                        }
-                        if (y < 0 || y >= Row)
-                        {
-                            break;
-                        }
-                        if (tiles[matchRow[i].xIndex, y].gridType == curGridType)
-                        {
-                            matchLine.Add(tiles[matchRow[i].xIndex, y]);
-                        }
-                        else
-                        {
-                            break;
-                        }
-                    }
-                }
-                if (matchLine.Count < 2)
-                {
-                    matchLine.Clear();
-                }
-                else
-                {
-                    for (int j = 0; j < matchLine.Count; j++)
-                    {
-                        finishedMatching.Add(matchLine[j]);
-
-
-                    }
-                    break;
-                }
-            }
-
-        }
-       
-        if (finishedMatching.Count >= 3)
-        {
-            for (int i = 0; i < finishedMatching.Count; i++)
-            {
-                finishedMatching[i].gameObject.SetActive(false);
-            }
-            return finishedMatching;
-        }
-
-        matchRow.Clear();
-        matchLine.Clear();
-        finishedMatching.Clear();
-
-        //列匹配
-        //i=0代表往左，i=1代表往右
-        //for (int i = 0; i <=1; i++)
-        //{
-        //    for (int yDistance = 0; yDistance < Row; yDistance++)
-        //    {
-        //        int y;
-        //        if (i == 0)
-        //        {
-        //            y=newY - yDistance;
-        //        }
-        //        else
-        //        {
-        //            y = newY + yDistance;
-        //        }
-        //        if (y < 0 || y >= Row) 
-        //        {
-        //            break ;
-        //        }
-        //        if (tiles[newX, y].gridType == curGridType) 
-        //        {
-        //            matchLine.Add(tiles[newX, y]);
-        //        }
-        //        else
-        //        {
-        //            break;
-        //        }
-                
-
-        //    }
-        //}
-        //if(matchLine.Count >= 3)
-        //{
-        //    for (int i = 0; i < matchLine.Count; i++)
-        //    {
-        //        finishedMatching.Add(matchLine[i]);
-
-
-        //    }
-        //}
-
-        //if (matchLine.Count >= 3)
-        //{
-        //    for (int i = 0; i < matchLine.Count; i++)
-        //    {
-        //        for (int j = 0; j <= 1; j++)
-        //        {
-        //            for (int xDistance = 1; xDistance < Column; xDistance++)
-        //            {
-        //                int x;
-        //                if (j == 0)
-        //                {
-        //                    x = newY - xDistance;
-        //                }
-        //                else
-        //                {
-        //                    x = newY + xDistance;
-        //                }
-        //                if (x < 0 || x >= Column)
-        //                {
-        //                    break;
-        //                }
-        //                if (tiles[x, matchLine[i].yIndex].gridType == curGridType)
-        //                {
-        //                    matchRow.Add(tiles[x, matchLine[i].yIndex]);
-        //                }
-        //                else
-        //                {
-        //                    break;
-        //                }
-        //            }
-
-        //        }
-
-        //        if (matchRow.Count < 2)
-        //        {
-        //            matchRow.Clear();
-        //        }
-        //        else
-        //        {
-        //            for (int j = 0; j < matchRow.Count; j++)
-        //            {
-        //                finishedMatching.Add(matchRow[j]);
-
-
-        //            }
-        //            break;
-        //        }
-        //    }
-        //}
-        
-        if (finishedMatching.Count >= 3)
-        {
-            for (int i = 0; i < finishedMatching.Count; i++)
-            {
-                finishedMatching[i].gameObject.SetActive(false);
-            }
-            return finishedMatching;
-        }
-
-        return null;
+        return count;
     }
 
 
@@ -363,7 +389,7 @@ public class GridManager : MonoBehaviour
 
     int GetRandomTile()
     {
-        int curTileType=Random.Range(0,tileCount);
+        int curTileType=UnityEngine.Random.Range(0,tileCount);
         return curTileType;
     }
 
