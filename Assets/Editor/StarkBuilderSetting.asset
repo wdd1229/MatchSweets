@@ -13,17 +13,17 @@ MonoBehaviour:
   m_Name: StarkBuilderSetting
   m_EditorClassIdentifier: 
   tag: 0
-  wasmResourceUrl: 
-  webGLOutputDir: 
+  wasmResourceUrl: http://
+  webGLOutputDir: C:/Work/Demo/MatchSweetsDemoWebGL
   useByteAudioAPI: 0
   wasmMemorySize: 128
-  isWebGL2: 0
+  isWebGL2: 1
   needCompress: 1
-  symbolMode: 1
+  symbolMode: 0
   profiling: 0
   clearStreamingAssets: 0
   buildOptions: 0
-  wasmSubFramework: 0
+  wasmSubFramework: 1
   optimizeWebGLMemoryInBackground: 1
   assetBundleFSEnabled: 1
   assetBundleBufferCapacity: 128
@@ -36,25 +36,25 @@ MonoBehaviour:
   dontCacheFileNames: []
   isDevBuild: 0
   stripEngineCode: 0
-  apkFileNameBase: 
-  apkOutputDir: 
+  apkFileNameBase: MatchSweetsDemo
+  apkOutputDir: C:/Work/Demo/MatchSweetsDemo
   appHost: 2
   compressMethod: 1
   runtimeEnv: 0
-  framework: 0
+  framework: 1
   architecture: 2
   miniApkVersion: 0
   scriptingBackend: 0
   NativeWhiteListRegex:
   - com.bytedance.starksdk
   - _Backup~
-  _appId: 
+  _appId: tt2fe7595ab0e8612407
   version: 
   autoVersion: 0
-  _webglPackagePath: 
+  _webglPackagePath: C:\Work\Demo\MatchSweetsDemoWebGL\webgl_package-20250816_134237.zip
   _orientation: 0
   _iOSPerformancePlus: 0
   _menuButtonStyle: 0
   _publishType: 0
   publishDesc: 
-  idePath: 
+  idePath: "C:/Users/42318/AppData/Local/Programs/@bytedminiprogram-ide/\u6296\u97F3\u5F00\u53D1\u8005\u5DE5\u5177.exe"

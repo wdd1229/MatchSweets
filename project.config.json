@@ -1,1 +1,29 @@
-{"appid":"","projectname":"MatchSweets","unity":{"build":{"webgl":"","native":{"il2cpp":"","apk":"","fullApk":""},"instantGame":""},"publishType":"","starkSdkVersion":"Without StarkSDK","unityToolsVersion":"","unityEngineVersion":"2022.3.61t3","arch":""}}
+{
+  "appid": "tt2fe7595ab0e8612407",
+  "projectname": "MatchSweets",
+  "unity": {
+    "build": {
+      "webgl": "C:\\Work\\Demo\\MatchSweetsDemoWebGL\\webgl_package-20250816_134237.zip",
+      "native": {
+        "il2cpp": "C:/Work/Demo/MatchSweetsDemo\\MatchSweetsDemo-All-20250816_111211\\il2cppOutput.zip",
+        "apk": "C:/Work/Demo/MatchSweetsDemo\\MatchSweetsDemo-All-20250816_111211\\launcher-release.apk",
+        "fullApk": "C:/Work/Demo/MatchSweetsDemo\\MatchSweetsDemo-All-20250816_111728.apk"
+      },
+      "instantGame": ""
+    },
+    "publishType": "5",
+    "starkSdkVersion": "Without StarkSDK",
+    "unityToolsVersion": null,
+    "unityEngineVersion": "2022.3.61t3",
+    "arch": "both"
+  },
+  "setting": {
+    "urlCheck": false
+  },
+  "condition": {
+    "game": {
+      "current": -1,
+      "list": []
+    }
+  }
+}

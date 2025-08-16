@@ -480,12 +480,12 @@
       <HintPath>Library\PackageCache\com.unity.nuget.mono-cecil@1.11.4\Mono.Cecil.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="ttsdk_tools">
-      <HintPath>LocalPackages\com.bytedance.starksdk@6.4.5\Editor\Tool\ttsdk_tools.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="zxing.wx-uploader">
       <HintPath>Library\PackageCache\cn.tuanjie.wx-uploader@0.1.4\Editor\Plugins\zxing.wx-uploader.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="ttsdk_tools">
+      <HintPath>LocalPackages\com.bytedance.starksdk@6.4.5\Editor\Tool\ttsdk_tools.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="ttsdk">

@@ -69,11 +69,12 @@ public class Tile : MonoBehaviour
         SetState(TileState.Idle);
         fallDistance = 0;
         // 下落完成后检查匹配
-        CheckForMatchAfterFalling();
+        StartCoroutine(CheckForMatchAfterFalling());
     }
 
-    private void CheckForMatchAfterFalling()
+    IEnumerator CheckForMatchAfterFalling()
     {
+        yield return new WaitForSeconds(1.0f);
         // 调用 GridManager 或其他相关组件进行匹配检查
         // 例如: gridManager.CheckForMatchesAt(xIndex, yIndex);
         gridManager.CheckForMatchesAt(xIndex, yIndex);
@@ -85,6 +86,8 @@ public class Tile : MonoBehaviour
     /// <param name="state"></param>
     public void SetState(TileState state)
     {
+        if (currentState == TileState.Clearing)
+            return;
         currentState = state;
         UpdateAnimationState();
     }
@@ -105,12 +108,15 @@ public class Tile : MonoBehaviour
         switch (currentState)
         {
             case TileState.Idle:
+                animator.Play("idle");
                 break;
             case TileState.Moving:
                 break;
             case TileState.Clearing:
+                animator.Play("clear");
                 break;
             case TileState.Checking:
+                animator.Play("move");
                 break;
             default:
                 break;
