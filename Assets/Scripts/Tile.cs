@@ -33,14 +33,17 @@ public class Tile : MonoBehaviour
         name = "Tile (" + xIndex + ", " + yIndex + ")";
     }
 
+    int endIndexY;
+
     /// <summary>
     /// 下落逻辑
     /// </summary>
     /// <param name="distance"></param>
-    public void StartFalling(int distance)
+    public void StartFalling(int y,int distance)
     {
         if (fallDistance != 0)
         {
+            endIndexY = y;
             fallDistance += 1;
             return;
         }
@@ -52,14 +55,23 @@ public class Tile : MonoBehaviour
 
     IEnumerator FallToPosition()
     {
+        //RectTransform grid = transform.GetComponent<RectTransform>();
+        //grid.sizeDelta = new Vector2(gridManager.gridItemWidth, gridManager.gridItemHeight);
+        //grid.anchoredPosition = new Vector2(
+        //    -gridManager.totalGridWidth / 2 + gridManager.gridItemWidth / 2 + xIndex * (gridManager.gridItemWidth + gridManager.padding),
+        //    -gridManager.totalGridHeight / 2 + gridManager.gridItemHeight / 2 + endIndexY * (gridManager.gridItemHeight + gridManager.padding)
+        //);
+
+
+
         Vector3 start=transform.localPosition;
-        Vector3 end = new Vector3(xIndex * GridManager.tileSize, -yIndex * GridManager.tileSize, transform.position.z);
+        Vector3 end = gridManager.BGtiles[xIndex,yIndex].transform.localPosition;
 
         float duration = 0.1f * fallDistance;//下落速度
         float elapsed = 0;
         while (elapsed < duration)
         {
-            end = new Vector3(xIndex * GridManager.tileSize, -yIndex * GridManager.tileSize, transform.position.z);//下落过程中可能会需要再次下落更多，所以这里再次设置一下
+            end = gridManager.BGtiles[xIndex, yIndex].transform.localPosition;//下落过程中可能会需要再次下落更多，所以这里再次设置一下
             elapsed += Time.deltaTime;
             transform.localPosition = Vector3.Lerp(start, end, elapsed / duration);
             yield return null;

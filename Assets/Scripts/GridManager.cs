@@ -38,6 +38,14 @@ public class GridManager : MonoBehaviour
     /// </summary>
     private Tile[,] tiles;
 
+    [HideInInspector]
+    public Tile[,] BGtiles;
+
+    /// <summary>
+    /// 网格和上面的物品的大小差值
+    /// </summary>
+    private float gridDiff=30;
+
 
     private void Awake()
     {
@@ -53,9 +61,6 @@ public class GridManager : MonoBehaviour
     }
 
 
-    public Vector2 referenceResolution = new Vector2(1920,1080); // 参考分辨率
-
-
     private void Start()
     {
         //float currentWidth = Screen.width;
@@ -67,9 +72,11 @@ public class GridManager : MonoBehaviour
 
         tiles =new Tile[Row, Column];
 
+        BGtiles=new Tile[Row, Column];
+
         CreatAllEmptyGrid();
 
-        AlignGridToBottomCenter();
+        //AlignGridToBottomCenter();
 
         CreateCell();
 
@@ -222,12 +229,12 @@ public class GridManager : MonoBehaviour
     IEnumerator RefillBoardRoutine()
     {
         int emptySpaceCount;
-        for (int i = 0; i < Row; i++)
+        for (int i = 0; i <Row; i++)
         {
             //空格子数量统计
             emptySpaceCount = 0;
 
-            for(int j = Column-1; j >= 0; j--)
+            for(int j = 0; j < Column; j++)
             {
                 Tile currTile = tiles[i,j];
                 if (currTile == null) 
@@ -235,20 +242,21 @@ public class GridManager : MonoBehaviour
                     emptySpaceCount++;
                 }else if (emptySpaceCount > 0)
                 {
+                    Debug.LogError($"当前位置：{i} {j}  空格数量:{emptySpaceCount}  j+emptySpaceCount:{emptySpaceCount+j}");
+
                     //有空位 移动方块逻辑
-                    tiles[i,j+emptySpaceCount]=currTile;
+                    tiles[i, j - emptySpaceCount] = currTile;
                     tiles[i, j] = null;
-                    currTile.Init(i, j + emptySpaceCount, currTile.gridType);
-                    currTile.StartFalling(emptySpaceCount);
+                    currTile.Init(i, j - emptySpaceCount, currTile.gridType);
+                    currTile.StartFalling(j - emptySpaceCount, emptySpaceCount);
                 }
             }
-            Debug.LogError($"要创建新的方块数量为:{emptySpaceCount}");
             //yield return new WaitForSeconds(0.2f);
             //根据空格数量生成新的方块
             for (int t = 1; t <= emptySpaceCount; t++)
             {
                 //创建新方块
-                CreateTileAtTop(i, -t, emptySpaceCount);
+                //CreateTileAtTop(i, -t, emptySpaceCount);
             }
 
         }
@@ -274,11 +282,17 @@ public class GridManager : MonoBehaviour
         //obj.transform.localPosition=new Vector3(x*tileSize, -startY*tileSize, 0);
         obj.transform.localPosition=new Vector3(x*tileSize, creatTileHeight, 0);
 
+        RectTransform grid = obj.GetComponent<RectTransform>();
+        grid.sizeDelta = new Vector2(gridItemWidth - gridDiff, gridItemHeight - gridDiff);
+        grid.anchoredPosition = new Vector2(
+            -totalGridWidth / 2 + gridItemWidth / 2 + x * (gridItemWidth + padding),
+           creatTileHeight
+        );
 
         tile.Init(x, startY+fallDistance, curGridType);
         ////obj.name = string.Format($"Grid_{i}_{j}");
         tiles[x, startY+fallDistance] = tile;
-        tile.StartFalling(fallDistance);//新方块开始掉落
+        tile.StartFalling(startY + fallDistance, fallDistance);//新方块开始掉落
     }
 
     public void CheckForMatchesAt(int x,int y)
@@ -339,22 +353,66 @@ public class GridManager : MonoBehaviour
         return removableRegions;
     }
 
+    public float padding = 10f; // 网格项之间的间距
+    public float horizontalMargin = 50f; // 预留的左右边距
+
+    [HideInInspector]
+    public float gridItemWidth;
+    [HideInInspector]
+    public float gridItemHeight;
+    [HideInInspector]
+    public float totalGridWidth;
+    [HideInInspector]
+    public float totalGridHeight;
     /// <summary>
     /// 创建所有空格子 也就是背景格
     /// </summary>
     public void CreatAllEmptyGrid()
     {
+        Array.Clear(BGtiles, 0, BGtiles.Length);
+
+        RectTransform canvasRect = transform.parent as RectTransform;
+        float availableWidth = canvasRect.rect.width - 2 * horizontalMargin;
+        gridItemWidth = (availableWidth - padding * (Column - 1)) / Column;
+        gridItemHeight = gridItemWidth; // 保持正方形比例
+
+        // 设置网格容器的大小
+        RectTransform gridContainer = GetComponent<RectTransform>();
+        totalGridWidth = Column * gridItemWidth + (Column - 1) * padding;
+        totalGridHeight = Row * gridItemHeight + (Row - 1) * padding;
+        gridContainer.sizeDelta = new Vector2(totalGridWidth, totalGridHeight);
+
+        // 设置网格容器的位置，使其在屏幕下方居中
+        gridContainer.anchorMin = new Vector2(0.5f, 0f);
+        gridContainer.anchorMax = new Vector2(0.5f, 0f);
+        gridContainer.pivot = new Vector2(0.5f, 0f);
+        gridContainer.anchoredPosition = new Vector2(0f, 0f); // 底部居中
+
+
         GameObject obj;
-        for (int i = 0; i < Row; i++) 
+        for (int i = 0; i < Row; i++)
         {
             for (int j = 0; j < Column; j++)
             {
                 obj = CreatGrid(GridType.Empty);
-                obj.transform.localPosition = new Vector3(i * tileSize, -j * tileSize, 0);
+                //obj.transform.localPosition = new Vector3(i * tileSize, -j * tileSize, 0);
                 //obj.name = string.Format($"Grid_{i}_{j}");
+
+                RectTransform grid = obj.GetComponent<RectTransform>();
+                grid.sizeDelta = new Vector2(gridItemWidth, gridItemHeight);
+                grid.anchoredPosition = new Vector2(
+                    -totalGridWidth / 2 + gridItemWidth / 2 + i * (gridItemWidth + padding),
+                    -totalGridHeight / 2 + gridItemHeight / 2 + j * (gridItemHeight + padding)
+                );
+
+                Tile tile = obj.AddComponent<Tile>();
+                tile.Init(i, j, GridType.Empty);
+                BGtiles[i, j] = tile;
+
             }
         }
     }
+
 
     /// <summary>
     /// 创建游戏物品 在格子背景上的
@@ -371,9 +429,17 @@ public class GridManager : MonoBehaviour
                 obj = CreatGrid(curGridType);
                 Tile tile=obj.AddComponent<Tile>();
                 tile.Init(i, j, curGridType);
-                obj.transform.localPosition = new Vector3(i * tileSize, -j * tileSize, 0);
+                //obj.transform.localPosition = new Vector3(i * tileSize, -j * tileSize, 0);
                 //obj.name = string.Format($"Grid_{i}_{j}");
                 tiles[i, j] = tile;
+
+                RectTransform grid = obj.GetComponent<RectTransform>();
+                grid.sizeDelta = new Vector2(gridItemWidth- gridDiff, gridItemHeight- gridDiff);
+                grid.anchoredPosition = new Vector2(
+                    -totalGridWidth / 2 + gridItemWidth / 2 + i * (gridItemWidth + padding),
+                    -totalGridHeight / 2 + gridItemHeight / 2 + j * (gridItemHeight + padding)
+                );
+
             }
         }
 
@@ -551,7 +617,7 @@ public class GridManager : MonoBehaviour
     {
         string path;
         GameObject gridPrefab;
-        path = gridType.ToString() + "_Grid";
+        path = "Test/"+gridType.ToString() + "_Grid";
         gridPrefab = Resources.Load<GameObject>(path);
         if (allGridPrefab.ContainsKey(gridType)) 
         { 
