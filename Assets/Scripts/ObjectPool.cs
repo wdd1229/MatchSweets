@@ -11,6 +11,7 @@ public enum GridType
     Red,
     Orange,
     Empty,
+    Top,//最上层
     Null//传入Null可创建空格子也就是背景格
 }
 /// <summary>

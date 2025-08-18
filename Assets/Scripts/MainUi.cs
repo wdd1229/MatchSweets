@@ -10,10 +10,16 @@ public class MainUi : MonoBehaviour
 
     private Button closeBtn;
 
+    private GameObject gameUI;
+
+    private Transform Canvas;
+
     private void Awake()
     {
+        Canvas = GameObject.Find("Canvas").transform;
         startBtn =transform.Find("Btn_Start").GetComponent<Button>();
-        closeBtn = GameObject.Find("CloseBtn").transform.GetComponent<Button>();
+        closeBtn = Canvas.Find("CloseBtn").GetComponent<Button>();
+        gameUI = Canvas.Find("GameUI").gameObject;
     }
 
     void Start()
@@ -38,6 +44,8 @@ public class MainUi : MonoBehaviour
     {
         //LoadSceneManager.Instance.LoadScene("Game");
         gameObject.SetActive(false);
+
+        gameUI.SetActive(true);
     }
 
 

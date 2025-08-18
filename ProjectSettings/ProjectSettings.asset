@@ -1072,7 +1072,7 @@ PlayerSettings:
   weixinMiniGameShowDiagnostics: 0
   weixinMiniGameDataCaching: 0
   weixinMiniGameDebugSymbols: 0
-  weixinMiniGameEmscriptenArgs: ' -s TOTAL_MEMORY=128MB'
+  weixinMiniGameEmscriptenArgs: ' -s TOTAL_MEMORY=128MB --memoryprofiler'
   weixinMiniGameModulesDirectory: 
   weixinMiniGameTemplate: APPLICATION:Default
   weixinMiniGameAnalyzeBuildSize: 0

@@ -20,7 +20,7 @@ MonoBehaviour:
   isWebGL2: 1
   needCompress: 1
   symbolMode: 0
-  profiling: 0
+  profiling: 1
   clearStreamingAssets: 0
   buildOptions: 0
   wasmSubFramework: 1
@@ -51,7 +51,7 @@ MonoBehaviour:
   _appId: tt2fe7595ab0e8612407
   version: 
   autoVersion: 0
-  _webglPackagePath: C:\Work\Demo\MatchSweetsDemoWebGL\webgl_package-20250816_134237.zip
+  _webglPackagePath: C:\Work\Demo\MatchSweetsDemoWebGL\webgl_package-20250818_115016.zip
   _orientation: 0
   _iOSPerformancePlus: 0
   _menuButtonStyle: 0

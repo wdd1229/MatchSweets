@@ -24,16 +24,21 @@ public class Tile : MonoBehaviour
 
     public void Init(int x,int y,GridType gridType)
     {
-        if (gridType == GridType.Null || gridType == GridType.Empty)
-            return;
+        this.gridType = gridType;
         xIndex = x;
         yIndex = y;
-        this.gridType = gridType;
-        // 设置方块的名字为其坐标
-        name = "Tile (" + xIndex + ", " + yIndex + ")";
-    }
+        if (gridType == GridType.Empty || gridType == GridType.Top)
+        {
+            name = gridType.ToString() + "(" + xIndex + ", " + yIndex + ")";
 
-    int endIndexY;
+        }
+        else
+        {
+            name = "Tile (" + xIndex + ", " + yIndex + ")";
+        }
+
+        // 设置方块的名字为其坐标
+    }
 
     /// <summary>
     /// 下落逻辑
@@ -43,7 +48,6 @@ public class Tile : MonoBehaviour
     {
         if (fallDistance != 0)
         {
-            endIndexY = y;
             fallDistance += 1;
             return;
         }
@@ -62,12 +66,10 @@ public class Tile : MonoBehaviour
         //    -gridManager.totalGridHeight / 2 + gridManager.gridItemHeight / 2 + endIndexY * (gridManager.gridItemHeight + gridManager.padding)
         //);
 
-
-
         Vector3 start=transform.localPosition;
         Vector3 end = gridManager.BGtiles[xIndex,yIndex].transform.localPosition;
 
-        float duration = 0.1f * fallDistance;//下落速度
+        float duration = 0.08f * fallDistance;//下落速度
         float elapsed = 0;
         while (elapsed < duration)
         {
