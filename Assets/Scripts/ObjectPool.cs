@@ -12,6 +12,7 @@ public enum GridType
     Orange,
     Empty,
     Top,//最上层
+    SpecialCollection,//特殊收藏品
     Null//传入Null可创建空格子也就是背景格
 }
 /// <summary>

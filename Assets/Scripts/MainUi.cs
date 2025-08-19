@@ -46,6 +46,7 @@ public class MainUi : MonoBehaviour
         gameObject.SetActive(false);
 
         gameUI.SetActive(true);
+        GameManager.Instance.GameStart();
     }
 
 

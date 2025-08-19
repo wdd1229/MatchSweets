@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 {
+
     public LevelList levelList;
 
     public int curLevelIndex=0;
@@ -12,23 +14,48 @@ public class GameManager : MonoBehaviour
 
     private WallManager wallManager;
 
-    private void Awake()
-    {
-        gridManager = GetComponent<GridManager>();
+    private int curSpacielCount = 0;
 
-        wallManager = GameObject.Find("Canvas/GameUI/walls").transform.GetComponent<WallManager>();
-    }
+    private GameUi gameUi;
 
-    void Start()
+    private Transform Canvas;
+
+    private LevelData curLevelData;
+
+    protected override void Awake()
     {
+        Canvas = GameObject.Find("Canvas").transform;
+
+        gridManager = Canvas.Find("GameUI/allGridRoot").GetComponent<GridManager>();
+
+        wallManager = Canvas.Find("GameUI/walls").GetComponent<WallManager>();
+
+        gameUi= Canvas.Find("GameUI").GetComponent<GameUi>();
+
         LoadLevelData();
-        gridManager.GameInit(levelList.levels[0]);
-        wallManager.CreatWallOfLevelData(levelList.levels[0].wallCount);
+
+
+    }
+    public void GameStart()
+    {
+        curLevelData = levelList.levels[0];
+        gridManager.GameInit(curLevelData);
+        wallManager.CreatWallOfLevelData(curLevelData.wallCount);
     }
     
     public void LoadLevelData()
     {
         levelList = LoadJson<LevelList>.LoadJsonFromFile("LevelData");
         Debug.Log(levelList);
+    }
+    //AddSpecial
+    public void RefreshSpecial()
+    {
+        curSpacielCount += 1;
+        //ui刷新
+        gameUi.RefreshSpecial(curSpacielCount);
+
+        //墙壁减少
+        wallManager.DesTroyWall();
     }
 }

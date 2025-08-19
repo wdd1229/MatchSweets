@@ -37,11 +37,11 @@ public class Tile : MonoBehaviour
             name = "Tile (" + xIndex + ", " + yIndex + ")";
         }
 
-        // ÉèÖÃ·½¿éµÄÃû×ÖÎªÆä×ø±ê
+        // è®¾ç½®æ–¹å—çš„åå­—ä¸ºå…¶åæ ‡
     }
 
     /// <summary>
-    /// ÏÂÂäÂß¼­
+    /// ä¸‹è½é€»è¾‘
     /// </summary>
     /// <param name="distance"></param>
     public void StartFalling(int y,int distance)
@@ -69,11 +69,11 @@ public class Tile : MonoBehaviour
         Vector3 start=transform.localPosition;
         Vector3 end = gridManager.BGtiles[xIndex,yIndex].transform.localPosition;
 
-        float duration = 0.08f * fallDistance;//ÏÂÂäËÙ¶È
+        float duration = 0.08f * fallDistance;//ä¸‹è½é€Ÿåº¦
         float elapsed = 0;
         while (elapsed < duration)
         {
-            end = gridManager.BGtiles[xIndex, yIndex].transform.localPosition;//ÏÂÂä¹ı³ÌÖĞ¿ÉÄÜ»áĞèÒªÔÙ´ÎÏÂÂä¸ü¶à£¬ËùÒÔÕâÀïÔÙ´ÎÉèÖÃÒ»ÏÂ
+            end = gridManager.BGtiles[xIndex, yIndex].transform.localPosition;//ä¸‹è½è¿‡ç¨‹ä¸­å¯èƒ½ä¼šéœ€è¦å†æ¬¡ä¸‹è½æ›´å¤šï¼Œæ‰€ä»¥è¿™é‡Œå†æ¬¡è®¾ç½®ä¸€ä¸‹
             elapsed += Time.deltaTime;
             transform.localPosition = Vector3.Lerp(start, end, elapsed / duration);
             yield return null;
@@ -82,20 +82,20 @@ public class Tile : MonoBehaviour
         transform.localPosition = end;
         SetState(TileState.Idle);
         fallDistance = 0;
-        // ÏÂÂäÍê³Éºó¼ì²éÆ¥Åä
-        StartCoroutine(CheckForMatchAfterFalling());
+        // ä¸‹è½å®Œæˆåæ£€æŸ¥åŒ¹é…
+        //StartCoroutine(CheckForMatchAfterFalling());
     }
 
     IEnumerator CheckForMatchAfterFalling()
     {
         yield return new WaitForSeconds(1.0f);
-        // µ÷ÓÃ GridManager »òÆäËûÏà¹Ø×é¼ş½øĞĞÆ¥Åä¼ì²é
-        // ÀıÈç: gridManager.CheckForMatchesAt(xIndex, yIndex);
-        gridManager.CheckForMatchesAt(xIndex, yIndex);
+        // è°ƒç”¨ GridManager æˆ–å…¶ä»–ç›¸å…³ç»„ä»¶è¿›è¡ŒåŒ¹é…æ£€æŸ¥
+        // ä¾‹å¦‚: gridManager.CheckForMatchesAt(xIndex, yIndex);
+        //gridManager.CheckForMatchesAt(xIndex, yIndex);
     }
 
     /// <summary>
-    /// ÉèÖÃ²»Í¬×´Ì¬
+    /// è®¾ç½®ä¸åŒçŠ¶æ€
     /// </summary>
     /// <param name="state"></param>
     public void SetState(TileState state)
@@ -114,7 +114,7 @@ public class Tile : MonoBehaviour
     }
 
     /// <summary>
-    /// ¸ù¾İ²»Í¬×´Ì¬ ²¥·Å²»Í¬×´Ì¬ ²»Í¬Âß¼­
+    /// æ ¹æ®ä¸åŒçŠ¶æ€ æ’­æ”¾ä¸åŒçŠ¶æ€ ä¸åŒé€»è¾‘
     /// </summary>
     public void UpdateAnimationState()
     {

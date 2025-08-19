@@ -617,10 +617,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1601404050}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -14, y: 755}
-  m_SizeDelta: {x: 1140, y: 408.5742}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -205}
+  m_SizeDelta: {x: 1140, y: 408.57422}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &310653974
 MonoBehaviour:
@@ -710,6 +710,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4205ab763397f1a47b7e720ef05b5eae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cancelRoot: {fileID: 2097229208}
 --- !u!114 &450648176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1657,6 +1658,7 @@ GameObject:
   - component: {fileID: 1504071963}
   - component: {fileID: 1504071965}
   - component: {fileID: 1504071964}
+  - component: {fileID: 1504071966}
   m_Layer: 5
   m_HasEditorInfo: 1
   m_Name: GameUI
@@ -1726,6 +1728,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1504071962}
   m_CullTransparentMesh: 1
+--- !u!114 &1504071966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1504071962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ee053bdb0c1819458e3a8d11e3acfee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1575777517
 GameObject:
   m_ObjectHideFlags: 0
@@ -1813,7 +1827,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u751C\u54C1\u6D88\u6D88\u4E50"
+  m_Text: "\u8FDE\u73AF\u593A\u5B9D"
 --- !u!222 &1575777521
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1918,6 +1932,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f03bd9631fb33374a97efaa2fdc575f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1757410384
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 7
+  m_Component:
+  - component: {fileID: 1757410386}
+  - component: {fileID: 1757410385}
+  m_Layer: 0
+  m_HasEditorInfo: 1
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1757410385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1757410384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a196cef217d4ad4ab2939eb08668a48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelList:
+    levels: []
+  curLevelIndex: 0
+--- !u!4 &1757410386
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1757410384}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 420, y: 1812, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1770032834
 GameObject:
   m_ObjectHideFlags: 0
@@ -2686,6 +2748,7 @@ MonoBehaviour:
   totalGridWidth: 0
   totalGridHeight: 0
   tileCount: 3
+  curMatchedTiles: []
 --- !u!1 &2123008735
 GameObject:
   m_ObjectHideFlags: 0
@@ -2696,7 +2759,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2123008736}
   - component: {fileID: 2123008737}
-  - component: {fileID: 2123008738}
   m_Layer: 5
   m_HasEditorInfo: 1
   m_Name: allGridRoot
@@ -2745,21 +2807,7 @@ MonoBehaviour:
   totalGridWidth: 0
   totalGridHeight: 0
   tileCount: 3
---- !u!114 &2123008738
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2123008735}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a196cef217d4ad4ab2939eb08668a48, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  levelList:
-    levels: []
-  curLevelIndex: 0
+  curMatchedTiles: []
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -2770,3 +2818,4 @@ SceneRoots:
   - {fileID: 2015048794}
   - {fileID: 1023382512}
   - {fileID: 2079214675}
+  - {fileID: 1757410386}

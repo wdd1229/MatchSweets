@@ -1,63 +1,80 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Security.Cryptography;
 using TTSDK;
 using UnityEngine;
-using UnityEngine.Device;
-
+using UnityEngine.Windows;
 /// <summary>
-/// ËùÓĞ¸ñ×Ó¹ÜÀí
+/// æ‰€æœ‰æ ¼å­ç®¡ç†
 /// </summary>
 public class GridManager : MonoBehaviour
 {
 
     /// <summary>
-    /// ËùÓĞ¸ñ×Ó¸¸½Úµã
+    /// æ‰€æœ‰æ ¼å­çˆ¶èŠ‚ç‚¹
     /// </summary>
     private Transform allGridRoot;
 
     /// <summary>
-    /// ÁĞÊı
+    /// åˆ—æ•°
     /// </summary>
     public int Column;
     /// <summary>
-    /// ĞĞÊı
+    /// è¡Œæ•°
     /// </summary>
     public int Row;
 
     /// <summary>
-    /// ¸ñ×Ó¿í¶È
-    /// </summary>
-    private float gridWidth;
-    /// <summary>
-    /// ¸ñ×Ó¸ß¶È
-    /// </summary>
-    private float gridHeight;
-
-    /// <summary>
-    /// È«²¿µÄ·½¿é
+    ///å…¨éƒ¨çš„æ–¹å—
     /// </summary>
     private Tile[,] tiles;
+    /// <summary>
+    ///èƒŒæ™¯æ ¼å­
+    /// </summary>
     [HideInInspector]
     public Tile[,] BGtiles;
 
     /// <summary>
-    /// Íø¸ñºÍÉÏÃæµÄÎïÆ·µÄ´óĞ¡²îÖµ
+    ///ç½‘æ ¼å’Œä¸Šé¢çš„ç‰©å“çš„å¤§å°å·®å€¼
     /// </summary>
     private float gridDiff = 30;
+
+
+    public float padding = 10f; //  ç½‘æ ¼é¡¹ä¹‹é—´çš„é—´è·
+    public float horizontalMargin = 50f; // é¢„ç•™çš„å·¦å³è¾¹è·
+
+    [HideInInspector]
+    public float gridItemWidth;
+    [HideInInspector]
+    public float gridItemHeight;
+    [HideInInspector]
+    public float totalGridWidth;
+    [HideInInspector]
+    public float totalGridHeight;
+
+
+    float fullScreenSpawnChance = 0.5f; // 50% çš„æ¦‚ç‡ å…¨å±åŒä¸€ç±»å‹å‡ ç‡
+
+    /// <summary>
+    /// ç½‘æ ¼å’Œä¸Šé¢çš„ç‰©å“çš„å¤§å°å·®å€¼
+    /// </summary>
+    public int tileCount = 5;
+
+    float SpecialCollection = 0.20f; // 5*4% çš„æ¦‚ç‡ ç‰¹æ®Šæ”¶é›†å“æ¦‚ç‡
+
 
     private void Awake()
     {
         allGridRoot = transform;
         allGridPrefab = new Dictionary<GridType, GameObject>();
-        //³õÊ¼»¯
+        //åˆå§‹åŒ–
         AddPrefab(GridType.Empty);
         AddPrefab(GridType.Green);
         AddPrefab(GridType.Red);
         AddPrefab(GridType.Yellow);
         AddPrefab(GridType.Blue);
         AddPrefab(GridType.Orange);
+        AddPrefab(GridType.SpecialCollection);
     }
 
 
@@ -68,20 +85,26 @@ public class GridManager : MonoBehaviour
         Debug.Log("--------------------");
     }
 
-    private LevelData curLevelData;
 
     public void GameInit(LevelData levelData)
     {
-        curLevelData = levelData;
-        Row= curLevelData.Row;
-        Column= curLevelData.Column;
+
+        Row = levelData.Row;
+        Column= levelData.Column;
         tiles = new Tile[Row, Column + 1];
         BGtiles = new Tile[Row, Column + 1];
+
+
         CreatAllEmptyGrid();
+
         CreateCell();
+
         visited = new bool[Row, Column + 1];
         removableRegions = new List<List<Tile>>();
+
         StartCoroutine(StartCheck());
+
+
     }
 
 
@@ -128,11 +151,69 @@ public class GridManager : MonoBehaviour
 
         removableRegions = CheckForRemovableRegion();
 
+
+        //StartCoroutine(ClearAllSpecialCollection(CheckForSpecialCollection()));
+
         StartCoroutine(ClearAllMatchGrid(removableRegions));
     }
 
+    IEnumerator ClearAllSpecialCollection(List<Tile> specialTiles)
+    {
+        if (specialTiles.Count == 0)
+            yield return null;
+
+        Debug.LogError($"-------ï¿½ï¿½ï¿½ï¿½ï¿½Õ¼ï¿½Æ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½{specialTiles.Count}-------");
+
+        foreach (var item in new List<Tile>(specialTiles))
+        {
+            item.SetState(Tile.TileState.Clearing);
+            LockTilesAbove(item);
+        }
+        //È·ï¿½ï¿½ï¿½ï¿½ï¿½Å½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¥ï¿½ï¿½Ä¸ï¿½ï¿½Óµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        bool allAnimationsCompleted = false;
+        while (!allAnimationsCompleted)
+        {
+            allAnimationsCompleted = true;
+            foreach (Tile item in specialTiles)
+            {
+                if (item != null)
+                {
+                    Animator animator = item.GetComponent<Animator>();
+                    if (animator != null)
+                    {
+                        AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+                        if (!stateInfo.IsName("clear") || stateInfo.normalizedTime < 1.0f)
+                        {
+                            allAnimationsCompleted = false;
+                            break;
+                        }
+                    }
+                }
+
+            }
+            yield return null;
+        }
+
+        //É¾ï¿½ï¿½
+        foreach (var item in specialTiles)
+        {      
+                if (item == null)
+                    continue;
+                tiles[item.xIndex, item.yIndex] = null;
+
+            //ï¿½ï¿½ï¿½Ó·ï¿½ï¿½ï¿½
+            //AddSpecial
+            Debug.LogError("-------É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õ¼ï¿½Æ·-------");
+            Destroy(item.gameObject);
+        }
+
+        //ï¿½È´ï¿½Ò»ï¿½ï¿½Ê±ï¿½ï¿½È·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        yield return new WaitForSeconds(0.3f);
+
+    }
+
     /// <summary>
-    /// Çå³ıËùÓĞÒÑ¾­Æ¥Åä¸ñ×Ó
+    /// æ¸…é™¤æ‰€æœ‰å·²ç»åŒ¹é…æ ¼å­
     /// </summary>
     IEnumerator ClearAllMatchGrid(List<List<Tile>> matchTiles)
     {
@@ -147,7 +228,7 @@ public class GridManager : MonoBehaviour
         }
 
 
-        //È·¶¨²¥·Å½áÊøËùÓĞÆ¥ÅäµÄ¸ñ×ÓµÄÏû³ı¶¯»­
+        //ç¡®å®šæ’­æ”¾ç»“æŸæ‰€æœ‰åŒ¹é…çš„æ ¼å­çš„æ¶ˆé™¤åŠ¨ç”»
         bool allAnimationsCompleted = false;
         while (!allAnimationsCompleted)
         {
@@ -174,7 +255,7 @@ public class GridManager : MonoBehaviour
             yield return null;
         }
 
-        //É¾³ı
+        //åˆ é™¤
         foreach (var items in matchTiles)
         {
             if (items == null)
@@ -183,20 +264,29 @@ public class GridManager : MonoBehaviour
             {
                 if (item == null)
                     continue;
-                tiles[item.xIndex, item.yIndex] = null;
 
-                //Ìí¼Ó·ÖÊı
-                //AddScore
+                if (item.gridType == GridType.SpecialCollection)
+                {
+                    //AddSpecial
+                    GameManager.Instance.RefreshSpecial();
+                }
+                else
+                {
+                    //æ·»åŠ åˆ†æ•°
+                    //AddScore
+                }
+                tiles[item.xIndex, item.yIndex] = null;
 
                 Destroy(item.gameObject);
             }
         }
 
-        //µÈ´ıÒ»¶ÎÊ±¼äÈ·±£Ïú»ÙÍê³É
+        //ç­‰å¾…ä¸€æ®µæ—¶é—´ç¡®ä¿é”€æ¯å®Œæˆ
         yield return new WaitForSeconds(0.3f * matchTiles.Count);
 
         RefillBoard();
     }
+
 
     void LockTilesAbove(Tile tile)
     {
@@ -206,7 +296,7 @@ public class GridManager : MonoBehaviour
             Tile tileAbove = tiles[tile.xIndex, y];
             if (tileAbove != null)
             {
-                tileAbove.SetState(Tile.TileState.Moving); // Ëø¶¨ÉÏ·½µÄ·½¿é
+                tileAbove.SetState(Tile.TileState.Moving); // é”å®šä¸Šæ–¹çš„æ–¹å—
             }
         }
     }
@@ -221,9 +311,8 @@ public class GridManager : MonoBehaviour
         int emptySpaceCount;
         for (int i = 0; i < Row; i++)
         {
-            //¿Õ¸ñ×ÓÊıÁ¿Í³¼Æ
+            //ç©ºæ ¼å­æ•°é‡ç»Ÿè®¡
             emptySpaceCount = 0;
-
             for (int j = 0; j < Column+1; j++)
             {
                 Tile currTile = tiles[i, j];
@@ -233,7 +322,7 @@ public class GridManager : MonoBehaviour
                 }
                 else if (emptySpaceCount > 0)
                 {
-                    //ÓĞ¿ÕÎ» ÒÆ¶¯·½¿éÂß¼­
+                    //æœ‰ç©ºä½ ç§»åŠ¨æ–¹å—é€»è¾‘
                     tiles[i, j - emptySpaceCount] = currTile;
                     tiles[i, j] = null;
                     currTile.Init(i, j - emptySpaceCount, currTile.gridType);
@@ -243,28 +332,33 @@ public class GridManager : MonoBehaviour
 
 
             //yield return new WaitForSeconds(0.2f);
-            //¸ù¾İ¿Õ¸ñÊıÁ¿Éú³ÉĞÂµÄ·½¿é
+            //æ ¹æ®ç©ºæ ¼æ•°é‡ç”Ÿæˆæ–°çš„æ–¹å—
             for (int t = 1; t <= emptySpaceCount; t++)
             {
-                //´´½¨ĞÂ·½¿é
+                //åˆ›å»ºæ–°æ–¹å—
                 CreateTileAtTop(i, t, emptySpaceCount);
             }
         }
 
-        // µÈ´ıËùÓĞ·½¿éÏÂÂäÍê³É
-        yield return new WaitForSeconds(0.5f); // ¸ù¾İÏÂÂä¶¯»­Ê±³¤µ÷Õû
+       
+
+        //ç­‰å¾…æ‰€æœ‰æ–¹å—ä¸‹è½å®Œæˆ
+        yield return new WaitForSeconds(1.5f); //æ ¹æ®ä¸‹è½åŠ¨ç”»æ—¶é•¿è°ƒæ•´
+
+
+
+        CheckForMatchesAt();
     }
 
 
     /// <summary>
-    /// Éú³ÉĞÂ¸ñ×Ó ÉèÖÃ³õÊ¼Î»ÖÃºÍ³õÊ¼»¯
+    /// ç”Ÿæˆæ–°æ ¼å­ è®¾ç½®åˆå§‹ä½ç½®å’Œåˆå§‹åŒ–
     /// </summary>
     /// <param name="x"></param>
     /// <param name="startY"></param>
     /// <param name="fallDistance"></param>
     void CreateTileAtTop(int x, int startY, int fallDistance)
     {
-
         GridType curGridType = (GridType)GetRandomTile();
         GameObject obj = CreatGrid(curGridType);
         Tile tile = obj.AddComponent<Tile>();
@@ -278,26 +372,30 @@ public class GridManager : MonoBehaviour
         );
         tile.Init(x, Column + 1 - fallDistance + startY-1, curGridType);
         ////obj.name = string.Format($"Grid_{i}_{j}");
-        tiles[x, Column+1- fallDistance+ startY-1] = tile;//Column+1 ´ú±í×îÉÏÃæÒ»ĞĞ ¼õÈ¥¿Õ¸ñ×ÜÊıÁ¿ ¼ÓÉÏ²»Í¬Î»ÖÃstartY ÒòÎªÊÇÊı×éÏÂ±êËùÒÔÔÙ-1
-        tile.StartFalling(Column + 1 - fallDistance + startY, fallDistance);//ĞÂ·½¿é¿ªÊ¼µôÂä
+        tiles[x, Column+1- fallDistance+ startY-1] = tile;//Column+1 ä»£è¡¨æœ€ä¸Šé¢ä¸€è¡Œ å‡å»ç©ºæ ¼æ€»æ•°é‡ åŠ ä¸Šä¸åŒä½ç½®startY å› ä¸ºæ˜¯æ•°ç»„ä¸‹æ ‡æ‰€ä»¥å†-1
+        tile.StartFalling(Column + 1 - fallDistance + startY, fallDistance);//æ–°æ–¹å—å¼€å§‹æ‰è½
+
+       
     }
 
-    public void CheckForMatchesAt(int x, int y)
+    public List<Tile> curMatchedTiles;
+    public void CheckForMatchesAt(/*int x, int y*/)
     {
-        Tile currentTile = tiles[x, y];
-        if (currentTile == null) return;
-        //Debug.LogError("ÂäÏÂÖ®ºóµÄ¼ì²âÆ¥Åä");
+        //Tile currentTile = tiles[x, y];
+        //if (currentTile == null) return;
         List<List<Tile>> matchedTiles = CheckForRemovableRegion();
         //Debug.LogError("------CheckForMatchesAt-----1");
 
         if (matchedTiles.Count == 0)
         {
-            //Debug.LogError("----Ã»ÓĞÆ¥Åä¸ñ×ÓÁË----");
-            //Ã»ÓĞÆ¥ÅäµÄ¸ñ×ÓÖ®ºóÔÙÈ¥Éú³É 
+            //Debug.LogError("----æ²¡æœ‰åŒ¹é…æ ¼å­äº†----");
+            //æ²¡æœ‰åŒ¹é…çš„æ ¼å­ä¹‹åå†å»ç”Ÿæˆ 
 
             return;
         }
-        //Debug.LogError("------CheckForMatchesAt-----2");
+        
+        //StartCoroutine(ClearAllSpecialCollection(CheckForSpecialCollection()));
+
 
         StartCoroutine(ClearAllMatchGrid(matchedTiles));
     }
@@ -307,10 +405,8 @@ public class GridManager : MonoBehaviour
 
     private List<List<Tile>> removableRegions;
 
-    public static float tileSize = 1.024f;
-
     /// <summary>
-    /// ¼ì²éËùÓĞ¸ñ×ÓÅĞ¶ÏÊÇ·ñÓĞ¿ÉÏû³ıµÄ
+    /// æ£€æŸ¥æ‰€æœ‰æ ¼å­åˆ¤æ–­æ˜¯å¦æœ‰å¯æ¶ˆé™¤çš„
     /// </summary>
     /// <returns></returns>
     public List<List<Tile>> CheckForRemovableRegion()
@@ -318,39 +414,60 @@ public class GridManager : MonoBehaviour
         Array.Clear(visited, 0, visited.Length);
         removableRegions.Clear();
         List<Tile> regions;
+
+        List<Tile> specialTiles=new List<Tile>();
+        specialTiles.Clear();
         for (int i = 0; i < Row; i++)
         {
             for (int j = 0; j < Column; j++)
             {
+                if(tiles[i, j] != null && tiles[i, j].gridType == GridType.SpecialCollection)
+                {
+                    specialTiles.Add(tiles[i, j]);
+                }
+
                 if (!visited[i, j] && tiles[i, j] != null)
                 {
                     regions = new List<Tile>();
-                    int count = DFS(i, j, tiles[i, j].gridType, regions);
+                    int count = DFS(i, j, tiles[i, j].gridType,ref regions);
 
                     if (count >= 3 && IsLinear(regions))
                     {
-                        //Debug.LogError("------------ÓĞ¿ÉÏû³ı");
+                        //Debug.LogError("------------æœ‰å¯æ¶ˆé™¤");
                         removableRegions.Add(regions);
                     }
                 }
             }
         }
+        if(specialTiles.Count>0)
+            removableRegions.Add(specialTiles);
         return removableRegions;
     }
 
-    public float padding = 10f; // Íø¸ñÏîÖ®¼äµÄ¼ä¾à
-    public float horizontalMargin = 50f; // Ô¤ÁôµÄ×óÓÒ±ß¾à
-
-    [HideInInspector]
-    public float gridItemWidth;
-    [HideInInspector]
-    public float gridItemHeight;
-    [HideInInspector]
-    public float totalGridWidth;
-    [HideInInspector]
-    public float totalGridHeight;
     /// <summary>
-    /// ´´½¨ËùÓĞ¿Õ¸ñ×Ó Ò²¾ÍÊÇ±³¾°¸ñ
+    /// ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õ²ï¿½Æ·
+    /// </summary>
+    /// <returns></returns>
+    private  List<Tile> CheckForSpecialCollection()
+    {
+        List<Tile> SpecialTiles=new List<Tile>();
+        for (int i = 0; i<Row; i++)
+        {
+            for (int j = 0; j<Column; j++)
+            {
+                if (tiles[i, j] != null && tiles[i,j].gridType==GridType.SpecialCollection)
+                {
+                    SpecialTiles.Add(tiles[i, j]);
+                }
+            }
+        }
+        return SpecialTiles;
+    }
+
+
+
+    /// <summary>
+    /// åˆ›å»ºæ‰€æœ‰ç©ºæ ¼å­ ä¹Ÿå°±æ˜¯èƒŒæ™¯æ ¼
     /// </summary>
     public void CreatAllEmptyGrid()
     {
@@ -359,22 +476,29 @@ public class GridManager : MonoBehaviour
         RectTransform canvasRect = transform.parent as RectTransform;
         float availableWidth = canvasRect.rect.width - 2 * horizontalMargin;
         gridItemWidth = (availableWidth - padding * (Column - 1)) / Column;
-        gridItemHeight = gridItemWidth; // ±£³ÖÕı·½ĞÎ±ÈÀı
+        gridItemHeight = gridItemWidth; // ä¿æŒæ­£æ–¹å½¢æ¯”ä¾‹
 
-        // ÉèÖÃÍø¸ñÈİÆ÷µÄ´óĞ¡
+        // è®¾ç½®ç½‘æ ¼å®¹å™¨çš„å¤§å°
         RectTransform gridContainer = GetComponent<RectTransform>();
         totalGridWidth = Column * gridItemWidth + (Column - 1) * padding;
         //totalGridHeight = Row * gridItemHeight + (Row - 1) * padding;
 
-        Debug.Log("µ±Ç°ÆÁÄ»¸ß¶ÈÎª£º" + UnityEngine.Screen.height);
-        totalGridHeight = UnityEngine.Screen.height;
-        gridContainer.sizeDelta = new Vector2(totalGridWidth, totalGridHeight);
+        Debug.Log("å½“å‰å±å¹•é«˜åº¦ä¸ºï¼š" + UnityEngine.Screen.height);
+        Debug.Log("å½“å‰Canvasé«˜åº¦ä¸ºï¼š" + GetComponentInParent<Canvas>().GetComponent<RectTransform>().rect.height);
 
-        // ÉèÖÃÍø¸ñÈİÆ÷µÄÎ»ÖÃ£¬Ê¹ÆäÔÚÆÁÄ»ÏÂ·½¾ÓÖĞ
+        //RectTransform canvasRect = GetComponentInParent<Canvas>().GetComponent<RectTransform>();
+        //float topPosition = canvasRect.rect.height * 0.5f; // ï¿½ï¿½È¡Canvasï¿½ß¶Èµï¿½Ò»ï¿½ë£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½
+        Rect safeArea = UnityEngine.Screen.safeArea;
+        float topInset = UnityEngine.Screen.height - safeArea.yMax;
+
+        totalGridHeight = UnityEngine.Screen.height;
+        gridContainer.sizeDelta = new Vector2(totalGridWidth, UnityEngine.Screen.height);
+
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î»ï¿½Ã£ï¿½Ê¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä»ï¿½Â·ï¿½ï¿½ï¿½ï¿½ï¿½
         gridContainer.anchorMin = new Vector2(0.5f, 0f);
         gridContainer.anchorMax = new Vector2(0.5f, 0f);
         gridContainer.pivot = new Vector2(0.5f, 0f);
-        gridContainer.anchoredPosition = new Vector2(0f, 0f); // µ×²¿¾ÓÖĞ
+        gridContainer.anchoredPosition = new Vector2(0f, 0f); // åº•éƒ¨å±…ä¸­
 
 
         GameObject obj;
@@ -415,28 +539,26 @@ public class GridManager : MonoBehaviour
     }
 
 
-    float fullScreenSpawnChance = 0.5f; // 50% µÄ¸ÅÂÊ È«ÆÁÍ¬Ò»ÀàĞÍ¼¸ÂÊ
-    //float fullScreenSpawnChance = 0.05f; // 5% µÄ¸ÅÂÊ È«ÆÁÍ¬Ò»ÀàĞÍ¼¸ÂÊ
 
     /// <summary>
-    /// ´´½¨ÓÎÏ·ÎïÆ· ÔÚ¸ñ×Ó±³¾°ÉÏµÄ
+    /// åˆ›å»ºæ¸¸æˆç‰©å“ åœ¨æ ¼å­èƒŒæ™¯ä¸Šçš„
     /// </summary>
     public void CreateCell()
     {
         GameObject obj;
         GridType curGridType=GridType.Null;
 
-        bool isFullScreen = false;//ÊÇ·ñÈ«ÆÁÍ¬Ò»ÀàĞÍ
+        bool isFullScreen = false;//æ˜¯å¦å…¨å±åŒä¸€ç±»å‹
 
         if (UnityEngine.Random.value < fullScreenSpawnChance)
         {
-            // ´¥·¢È«ÆÁÍ¬ÀàĞÍÉú³ÉÂß¼­
-            curGridType = (GridType)GetRandomTile();
+            // è§¦å‘å…¨å±åŒç±»å‹ç”Ÿæˆé€»è¾‘
+            curGridType = (GridType)GetRandomTile(true);
             isFullScreen =true;
         }
         else
         {
-            // Õı³£Ëæ»úÉú³ÉÂß¼­
+            // æ­£å¸¸éšæœºç”Ÿæˆé€»è¾‘
             isFullScreen = false;
         }
 
@@ -468,7 +590,7 @@ public class GridManager : MonoBehaviour
     Dictionary<int, int> rowCounts = new Dictionary<int, int>();
     Dictionary<int, int> colCounts = new Dictionary<int, int>();
     /// <summary>
-    /// ÓÃÀ´ÅÅ³ıË«ÅÅË«ÁĞ  Ò»¼Ó¶ş
+    /// ç”¨æ¥æ’é™¤åŒæ’åŒåˆ—  ä¸€åŠ äºŒ
     /// </summary>
     /// <param name="tiles"></param>
     /// <returns></returns>
@@ -510,12 +632,12 @@ public class GridManager : MonoBehaviour
     }
 
 
-    private bool[,] visited; // ·ÃÎÊ±ê¼ÇÊı×é
+    private bool[,] visited; // è®¿é—®æ ‡è®°æ•°ç»„
 
-    // Éî¶ÈÓÅÏÈËÑË÷£¨DFS£©ÓÃÓÚÍ³¼ÆÏàÁ¬ÇøÓòµÄ´óĞ¡
-    private int DFS(int row, int col, GridType tileType, List<Tile> regon)
+    // æ·±åº¦ä¼˜å…ˆæœç´¢ï¼ˆDFSï¼‰ç”¨äºç»Ÿè®¡ç›¸è¿åŒºåŸŸçš„å¤§å°
+    private int DFS(int row, int col, GridType tileType,ref List<Tile> regon)
     {
-        // ¼ì²é±ß½çºÍTileÀàĞÍÊÇ·ñÆ¥Åä
+        // æ£€æŸ¥è¾¹ç•Œå’ŒTileç±»å‹æ˜¯å¦åŒ¹é…
         if (row < 0 || row >= Row || col < 0 || col >= Column || tiles[row, col] == null || visited[row, col] || tiles[row, col].gridType != tileType)
         {
             return 0;
@@ -525,35 +647,42 @@ public class GridManager : MonoBehaviour
 
         regon.Add(tiles[row, col]);
 
-        // ÏòËÄ¸ö·½Ïòµİ¹é±éÀú
+        // å‘å››ä¸ªæ–¹å‘é€’å½’éå†
         int count = 1;
-        count += DFS(row - 1, col, tileType, regon); // ÉÏ
-        count += DFS(row + 1, col, tileType, regon); // ÏÂ
-        count += DFS(row, col - 1, tileType, regon); // ×ó
-        count += DFS(row, col + 1, tileType, regon); // ÓÒ
+        count += DFS(row - 1, col, tileType,ref regon); // ï¿½ï¿½
+        count += DFS(row + 1, col, tileType,ref regon); // ï¿½ï¿½
+        count += DFS(row, col - 1, tileType,ref regon); // ï¿½ï¿½
+        count += DFS(row, col + 1, tileType,ref regon); // ï¿½ï¿½
 
         return count;
     }
 
 
     /// <summary>
-    /// ÎïÆ·ÊıÁ¿ÓÃÀ´Ëæ»ú
+    /// ï¿½ï¿½ï¿½ï¿½ï¿½Í¬ï¿½ï¿½ï¿½Í¸ï¿½ï¿½ï¿½
     /// </summary>
-    public int tileCount = 5;
-
-    /// <summary>
-    /// Ëæ»ú²»Í¬ÀàĞÍ¸ñ×Ó
-    /// </summary>
+    /// éšæœºä¸åŒç±»å‹æ ¼å­
     /// <returns></returns>
-    int GetRandomTile()
+    int GetRandomTile(bool isFrist=false)
     {
-        int curTileType = UnityEngine.Random.Range(0, tileCount);
-        return curTileType;
+        //isFrist ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Ê±ï¿½Í³ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õ¼ï¿½Æ·È«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        if (UnityEngine.Random.value < SpecialCollection && isFrist==false)
+        {
+            return (int)GridType.SpecialCollection;
+            //return UnityEngine.Random.Range(0, tileCount);
+        }
+        else
+        {
+            return UnityEngine.Random.Range(0, tileCount);
+        }
+
+          
+        
     }
 
     
     /// <summary>
-    /// Çå³ıËùÓĞ±³¾°¸ñ
+    /// æ¸…é™¤æ‰€æœ‰èƒŒæ™¯æ ¼
     /// </summary>
     public void ClearAllEmptyGrid()
     {
@@ -565,25 +694,14 @@ public class GridManager : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// ¸ù¾İÎ»ÖÃÈ¥¼ÆËã¸ñ×ÓÒª³öÏÖµÄÎ»ÖÃ ĞĞ  ÁĞ  ¼ä¾à
-    /// </summary>
-    /// <param name="x">ĞĞ</param>
-    /// <param name="y">ÁĞ</param>
-    /// <returns></returns>
-    public Vector3 CorrectPositon(int x, int y)
-    {
-        //Debug.LogError($"µ±Ç° x :{x} y : {y} Î»ÖÃx£º{pos.x} Î»ÖÃy: {pos.y}");
-        return new Vector3(transform.position.x - (Row * gridWidth) / 2 + (x * gridWidth), transform.position.y - (Column * gridHeight) / 2 + (y * gridHeight));
-    }
 
     /// <summary>
-    /// ¹©Íâ²¿»ñÈ¡¸ñ×Ó·½·¨
+    /// ä¾›å¤–éƒ¨è·å–æ ¼å­æ–¹æ³•
     /// </summary>
     /// <returns></returns>
     public GameObject GetGrid(GridType GridType, GameObject obj)
     {
-        //TODO ¶ÔÏó³Ø
+        //TODO å¯¹è±¡æ± 
         GameObject grid = ObjectPool.Instance.GetObject(GridType);
         if (!grid)
         {
@@ -592,9 +710,9 @@ public class GridManager : MonoBehaviour
         return CreatGrid(GridType);
     }
     /// <summary>
-    /// ¼ÓÔØµÄ¸ñ×ÓÔ¤ÖÆ ºóÃæÓÃÀ´clone
+    /// åŠ è½½çš„æ ¼å­é¢„åˆ¶ åé¢ç”¨æ¥clone
     /// </summary>
-    private Dictionary<GridType, GameObject> allGridPrefab;
+    public Dictionary<GridType, GameObject> allGridPrefab;
 
     private void AddPrefab(GridType gridType)
     {
@@ -604,18 +722,18 @@ public class GridManager : MonoBehaviour
         gridPrefab = Resources.Load<GameObject>(path);
         if (allGridPrefab.ContainsKey(gridType))
         {
-            Debug.LogError($"¸ÃÀàĞÍÒÑ¾­³õÊ¼»¯£¬Çë²»ÒªÖØ¸´³õÊ¼»¯ type:{gridType} path:{path}");
+            Debug.LogError($"è¯¥ç±»å‹å·²ç»åˆå§‹åŒ–ï¼Œè¯·ä¸è¦é‡å¤åˆå§‹åŒ– type:{gridType} path:{path}");
         }
         else
         {
-            Debug.Log($"³õÊ¼»¯³É¹¦ type:{gridType} path:{path}");
+            Debug.Log($"åˆå§‹åŒ–æˆåŠŸ type:{gridType} path:{path}");
 
             allGridPrefab.Add(gridType, gridPrefab);
         }
     }
 
     /// <summary>
-    /// ´´½¨Ò»¸ö¸ñ×Ó
+    /// åˆ›å»ºä¸€ä¸ªæ ¼å­
     /// </summary>
     private GameObject CreatGrid(GridType GridType)
     {
@@ -625,12 +743,12 @@ public class GridManager : MonoBehaviour
             GameObject grid = GameObject.Instantiate(gridPrefab, allGridRoot);
             return grid;
         }
-        Debug.LogError("×ÖµäÖĞÃ»ÓĞ¼ÓÈëÔ¤ÖÆ£¬Çë³õÊ¼»¯");
+        Debug.LogError("å­—å…¸ä¸­æ²¡æœ‰åŠ å…¥é¢„åˆ¶ï¼Œè¯·åˆå§‹åŒ–");
         return null;
     }
 
     /// <summary>
-    /// ÕâÀïµÄÉ¾³ı ´Ó½çÃæÒş²Øºó ·Åµ½¶ÔÏó³Ø¹©Ñ­»·Ê¹ÓÃ //TODO ¸ù¾İĞèÒª¿´ÊÇ·ñ·Åµ½ÆäËû½ÚµãÏÂ
+    /// è¿™é‡Œçš„åˆ é™¤ ä»ç•Œé¢éšè—å æ”¾åˆ°å¯¹è±¡æ± ä¾›å¾ªç¯ä½¿ç”¨ //TODO æ ¹æ®éœ€è¦çœ‹æ˜¯å¦æ”¾åˆ°å…¶ä»–èŠ‚ç‚¹ä¸‹
     /// </summary>
     public void DestroyGrid(GridType GridType, GameObject obj)
     {

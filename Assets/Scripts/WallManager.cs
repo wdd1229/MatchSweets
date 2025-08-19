@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 /// <summary>
-/// ×©¿é¹ÜÀí
+/// ç –å—ç®¡ç†
 /// </summary>
 public class WallManager : MonoBehaviour
 {
     private GameObject walls;
     private GameObject prefab;
+
+    public GameObject cancelRoot;
     private void Awake()
     {
         prefab = Resources.Load<GameObject>("wall");
@@ -18,6 +20,14 @@ public class WallManager : MonoBehaviour
         for (int i = 0; i < wallCount; i++)
         {
             GameObject.Instantiate(prefab,transform);
+        }
+    }
+
+    public void DesTroyWall()
+    {
+        if (transform.childCount > 0) {
+            transform.GetChild(transform.childCount - 1).SetParent(cancelRoot.transform);
+            Destroy(cancelRoot.transform.GetChild(cancelRoot.transform.childCount - 1).gameObject);
         }
     }
 }
