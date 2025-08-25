@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,49 +6,124 @@ using UnityEngine.UI;
 
 public class Test : MonoBehaviour
 {
-    public int rows = 4; // ĞĞÊı
-    public int cols = 4; // ÁĞÊı
-    public Vector2 cellSize = new Vector2(1.024f, 1.024f); // Ã¿¸ö¸ñ×ÓµÄ´óĞ¡
-    public RectTransform gridPrefab; // Íø¸ñÏîµÄ RectTransform
-    public float padding = 10f; // Íø¸ñÏîÖ®¼äµÄ¼ä¾à
-    public float horizontalMargin = 50f; // Ô¤ÁôµÄ×óÓÒ±ß¾à
+    public int rows = 4; // è¡Œæ•°
+    public int cols = 4; // åˆ—æ•°
+    public Vector2 cellSize = new Vector2(1.024f, 1.024f); // æ¯ä¸ªæ ¼å­çš„å¤§å°
+    public RectTransform gridPrefab; // ç½‘æ ¼é¡¹çš„ RectTransform
+    public float padding = 10f; // ç½‘æ ¼é¡¹ä¹‹é—´çš„é—´è·
+    public float horizontalMargin = 50f; // é¢„ç•™çš„å·¦å³è¾¹è·
 
     void Start()
     {
+        //RectTransform canvasRect = transform.parent as RectTransform;
+        //float availableWidth = canvasRect.rect.width - 2 * horizontalMargin;
+        //float gridItemWidth = (availableWidth - padding * (cols - 1)) / cols;
+        //float gridItemHeight = gridItemWidth; // ä¿æŒæ­£æ–¹å½¢æ¯”ä¾‹
+
+        //// è®¾ç½®ç½‘æ ¼å®¹å™¨çš„å¤§å°
+        //RectTransform gridContainer = GetComponent<RectTransform>();
+        //float totalGridWidth = cols * gridItemWidth + (cols - 1) * padding;
+        //float totalGridHeight = rows * gridItemHeight + (rows - 1) * padding;
+        //gridContainer.sizeDelta = new Vector2(totalGridWidth, totalGridHeight);
+
+        //// è®¾ç½®ç½‘æ ¼å®¹å™¨çš„ä½ç½®ï¼Œä½¿å…¶åœ¨å±å¹•ä¸‹æ–¹å±…ä¸­
+        //gridContainer.anchorMin = new Vector2(0.5f, 0f);
+        //gridContainer.anchorMax = new Vector2(0.5f, 0f);
+        //gridContainer.pivot = new Vector2(0.5f, 0f);
+        //gridContainer.anchoredPosition = new Vector2(0f, 0f); // åº•éƒ¨å±…ä¸­
+
+        //// åŠ¨æ€ç”Ÿæˆç½‘æ ¼é¡¹
+        //for (int i = 0; i < cols; i++)
+        //{
+        //    for (int j = 0; j < rows; j++)
+        //    {
+        //        RectTransform grid = Instantiate(gridPrefab, transform);
+        //        grid.sizeDelta = new Vector2(gridItemWidth, gridItemHeight);
+        //        grid.anchoredPosition = new Vector2(
+        //            -totalGridWidth / 2 + gridItemWidth / 2 + i * (gridItemWidth + padding),
+        //            -totalGridHeight / 2 + gridItemHeight / 2 + j * (gridItemHeight + padding)
+        //        );
+        //    }
+        //}
+
+        CreatAllEmptyGrid();
+    }
+
+    public int Row = 4; // è¡Œæ•°
+    public int Column = 4; // åˆ—æ•°
+
+    private float gridItemWidth;
+    private float gridItemHeight;
+    private float totalGridWidth;
+    private float totalGridHeight;
+    public void CreatAllEmptyGrid()
+    {
+
         RectTransform canvasRect = transform.parent as RectTransform;
         float availableWidth = canvasRect.rect.width - 2 * horizontalMargin;
-        float gridItemWidth = (availableWidth - padding * (cols - 1)) / cols;
-        float gridItemHeight = gridItemWidth; // ±£³ÖÕı·½ĞÎ±ÈÀı
+        gridItemWidth = (availableWidth - padding * (Column - 1)) / Column;
+        gridItemHeight = gridItemWidth; // ä¿æŒæ­£æ–¹å½¢æ¯”ä¾‹
 
-        // ÉèÖÃÍø¸ñÈİÆ÷µÄ´óĞ¡
+        // è®¾ç½®ç½‘æ ¼å®¹å™¨çš„å¤§å°
         RectTransform gridContainer = GetComponent<RectTransform>();
-        float totalGridWidth = cols * gridItemWidth + (cols - 1) * padding;
-        float totalGridHeight = rows * gridItemHeight + (rows - 1) * padding;
-        gridContainer.sizeDelta = new Vector2(totalGridWidth, totalGridHeight);
+        totalGridWidth = Column * gridItemWidth + (Column - 1) * padding;
+        //totalGridHeight = Row * gridItemHeight + (Row - 1) * padding;
 
-        // ÉèÖÃÍø¸ñÈİÆ÷µÄÎ»ÖÃ£¬Ê¹ÆäÔÚÆÁÄ»ÏÂ·½¾ÓÖĞ
+        float canvasHeight = GetComponentInParent<Canvas>().GetComponent<RectTransform>().rect.height;
+
+        Debug.Log("å½“å‰å±å¹•é«˜åº¦ä¸ºï¼š" + UnityEngine.Screen.height);
+        Debug.Log("å½“å‰Canvasé«˜åº¦ä¸ºï¼š" + canvasHeight);
+
+        //RectTransform canvasRect = GetComponentInParent<Canvas>().GetComponent<RectTransform>();
+        //float topPosition = canvasRect.rect.height * 0.5f; // ï¿½ï¿½È¡Canvasï¿½ß¶Èµï¿½Ò»ï¿½ë£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½
+        Rect safeArea = UnityEngine.Screen.safeArea;
+        float topInset = UnityEngine.Screen.height - safeArea.yMax;
+
+        totalGridHeight = UnityEngine.Screen.height;
+        //gridContainer.sizeDelta = new Vector2(totalGridWidth, UnityEngine.Screen.height);
+        gridContainer.sizeDelta = new Vector2(totalGridWidth, canvasHeight);
+        Debug.Log("å½“å‰å±å¹•é«˜åº¦****");
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î»ï¿½Ã£ï¿½Ê¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä»ï¿½Â·ï¿½ï¿½ï¿½ï¿½ï¿½
         gridContainer.anchorMin = new Vector2(0.5f, 0f);
         gridContainer.anchorMax = new Vector2(0.5f, 0f);
         gridContainer.pivot = new Vector2(0.5f, 0f);
-        gridContainer.anchoredPosition = new Vector2(0f, 0f); // µ×²¿¾ÓÖĞ
+        gridContainer.anchoredPosition = new Vector2(0f, 0f); // åº•éƒ¨å±…ä¸­
 
-        // ¶¯Ì¬Éú³ÉÍø¸ñÏî
-        for (int i = 0; i < cols; i++)
+
+        GameObject obj;
+        for (int i = 0; i < Row; i++)
         {
-            for (int j = 0; j < rows; j++)
+            for (int j = 0; j < Column + 1; j++)
             {
-                RectTransform grid = Instantiate(gridPrefab, transform);
+                obj = GameObject.Instantiate(gridPrefab.gameObject,transform);
+
+                RectTransform grid = obj.GetComponent<RectTransform>();
                 grid.sizeDelta = new Vector2(gridItemWidth, gridItemHeight);
-                grid.anchoredPosition = new Vector2(
-                    -totalGridWidth / 2 + gridItemWidth / 2 + i * (gridItemWidth + padding),
-                    -totalGridHeight / 2 + gridItemHeight / 2 + j * (gridItemHeight + padding)
-                );
+
+                Tile tile = obj.AddComponent<Tile>();
+
+                if (j == Column)
+                {
+                    tile.Init(i, j, GridType.Top);
+
+                    grid.localPosition = new Vector3(-totalGridWidth / 2 + gridItemWidth / 2 + i * (gridItemWidth + padding), canvasHeight - gridItemHeight / 2 - padding, 0);
+
+                }
+                else
+                {
+
+                    tile.Init(i, j, GridType.Empty);
+
+                    grid.anchoredPosition = new Vector2(
+                   -totalGridWidth / 2 + gridItemWidth / 2 + i * (gridItemWidth + padding),
+                   -totalGridHeight / 2 + gridItemHeight / 2 + j * (gridItemHeight + padding)
+                    );
+                }
+
+
             }
         }
     }
-
-
-
 
 
     //void Start()
@@ -68,36 +144,5 @@ public class Test : MonoBehaviour
     //    }
     //}
 
-    void AlignGridToBottomCenter()
-    {
-        // »ñÈ¡Íø¸ñÕûÌå°üÎ§ºĞ
-        Bounds bounds = CalculateGridBounds();
-
-        // ¼ÆËãÍø¸ñÖĞĞÄµãµÄÊÀ½ç×ø±ê
-        Vector3 gridCenter = bounds.center;
-        float gridWidth = bounds.size.x;
-        float gridHeight = bounds.size.y;
-
-        // »ñÈ¡ÉãÏñ»úÊÓ¿Úµ×²¿ÖĞĞÄµÄÊÀ½ç×ø±ê
-        Camera mainCamera = Camera.main;
-        float bottomY = mainCamera.ViewportToWorldPoint(Vector3.zero).y;
-        float centerX = mainCamera.ViewportToWorldPoint(new Vector3(0.5f, 0, 0)).x;
-
-        // ¼ÆËãÆ«ÒÆÁ¿ÒÔÊ¹Íø¸ñµ×²¿¾ÓÖĞ
-        Vector3 offset = new Vector3(centerX - gridCenter.x, bottomY - (gridCenter.y - gridHeight / 2), 0);
-        transform.position += offset;
-    }
-
-    Bounds CalculateGridBounds()
-    {
-        Bounds bounds = new Bounds(transform.position, Vector3.zero);
-        foreach (Transform child in transform)
-        {
-            if (child.GetComponent<SpriteRenderer>() != null)
-            {
-                bounds.Encapsulate(child.GetComponent<SpriteRenderer>().bounds);
-            }
-        }
-        return bounds;
-    }
+    
 }

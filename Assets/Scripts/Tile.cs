@@ -69,7 +69,7 @@ public class Tile : MonoBehaviour
         Vector3 start=transform.localPosition;
         Vector3 end = gridManager.BGtiles[xIndex,yIndex].transform.localPosition;
 
-        float duration = 0.08f * fallDistance;//下落速度
+        float duration = 0.04f * fallDistance;//下落速度
         float elapsed = 0;
         while (elapsed < duration)
         {

@@ -656,7 +656,8 @@ PlayerSettings:
   openGLRequireES31: 0
   openGLRequireES31AEP: 0
   openGLRequireES32: 0
-  m_TemplateCustomTags: {}
+  m_TemplateCustomTags:
+    PRODUCT_DESCRIPTION: 
   mobileMTRendering:
     Android: 1
     OpenHarmony: 1
@@ -1077,7 +1078,7 @@ PlayerSettings:
   weixinMiniGameDebugSymbols: 0
   weixinMiniGameEmscriptenArgs: ' -s TOTAL_MEMORY=128MB --memoryprofiler'
   weixinMiniGameModulesDirectory: 
-  weixinMiniGameTemplate: APPLICATION:Default
+  weixinMiniGameTemplate: APPLICATION:Minimal
   weixinMiniGameAnalyzeBuildSize: 0
   weixinMiniGameUseEmbeddedResources: 0
   weixinMiniGameCompressionFormat: 2

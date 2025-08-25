@@ -2,9 +2,9 @@
     "levels": [
         {
             "levelIndex": 1,
-            "Row": 4,
-            "Column": 4,
-            "wallCount": 20
+            "Row": 5,
+            "Column": 5,
+            "wallCount": 10
         },
         {
             "levelIndex": 2,

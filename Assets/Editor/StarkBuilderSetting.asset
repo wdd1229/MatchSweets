@@ -23,7 +23,7 @@ MonoBehaviour:
   profiling: 1
   clearStreamingAssets: 0
   buildOptions: 0
-  wasmSubFramework: 1
+  wasmSubFramework: 0
   optimizeWebGLMemoryInBackground: 1
   assetBundleFSEnabled: 1
   assetBundleBufferCapacity: 128
@@ -51,7 +51,7 @@ MonoBehaviour:
   _appId: tt2fe7595ab0e8612407
   version: 
   autoVersion: 0
-  _webglPackagePath: C:\Work\Demo\MatchSweetsDemoWebGL\webgl_package-20250819_160116.zip
+  _webglPackagePath: C:\Work\Demo\MatchSweetsDemoWebGL\webgl_package-20250823_135342.zip
   _orientation: 0
   _iOSPerformancePlus: 0
   _menuButtonStyle: 0
