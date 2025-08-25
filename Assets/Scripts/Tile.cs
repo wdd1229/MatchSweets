@@ -59,31 +59,45 @@ public class Tile : MonoBehaviour
 
     IEnumerator FallToPosition()
     {
-        //RectTransform grid = transform.GetComponent<RectTransform>();
+        RectTransform grid = transform.GetComponent<RectTransform>();
         //grid.sizeDelta = new Vector2(gridManager.gridItemWidth, gridManager.gridItemHeight);
         //grid.anchoredPosition = new Vector2(
         //    -gridManager.totalGridWidth / 2 + gridManager.gridItemWidth / 2 + xIndex * (gridManager.gridItemWidth + gridManager.padding),
         //    -gridManager.totalGridHeight / 2 + gridManager.gridItemHeight / 2 + endIndexY * (gridManager.gridItemHeight + gridManager.padding)
         //);
 
-        Vector3 start=transform.localPosition;
-        Vector3 end = gridManager.BGtiles[xIndex,yIndex].transform.localPosition;
+        //Vector3 start=transform.localPosition;
+        //Vector3 end = gridManager.BGtiles[xIndex,yIndex].transform.localPosition;
+        //Vector3 end = CalculatePos(xIndex, yIndex);
 
-        float duration = 0.04f * fallDistance;//下落速度
+        Vector2 start= grid.anchoredPosition;
+        Vector2 end = CalculatePos(xIndex, yIndex);
+
+
+        float duration = 0.05f * fallDistance;//下落速度
         float elapsed = 0;
+
         while (elapsed < duration)
         {
-            end = gridManager.BGtiles[xIndex, yIndex].transform.localPosition;//下落过程中可能会需要再次下落更多，所以这里再次设置一下
+            //end = gridManager.BGtiles[xIndex, yIndex].transform.localPosition;//下落过程中可能会需要再次下落更多，所以这里再次设置一下
+            end = CalculatePos(xIndex, yIndex);//下落过程中可能会需要再次下落更多，所以这里再次设置一下
             elapsed += Time.deltaTime;
-            transform.localPosition = Vector3.Lerp(start, end, elapsed / duration);
+            //transform.localPosition = Vector3.Lerp(start, end, elapsed / duration);
+            grid.anchoredPosition = Vector2.Lerp(start, end, elapsed / duration);
             yield return null;
 
         }
-        transform.localPosition = end;
+        //transform.localPosition = end;
+        grid.anchoredPosition = end;
         SetState(TileState.Idle);
         fallDistance = 0;
         // 下落完成后检查匹配
         //StartCoroutine(CheckForMatchAfterFalling());
+    }
+
+    public Vector2 CalculatePos(int Xindex,int Yindex)
+    {
+       return gridManager.CalculateGridPos(Xindex, Yindex);
     }
 
     IEnumerator CheckForMatchAfterFalling()
@@ -125,6 +139,7 @@ public class Tile : MonoBehaviour
                 animator.Play("idle");
                 break;
             case TileState.Moving:
+                animator.Play("move");
                 break;
             case TileState.Clearing:
                 animator.Play("clear");

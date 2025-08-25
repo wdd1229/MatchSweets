@@ -336,19 +336,22 @@ public class GameManager : Singleton<GameManager>
     {
         ResetSpecial();
 
-        GameLevelManager.Instance.NextLevel();
+        if (GameLevelManager.Instance.NextLevel()==false)
+        {
+            //关卡结束进入奖励阶段
 
-        gridManager.GameReset(GameLevelManager.Instance.GetCurLevel());
+            return;
+        }
 
-        Debug.LogError(GameLevelManager.Instance.GetCurLevel());
+
+        Debug.LogError(GameLevelManager.Instance.GetCurLevel().ToString());
+
+
         //gridManager.GameInit(GameLevelManager.Instance.GetCurLevel());
         wallManager.CreatWallOfLevelData(GameLevelManager.Instance.GetCurLevel().wallCount);
 
-        //wallManager.DestroyAllWall();
+        StartCoroutine(gridManager.GameReset(GameLevelManager.Instance.GetCurLevel()));
 
-        //执行其他操作 弹窗等
-
-        //GameStart();
     }
 
     private void ResetSpecial()

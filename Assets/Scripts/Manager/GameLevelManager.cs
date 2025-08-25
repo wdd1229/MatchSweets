@@ -9,11 +9,11 @@ public class GameLevelManager : Singleton<GameLevelManager>
     /// <summary>
     /// 当前关卡数据
     /// </summary>
-    private LevelData curLevelData;
+    public LevelData curLevelData;
 
     private LevelList levelList;
 
-    private int curLevelIndex=0;
+    public int curLevelIndex=0;
     public void InitInfo(LevelList levelList)
     {
         Debug.Log(levelList);
@@ -59,17 +59,21 @@ public class GameLevelManager : Singleton<GameLevelManager>
         return this.curLevelData;
     }
 
-    public void NextLevel()
+    public bool NextLevel()
     {
         curLevelIndex += 1;
         curLevelData = GetCurLevel_Index(curLevelIndex);
         if (curLevelData == null)
         {
             Debug.LogError("游戏结束");
+            return false;
         }
         else
         {
             Debug.LogError("获取下一关的数据成功");
+            return true;
         }
     }
+
+
 }

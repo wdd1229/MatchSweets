@@ -11,6 +11,8 @@ public class LevelPopupUI : MonoBehaviour
     public Text SpecialText;
     public Text ScoreText;
     public Text TitleText;
+
+    string[] levelTitles = { "第一关","第二关","第三关"};
     public void Init()
     {
         NextLevelBtn = transform.Find("BG/NextLevelBtn").GetComponent<Button>();
@@ -35,6 +37,8 @@ public class LevelPopupUI : MonoBehaviour
         SpecialText.text = specialNum.ToString();
         ScoreText.text = (scoreNum*10).ToString();
 
+        //TitleText.text = GameLevelManager.Instance.GetCurLevelIndex().ToString();
+        TitleText.text = levelTitles[GameLevelManager.Instance.GetCurLevelIndex()];
         Show();
     }
 

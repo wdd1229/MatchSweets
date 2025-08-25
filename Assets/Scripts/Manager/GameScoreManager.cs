@@ -32,7 +32,7 @@ public class GameScoreManager : Singleton<GameScoreManager>
                 }
             }
         }
-        Debug.LogError($"没找到对于的分数，请检查json及逻辑 {levelIndex}  ---  ");
+        Debug.LogError($"没找到对于的分数，请检查json及逻辑 levelIndex: {levelIndex} gridType:{gridType} connectCount:{connectCount} ---  ");
         return 0;
     }
 }
