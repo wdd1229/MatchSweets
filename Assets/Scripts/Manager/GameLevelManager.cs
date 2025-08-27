@@ -40,6 +40,11 @@ public class GameLevelManager : Singleton<GameLevelManager>
         return curLevelIndex;
     }
 
+    public LevelList GetLevelData()
+    {
+        return levelList;
+    }
+
     public bool IsNextLevelCheck(int num)
     {
         if(curLevelData==null)

@@ -117,7 +117,6 @@ public class GridManager : MonoBehaviour
     /// <returns></returns>
     public IEnumerator GameReset(LevelData levelData)
     {
-        
         yield return StartCoroutine(ClearAllEmptyGrid(levelData));
 
         yield return StartCoroutine(TTTTest());
@@ -307,8 +306,19 @@ public class GridManager : MonoBehaviour
 
                     if (GameManager.Instance.IsNextLevelCheck())
                     {
-                        Debug.LogError("下一关来来来");
-                        GameManager.Instance.ShowLevelPopup();
+                        Debug.LogError($"下一关来来来 {GameLevelManager.Instance.GetCurLevelIndex()},{GameLevelManager.Instance.GetLevelData().levels.Length}");
+
+
+                        if(GameLevelManager.Instance.GetCurLevelIndex()>= GameLevelManager.Instance.GetLevelData().levels.Length - 1)
+                        {
+                            //进入龙珠夺宝阶段
+                            GameManager.Instance.ShowReward();
+                        }
+                        else
+                        {
+                            //下一关弹窗
+                            GameManager.Instance.ShowLevelPopup();
+                        }
                         //GameManager.Instance.GameReset();
                         yield break;
                     }
@@ -879,7 +889,8 @@ public class GridManager : MonoBehaviour
         //        LockTilesAbove(item);
         //    }
         //}
-        StorageClear(levelData);
+        if(levelData!=null)
+            StorageClear(levelData);
 
         ////确定播放结束所有匹配的格子的消除动画
         //bool allAnimationsCompleted = false;

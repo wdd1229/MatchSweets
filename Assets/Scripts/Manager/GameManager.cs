@@ -31,6 +31,9 @@ public class GameManager : Singleton<GameManager>
 
     private Transform Canvas;
 
+
+    private RewardUI rewardUI;
+
     //private LevelData curLevelData;
 
     protected override void Awake()
@@ -44,6 +47,7 @@ public class GameManager : Singleton<GameManager>
         levelPopupUI = Canvas.Find("LevelPopupUI").GetComponent<LevelPopupUI>();
 
         gameUi = Canvas.Find("GameUI").GetComponent<GameUi>();
+        rewardUI = Canvas.Find("RewardUI").GetComponent<RewardUI>();
 
         LoadLevelData();
 
@@ -325,6 +329,16 @@ public class GameManager : Singleton<GameManager>
         levelPopupUI.RefreshUI(curSpacielCount,curScore);
     }
 
+    public void ShowReward()
+    {
+        //关卡结束进入奖励阶段
+        StartCoroutine(gridManager.ClearAllEmptyGrid(null));
+
+
+        gameUi.gameObject.SetActive(false);
+
+        rewardUI.gameObject.SetActive(true);
+    }
 
 
     public bool IsNextLevelCheck()
@@ -336,9 +350,10 @@ public class GameManager : Singleton<GameManager>
     {
         ResetSpecial();
 
-        if (GameLevelManager.Instance.NextLevel()==false)
+        if (GameLevelManager.Instance.NextLevel() == false)
         {
-            //关卡结束进入奖励阶段
+            ////关卡结束进入奖励阶段
+            //StartCoroutine(gridManager.ClearAllEmptyGrid(null));
 
             return;
         }
@@ -360,5 +375,10 @@ public class GameManager : Singleton<GameManager>
 
         //ui刷新
         gameUi.RefreshSpecial(curSpacielCount);
+    }
+
+    public void ShowRewardTip(string msg)
+    {
+        rewardUI.ShowRewardTip(msg);
     }
 }
