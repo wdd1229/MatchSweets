@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GridSystem : MonoBehaviour
+public class GridSystem : Singleton<GridSystem>
 {
-    [Header("Íø¸ñ²ÎÊý")]
-    public float cellSize = 1f;      // Íø¸ñµ¥Ôª´óÐ¡
-    public int width = 10;            // Íø¸ñ¿í¶È£¨¸ñ×ÓÊý£©
-    public int height = 10;           // Íø¸ñ¸ß¶È£¨¸ñ×ÓÊý£©
+    [Header("ç½‘æ ¼å‚æ•°")]
+    public float cellSize = 1f;      // ç½‘æ ¼å•å…ƒå¤§å°
+    public int width = 10;            // ç½‘æ ¼å®½åº¦ï¼ˆæ ¼å­æ•°ï¼‰
+    public int height = 10;           // ç½‘æ ¼é«˜åº¦ï¼ˆæ ¼å­æ•°ï¼‰
 
-    private Vector3 origin;           // Íø¸ñÔ­µã£¨×óÏÂ½Ç£©
+    private Vector3 origin;           // ç½‘æ ¼åŽŸç‚¹ï¼ˆå·¦ä¸‹è§’ï¼‰
 
     void Start()
     {
@@ -18,16 +18,16 @@ public class GridSystem : MonoBehaviour
         occupiedCells = new bool[width, height];
     }
 
-    // ½«ÊÀ½ç×ø±ê×ª»»ÎªÍø¸ñ×ø±ê
-    public Vector2Int WorldToGrid(Vector3 worldPos)
+    // å°†ä¸–ç•Œåæ ‡è½¬æ¢ä¸ºç½‘æ ¼åæ ‡
+    public Vector2 WorldToGrid(Vector3 worldPos)
     {
-        int x = Mathf.FloorToInt((worldPos - origin).x / cellSize);
-        int y = Mathf.FloorToInt((worldPos - origin).y / cellSize);
-        return new Vector2Int(x, y);
+        float x = ((worldPos - origin).x / cellSize);
+        float y = ((worldPos - origin).y / cellSize);
+        return new Vector2(x, y);
     }
 
-    // ½«Íø¸ñ×ø±ê×ª»»ÎªÊÀ½ç×ø±ê
-    public Vector3 GridToWorld(Vector2Int gridPos)
+    // å°†ç½‘æ ¼åæ ‡è½¬æ¢ä¸ºä¸–ç•Œåæ ‡
+    public Vector3 GridToWorld(Vector2 gridPos)
     {
         return new Vector3(
             gridPos.x * cellSize + origin.x + cellSize / 2,
@@ -36,23 +36,52 @@ public class GridSystem : MonoBehaviour
         );
     }
 
-    // ¼ì²éÍø¸ñ×ø±êÊÇ·ñÔÚ·¶Î§ÄÚ
+    // æ£€æŸ¥ç½‘æ ¼åæ ‡æ˜¯å¦åœ¨èŒƒå›´å†…
     public bool IsValidPosition(Vector2Int gridPos)
     {
         return gridPos.x >= 0 && gridPos.x < width &&
                gridPos.y >= 0 && gridPos.y < height;
     }
 
+    public GameObject prefab;
+    public void GenerateGrid(int row,int column)
+    {
+        //æ•´ä½“å‡åŽ»éœ€è¦çš„ç½‘æ ¼å®½åº¦ /2è®¡ç®—å‡ºèµ·å§‹ç‚¹
+        float startX=(width - row)/2.0f;
+        float startY=1f;
+
+        for (int i = 0; i < row; i++)
+        {
+            startX = (width - row) / 2.0f;
+            for (int j = 0; j < column; j++)
+            {
+                //Debug.LogError($"{startX}---{startY}");
+                Vector3 pos = GridToWorld(new Vector2(startX, startY));
+                GameObject item=GameObject.Instantiate(prefab, transform);
+                item.transform.localPosition= pos;
+
+                startX += 1;
+            }
+            startY += 1;
+        }
+        startX = (width - row) / 2.0f;
+        startY = 14;
+        for (int i = 0;i < column; i++)
+        {
+            Vector3 pos = GridToWorld(new Vector2(startX, startY));
+            GameObject item = GameObject.Instantiate(prefab, transform);
+            item.transform.localPosition = pos;
+            startX += 1;
+        }
+    }
 
 
 
-
-
-    private bool[,] occupiedCells; // ¼ÇÂ¼±»Õ¼ÓÃµÄÍø¸ñ
+    private bool[,] occupiedCells; // è®°å½•è¢«å ç”¨çš„ç½‘æ ¼
 
 
 
-    // ¼ì²éÇøÓòÊÇ·ñ¿ÉÓÃ
+    // æ£€æŸ¥åŒºåŸŸæ˜¯å¦å¯ç”¨
     public bool IsAreaAvailable(Vector2Int gridPos, Vector2Int size)
     {
         for (int x = gridPos.x; x < gridPos.x + size.x; x++)
@@ -66,7 +95,7 @@ public class GridSystem : MonoBehaviour
         return true;
     }
 
-    // Õ¼ÓÃÍø¸ñÇøÓò
+    // å ç”¨ç½‘æ ¼åŒºåŸŸ
     public void OccupyArea(Vector2Int gridPos, Vector2Int size)
     {
         for (int x = gridPos.x; x < gridPos.x + size.x; x++)
@@ -86,7 +115,7 @@ public class GridSystem : MonoBehaviour
 
         Gizmos.color = Color.cyan;
 
-        // »æÖÆË®Æ½Ïß
+        // ç»˜åˆ¶æ°´å¹³çº¿
         for (int y = 0; y <= height; y++)
         {
             Vector3 start = origin + new Vector3(0, y * cellSize, 0);
@@ -95,7 +124,7 @@ public class GridSystem : MonoBehaviour
             Gizmos.DrawLine(start, end);
         }
 
-        // »æÖÆ´¹Ö±Ïß
+        // ç»˜åˆ¶åž‚ç›´çº¿
         for (int x = 0; x <= width; x++)
         {
             Vector3 start = origin + new Vector3(x * cellSize, 0, 0);

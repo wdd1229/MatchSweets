@@ -41,7 +41,7 @@ MonoBehaviour:
   appHost: 2
   compressMethod: 1
   runtimeEnv: 0
-  framework: 1
+  framework: 0
   architecture: 2
   miniApkVersion: 0
   scriptingBackend: 0
@@ -51,7 +51,7 @@ MonoBehaviour:
   _appId: tt2fe7595ab0e8612407
   version: 
   autoVersion: 0
-  _webglPackagePath: C:\Work\Demo\MatchSweetsDemoWebGL\webgl_package-20250823_135342.zip
+  _webglPackagePath: C:\Work\Demo\MatchSweetsDemoWebGL\webgl_package-20250828_095601.zip
   _orientation: 0
   _iOSPerformancePlus: 0
   _menuButtonStyle: 0

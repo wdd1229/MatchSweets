@@ -30,40 +30,26 @@ public class BeatTrigger : TriggerBase
         TriggerBase triggerBase  = collider2D.GetComponent<TriggerBase>();
         if (triggerBase != null && triggerBase.triggerType==TriggerBase.TriggerType.Obstacle)
         {
-            //triggerBase.gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
-            //rigidbody.gravityScale = 0;
             rigidbody.constraints = RigidbodyConstraints2D.FreezePositionY;
-
             //向左或向右随机移动
             moveType=MoveType.Horizontal;
             if (UnityEngine.Random.value < dirOdds)
             {
-                rigidbody.velocity = Vector2.left * speed;
                 //向左
-                //rigidbody.MovePosition(new Vector2(transform.position.x - 120, transform.position.y));
+                rigidbody.velocity = Vector2.left * speed;
             }
             else
             {
-                rigidbody.velocity = Vector2.right * speed;
-
                 //向右
-                //rigidbody.MovePosition(new Vector2(transform.position.x + 120, transform.position.y));
+                rigidbody.velocity = Vector2.right * speed;
             }
         }else if(triggerBase != null && triggerBase.triggerType == TriggerBase.TriggerType.Reward)
         {
             rigidbody.constraints = RigidbodyConstraints2D.FreezePositionY;
-        }
+        } 
         base.OnTriggerEnter2D(collider2D);
     }
     
-
-    public override void OnTriggerStay2D(Collider2D collider2D)
-    {
-        //Debug.LogError("OnTriggerStay2D");
-        base.OnTriggerStay2D(collider2D);
-
-    }
-
     public override void OnTriggerExit2D(Collider2D collider2D)
     {
         if (moveType == MoveType.Horizontal) 

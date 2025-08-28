@@ -10,8 +10,6 @@ using UnityEngine;
 /// </summary>
 public class GridManager : MonoBehaviour
 {
-    public GameObject prefabObjTest;
-
     /// <summary>
     /// 所有格子父节点
     /// </summary>
@@ -103,7 +101,7 @@ public class GridManager : MonoBehaviour
 
         //CreatGrid();
 
-        CreatAllEmptyGrid();
+        //CreatAllEmptyGrid();
 
         StartCoroutine(TTTTest());
 
@@ -135,7 +133,7 @@ public class GridManager : MonoBehaviour
         //BGtiles = new Tile[Row, Column + 1];
         visited = new bool[Row, Column + 1];
 
-        CreatAllEmptyGrid();
+        //CreatAllEmptyGrid();
     }
 
 
@@ -476,7 +474,7 @@ public class GridManager : MonoBehaviour
 
         
 
-        grid.sizeDelta = new Vector2(100,100);
+        grid.sizeDelta = new Vector2(120,120);
         //grid.localPosition = BGtiles[x, Column + 1 - fallDistance + startY - 1].transform.localPosition ;
         grid.anchoredPosition = CalculateGridPos(x, Column + 1 - fallDistance + startY - 1);
 
@@ -578,6 +576,13 @@ public class GridManager : MonoBehaviour
 
     public Vector2 CalculateGridPos(int xIndex,int yIndex)
     {
+        float startX = (GridSystem.Instance.width - Row) / 2.0f;
+        if(yIndex == Column)
+        {
+            yIndex = GridSystem.Instance.height-1;
+        }
+        return GridSystem.Instance.GridToWorld(new Vector2(xIndex+ startX, yIndex));
+
         if (yIndex == Column)
         {
             return new Vector2(-totalGridWidth / 2 + gridItemWidth / 2 + xIndex * (gridItemWidth + padding), totalGridHeight/2 - gridItemHeight / 2 - padding);
@@ -992,53 +997,5 @@ public class GridManager : MonoBehaviour
 
     public float gridWidth = 200;
     public float gridHeight = 200;
-
-    [ContextMenu("CreatGrid")]
-    public void CreatGrid()
-    {
-        RectTransform parentRect = GetComponent<RectTransform>();
-
-        // 计算网格总尺寸
-        float totalWidth = (gridWidth * Row) + (padding * (Row - 1));
-        float totalHeight = (gridHeight * Column) + (padding * (Column - 1));
-
-        // 设置父物体锚点为左下角
-        parentRect.anchorMin = new Vector2(0.5f, 0);
-        parentRect.anchorMax = new Vector2(0.5f, 0);
-        parentRect.pivot = new Vector2(0.5f, 0.5f);
-
-        for (int i = 0; i < Row; i++)
-        {
-            for (int j = 0; j < Column + 1; j++)
-            {
-                GameObject obj = Instantiate(prefabObjTest, transform);
-                RectTransform rect = obj.GetComponent<RectTransform>();
-
-                // 设置子物体锚点和轴心为左下角
-                rect.anchorMin = new Vector2(0, 0);
-                rect.anchorMax = new Vector2(0, 0);
-                rect.pivot = new Vector2(0, 0);
-
-                // 设置尺寸
-                rect.sizeDelta = new Vector2(gridWidth, gridHeight);
-
-                // 计算位置：左下角起始点 + 偏移量
-                float posX = i * (gridWidth + padding);
-                float posY = j * (gridHeight + padding);
-
-                rect.anchoredPosition = new Vector2(posX, posY);
-                obj.name = $"{i},{j}";
-
-                if (j == Column)
-                {
-                    obj.name = $" Top {i},{j}";
-                    rect.anchoredPosition = new Vector2(posX, Screen.height - gridHeight - padding);
-                }
-            }
-        }
-
-
-        parentRect.anchoredPosition = new Vector2(-totalWidth / 2, 0); // 示例位置
-    }
 
 }

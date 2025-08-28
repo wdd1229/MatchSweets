@@ -8,8 +8,8 @@ public class TriggerBase:MonoBehaviour
     public enum TriggerType { Beat,Obstacle,Reward};
     
     public enum MoveType { Horizontal , Vertical }
-    
-    public TriggerType triggerType;
+
+    public TriggerType  triggerType;
     public MoveType moveType;
 
     //public TriggerBase(TriggerType triggerType)
