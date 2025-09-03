@@ -1,5 +1,8 @@
+using Newtonsoft.Json;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using TTSDK;
 using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEngine.UI.CanvasScaler;
@@ -36,8 +39,50 @@ public class GameManager : Singleton<GameManager>
 
     //private LevelData curLevelData;
 
+    private Transform floatingRoot;
+    IEnumerator LoadLevelData()
+    {
+        // 只需传入相对路径
+        string relativePath = "Data/LevelData.json";
+
+        yield return StartCoroutine(JsonLoader.Instance.LoadJsonData<LevelList>(
+            relativePath,
+            SuccessLoadLevel,
+           Error
+        ));
+    }
+
+    IEnumerator LoadScoreData()
+    {
+        // 只需传入相对路径
+        string relativePath = "Data/ScoreData.json";
+
+        yield return StartCoroutine(JsonLoader.Instance.LoadJsonData<AllScoreData>(
+            relativePath,
+            SuccessLoadScore,
+           Error
+        ));
+    }
+
+    private void SuccessLoadLevel(LevelList levelList)
+    {
+        GameLevelManager.Instance.InitInfo(levelList);
+    }
+    private void SuccessLoadScore(AllScoreData allScoreData)
+    {
+        GameScoreManager.Instance.InitInfo(allScoreData);
+    }
+
+    private void Error(string msg)
+    {
+        Debug.LogError(msg);
+    }
+
     protected override void Awake()
     {
+        StartCoroutine(LoadLevelData());
+        StartCoroutine(LoadScoreData());
+
         Canvas = GameObject.Find("Canvas").transform;
 
         gridManager = Canvas.Find("GameUI/allGridRoot").GetComponent<GridManager>();
@@ -47,11 +92,13 @@ public class GameManager : Singleton<GameManager>
         levelPopupUI = Canvas.Find("LevelPopupUI").GetComponent<LevelPopupUI>();
 
         gameUi = Canvas.Find("GameUI").GetComponent<GameUi>();
+        floatingRoot = gameUi.transform.Find("floatingRoot");
+
         rewardUI = Canvas.Find("RewardUI").GetComponent<RewardUI>();
 
-        LoadLevelData();
+        //LoadLevelData();
 
-        ReadScoreData();
+        //ReadScoreData();
 
         levelPopupUI.Init();
     }
@@ -61,17 +108,18 @@ public class GameManager : Singleton<GameManager>
         wallManager.CreatWallOfLevelData(GameLevelManager.Instance.GetCurLevel().wallCount);
     }
 
-    public void LoadLevelData()
-    {
-        GameLevelManager.Instance.InitInfo(LoadJson<LevelList>.LoadJsonFromFile("LevelData"));
-    }
+    //public void LoadLevelData()
+    //{
+    //    GameLevelManager.Instance.InitInfo(LoadJson<LevelList>.LoadJsonFromFile("LevelData"));
+    //}
 
     public AllScoreData allScoreData;
     [ContextMenu("ScoreData文件读取")]
     public void ReadScoreData()
     {
-         allScoreData = LoadJson<AllScoreData>.LoadJsonFromFile("ScoreData");
-        GameScoreManager.Instance.InitInfo(allScoreData);
+        StartCoroutine(LoadScoreData());
+        // allScoreData = LoadJson<AllScoreData>.LoadJsonFromFile("ScoreData");
+        //GameScoreManager.Instance.InitInfo(allScoreData);
     }
 
     [ContextMenu("ScoreData文件写入")]
@@ -282,13 +330,14 @@ public class GameManager : Singleton<GameManager>
 
         allScoreData.scoreDatas.Add(scoreDataList3);
 
-        LoadJson<AllScoreData>.SaveJsonToFile("ScoreData", allScoreData);
+        //LoadJson<AllScoreData>.SaveJsonToFile("ScoreData", allScoreData);
     }
 
 
     //AddSpecial
     public void RefreshSpecial()
     {
+        //(PrefabManager.Instance.InstantiatefloatingPrefab(1,"floatingScore", floatingRoot, Vector3.zero)).transform.localPosition=new Vector3(0,0,0);
         curSpacielCount += 1;
         //ui刷新
         gameUi.RefreshSpecial(curSpacielCount);
@@ -381,4 +430,17 @@ public class GameManager : Singleton<GameManager>
     {
         rewardUI.ShowRewardTip(msg);
     }
+
+
+    //private void TestVibrate()
+    //{
+    //    long[] pattern = { 0, 100, 1000, 300 };
+    //    TT.Vibrate(pattern);
+    //}
+
+    //private void TestVibrateShort()
+    //{
+    //    long[] pattern = { 400 };
+    //    TT.Vibrate(pattern);
+    //}
 }

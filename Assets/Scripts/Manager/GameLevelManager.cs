@@ -16,6 +16,7 @@ public class GameLevelManager : Singleton<GameLevelManager>
     public int curLevelIndex=0;
     public void InitInfo(LevelList levelList)
     {
+        Debug.LogError("GameLevelManager---InitInfo");
         Debug.Log(levelList);
 
         this.levelList = levelList;

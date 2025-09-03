@@ -13,9 +13,16 @@ public class GridSystem : Singleton<GridSystem>
 
     void Start()
     {
-        origin = transform.position;
+        //width = Screen.width / 120;
+        //height = Screen.height / 120;
 
+        origin = transform.position;
         occupiedCells = new bool[width, height];
+    }
+
+    public void Setorigin(Vector3 origin)
+    {
+        this.origin = origin;
     }
 
     // 将世界坐标转换为网格坐标

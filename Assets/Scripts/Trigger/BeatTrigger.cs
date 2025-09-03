@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class BeatTrigger : TriggerBase
 {
+    public float stepInterval = 0.5f; // 每一步的时间间隔
+    public float stepDistance = 1f;   // 每一步移动的距离
+
     Rigidbody2D rigidbody;
     private void Awake()
     {
