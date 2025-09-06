@@ -8,6 +8,7 @@ public class MainUi : MonoBehaviour
 {
     private Button startBtn;
 
+
     private Button closeBtn;
 
     private GameObject gameUI;
@@ -20,20 +21,15 @@ public class MainUi : MonoBehaviour
         startBtn =transform.Find("Btn_Start").GetComponent<Button>();
         //closeBtn = Canvas.Find("CloseBtn").GetComponent<Button>();
         gameUI = Canvas.Find("GameUI").gameObject;
+        startBtn.onClick.AddListener(GameStart);
+        
+
     }
 
+   
     void Start()
     {
-        TT.InitSDK((code, env) =>
-        {
-            Debug.Log("Unity message init sdk callback");
-            Debug.Log("Unity message code: " + code);
-            Debug.Log("Unity message HostEnum: " + env.m_HostEnum);
-            Debug.Log("Unity message AppId: " + env.GameAppId);
-        });
 
-        Debug.LogError("是否在TT Container真机环境下：" + TT.InContainerEnv);
-        startBtn.onClick.AddListener(GameStart);
         //closeBtn.onClick.AddListener(() => {
         //    Debug.Log("Unity message ExitMiniProgram");
         //    TT.ExitMiniProgram();
@@ -42,6 +38,9 @@ public class MainUi : MonoBehaviour
 
     void GameStart()
     {
+        SDKManager.Instance.StopRecord();
+
+
         //LoadSceneManager.Instance.LoadScene("Game");
         gameObject.SetActive(false);
 

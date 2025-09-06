@@ -129,9 +129,10 @@ public class GridManager : MonoBehaviour
 
         removableRegions = CheckForRemovableRegion();
 
+        //if (removableRegions.Count > 0)
+            StartCoroutine(ClearAllMatchGrid(removableRegions));
         //StartCoroutine(ClearAllSpecialCollection(CheckForSpecialCollection()));
 
-        StartCoroutine(ClearAllMatchGrid(removableRegions));
     }
 
     /// <summary>
@@ -310,13 +311,22 @@ public class GridManager : MonoBehaviour
 
     public IEnumerator CreatGrid()
     {
+        int x=UnityEngine.Random.Range(0, Column);
+        int y=UnityEngine.Random.Range(0, Row);
+
         for (int i = 0; i < Column + 1; i++)
         {
             for (int t = 0; t < Row; t++)
             {
-                //创建新方块
-                CreateTileAtTop(t, i, Column);
-
+                if (x == i && y == t) 
+                {
+                    CreateTileAtTop(t, i, Column,true);
+                }
+                else
+                {
+                    //创建新方块
+                    CreateTileAtTop(t, i, Column);
+                }
                 yield return new WaitForSeconds(0.1f);
             }
         }
@@ -330,10 +340,12 @@ public class GridManager : MonoBehaviour
     /// <param name="x"></param>
     /// <param name="startY"></param>
     /// <param name="fallDistance"></param>
-    void CreateTileAtTop(int x, int startY, int fallDistance)
+    void CreateTileAtTop(int x, int startY, int fallDistance,bool IsSpecial=false)
     {
 
-        GridType curGridType = (GridType)GetRandomTile();
+        GridType
+        curGridType = (GridType)GetRandomTile(IsSpecial);
+
         //GameObject obj = CreatGrid(curGridType);
         GameObject obj=PrefabManager.Instance.InstantiateGridPrefab(curGridType.ToString() + "_Grid", allGridRoot);
 
@@ -349,12 +361,11 @@ public class GridManager : MonoBehaviour
         //    -totalGridWidth / 2 + gridItemWidth / 2 + x * (gridItemWidth + padding),
         //   UnityEngine.Screen.height - gridItemHeight / 2 - padding+ startY* (gridItemHeight+padding)
         //);
-
-        
-
         grid.sizeDelta = new Vector2(120,120);
         //grid.localPosition = BGtiles[x, Column + 1 - fallDistance + startY - 1].transform.localPosition ;
-        grid.anchoredPosition = CalculateGridPos(x, Column + 1 - fallDistance + startY - 1);
+        //grid.anchoredPosition = CalculateGridPos(x, Column + 1 - fallDistance + startY - 1);
+        //从上面掉落的效果
+        grid.anchoredPosition = CalculateGridPos(x, Column);
 
         //Debug.LogError($"初始位置 x:{x} y:{Column + 1 - fallDistance + startY - 1}");
 
@@ -376,7 +387,9 @@ public class GridManager : MonoBehaviour
 
         if (matchedTiles.Count == 0)
         {
-            //Debug.LogError("----没有匹配格子了----");
+            Debug.LogError("----没有匹配格子了----");
+
+            GameManager.Instance.gameUi.SetResetBtnState(true);
             //没有匹配的格子之后再去生成 
 
             return;
@@ -555,18 +568,20 @@ public class GridManager : MonoBehaviour
     }
 
 
+
     /// <summary>
     /// �����ͬ���͸���
     /// </summary>
     /// 随机不同类型格子
     /// <returns></returns>
-    int GetRandomTile(bool isFrist=false)
+    int GetRandomTile(bool isFullScreen = false)
     {
-        //isFrist �����һ��ʱ�ͳ��� �����ռ�Ʒȫ�������
-        if (UnityEngine.Random.value < SpecialCollection && isFrist==false)
+
+
+        //if (UnityEngine.Random.value < SpecialCollection && isFrist==false)
+        if(isFullScreen)
         {
             return (int)GridType.SpecialCollection;
-            //return UnityEngine.Random.Range(0, tileCount);
         }
         else
         {
@@ -580,6 +595,7 @@ public class GridManager : MonoBehaviour
     /// </summary>
     public IEnumerator ClearAllEmptyGrid(LevelData levelData)
     {
+        Debug.LogError("ClearAllEmptyGrid");
         for (int i = 0; i < Row; i++)
         {
             for (int j = 0; j < Column+1; j++)
@@ -648,6 +664,33 @@ public class GridManager : MonoBehaviour
         //    //DestroyGrid(GridType.Empty, allGridRoot.GetChild(i).gameObject);
 
         //    Destroy(allGridRoot.GetChild(i).gameObject);
+        //}
+    }
+
+    /// <summary>
+    /// 爆炸效果
+    /// </summary>
+    public void TriggerExplosion()
+    {
+        for (int i = 0; i < Row; i++)
+        {
+            for (int j = 0; j < Column + 1; j++)
+            {
+                if (tiles[i, j] != null)
+                {
+
+                    // 随机方向（偏向上方）
+                    Vector2 dir = new Vector2(
+                        UnityEngine.Random.Range(-0.8f, 0.8f),
+                        UnityEngine.Random.Range(0.5f, 1f)
+                    );
+                    tiles[i,j].StartExplosion(dir);
+                }
+            }
+        }
+        //foreach (TileTest tile in tiles)
+        //{
+            
         //}
     }
 }

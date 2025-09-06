@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using TTSDK;
+using TTSDK.UNBridgeLib.LitJson;
 using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEngine.UI.CanvasScaler;
@@ -13,8 +14,8 @@ public class GameManager : Singleton<GameManager>
     //public LevelList levelList;
 
     //public int curLevelIndex=0;
-
-    private GridManager gridManager;
+    [HideInInspector]
+    public GridManager gridManager;
 
     private WallManager wallManager;
 
@@ -30,7 +31,8 @@ public class GameManager : Singleton<GameManager>
     /// </summary>
     private int curScore = 0;
 
-    private GameUi gameUi;
+    [HideInInspector]
+    public GameUi gameUi;
 
     private Transform Canvas;
 
@@ -80,6 +82,12 @@ public class GameManager : Singleton<GameManager>
 
     protected override void Awake()
     {
+
+        
+            
+
+
+
         StartCoroutine(LoadLevelData());
         StartCoroutine(LoadScoreData());
 
