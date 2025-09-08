@@ -28,7 +28,10 @@ public class GameScoreManager : Singleton<GameScoreManager>
                 foreach (LevelScoreData levelScoreData in scoreData.levelScoreDatas)
                 {
                     if(gridType== levelScoreData.gridType && connectCount== levelScoreData.connectCount)
+                    {
+                        Debug.Log($"分数， levelIndex: {levelIndex} gridType:{gridType} connectCount:{connectCount} --- score: {levelScoreData.score*10} ");
                         return levelScoreData.score;
+                    }
                 }
             }
         }

@@ -163,12 +163,13 @@ public class Tile : MonoBehaviour
                 animator.Play("move");
                 break;
             case TileState.Clearing:
-                animator.Play("clear");
+                if(gameObject.activeSelf)
+                    animator.Play("clear");
                 break;
             case TileState.Checking:
                 animator.Play("move");
                 break;
-            default:
+            default: 
                 break;
         }
     }

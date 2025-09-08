@@ -178,8 +178,8 @@ public class GridManager : MonoBehaviour
             yield return null;
         }
 
-        int specialCount = 0;
-        int normalCount = 0;
+        int specialScore = 0;
+        int normalScore = 0;
         //删除
         foreach (var items in matchTiles)
         {
@@ -193,12 +193,11 @@ public class GridManager : MonoBehaviour
 
                 if (item.gridType == GridType.SpecialCollection)
                 {
-                    specialCount++;
+                    specialScore++;
                     //AddSpecial
                     GameManager.Instance.RefreshSpecial();
 
                     //yield return new WaitForSeconds(2f);
-
 
                     if (GameManager.Instance.IsNextLevelCheck())
                     {
@@ -218,10 +217,6 @@ public class GridManager : MonoBehaviour
                         yield break;
                     }
                 }
-                else
-                {
-                    normalCount++;
-                }
                 tiles[item.xIndex, item.yIndex] = null;
 
                 Destroy(item.gameObject);
@@ -229,13 +224,13 @@ public class GridManager : MonoBehaviour
 
             //添加分数
             //AddScore
-            GameManager.Instance.RefreshScore(items[0].gridType, items.Count);
+            normalScore += GameManager.Instance.RefreshScore(items[0].gridType, items.Count);
         }
-        if (specialCount > 0)
-            (PrefabManager.Instance.InstantiatefloatingPrefab(FloatingType.specialFloating, specialCount, floatingRoot, Vector3.zero)).transform.localPosition = new Vector3(0, 150, 0);
+        if (specialScore > 0)
+            (PrefabManager.Instance.InstantiatefloatingPrefab(FloatingType.specialFloating, specialScore, floatingRoot, Vector3.zero)).transform.localPosition = new Vector3(0, 150, 0);
 
-        if (normalCount > 0)
-            (PrefabManager.Instance.InstantiatefloatingPrefab(FloatingType.normalFloating, normalCount * 10, floatingRoot, Vector3.zero)).transform.localPosition = new Vector3(0, 0, 0);
+        if (normalScore > 0)
+            (PrefabManager.Instance.InstantiatefloatingPrefab(FloatingType.normalFloating, normalScore * 10, floatingRoot, Vector3.zero)).transform.localPosition = new Vector3(0, 0, 0);
 
         //等待一段时间确保销毁完成
         yield return new WaitForSeconds(0.5f * matchTiles.Count);
@@ -363,6 +358,7 @@ public class GridManager : MonoBehaviour
         //);
         grid.sizeDelta = new Vector2(120,120);
         //grid.localPosition = BGtiles[x, Column + 1 - fallDistance + startY - 1].transform.localPosition ;
+        //每个格子上生成的效果
         //grid.anchoredPosition = CalculateGridPos(x, Column + 1 - fallDistance + startY - 1);
         //从上面掉落的效果
         grid.anchoredPosition = CalculateGridPos(x, Column);

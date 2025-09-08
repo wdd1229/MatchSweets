@@ -21,6 +21,8 @@ public class GameManager : Singleton<GameManager>
 
     private LevelPopupUI levelPopupUI;
 
+    private bool aiState=false;
+
     /// <summary>
     /// 当前收集品数量
     /// </summary>
@@ -38,6 +40,7 @@ public class GameManager : Singleton<GameManager>
 
 
     private RewardUI rewardUI;
+
 
     //private LevelData curLevelData;
 
@@ -365,15 +368,15 @@ public class GameManager : Singleton<GameManager>
     /// </summary>
     /// <param name="gridType"></param>
     /// <param name="connectNum"></param>
-    public void RefreshScore(GridType gridType,int connectNum)
+    public int RefreshScore(GridType gridType,int connectNum)
     {
         if (gridType == GridType.SpecialCollection)
-            return;
+            return 0;
         int score=GameScoreManager.Instance.GetScore(GameLevelManager.Instance.GetCurLevelIndex(), gridType, connectNum);
         //Debug.LogError($"当前类型:{gridType} 当前连接数：{connectNum} 获得分数：{score}");
         curScore += score;
         gameUi.RefereshScore(curScore);
-
+        return score;
     }
 
     /// <summary>
@@ -451,4 +454,17 @@ public class GameManager : Singleton<GameManager>
     //    long[] pattern = { 400 };
     //    TT.Vibrate(pattern);
     //}
+
+    public void SetAiState(bool state)
+    {
+        aiState = state;
+        if (aiState)
+        {
+
+        }
+        else
+        {
+
+        }
+    }
 }
