@@ -6,11 +6,8 @@ using UnityEngine.UI;
 public class GameUi : MonoBehaviour
 {
     private Button resetStart;
-
     private Button aiStart;
-
     private Transform Canvas;
-
     private Text specialNum;
     private Text scoreNum;
     private void Awake()
@@ -37,24 +34,23 @@ public class GameUi : MonoBehaviour
     {
         GameManager.Instance.SetAiState(true);
         SetResetBtnState(false);
+        SetAIBtnState(false);
+
+        GameManager.Instance.gridManager.TriggerExplosion();
+        GameManager.Instance.ResetGrid();
     }
 
     private void ResetStart()
     {
         Debug.Log("ResetStart");
-        SetResetBtnState(false);
         GameManager.Instance.SetAiState(false);
+        SetResetBtnState(false);
+        SetAIBtnState(false);
         GameManager.Instance.gridManager.TriggerExplosion();
-        //StartCoroutine(GameManager.Instance.gridManager.GameReset(GameLevelManager.Instance.GetCurLevel()));
-        StartCoroutine(ResetGrid());
+        GameManager.Instance.ResetGrid();
     }
 
-    IEnumerator ResetGrid()
-    {
-        Debug.LogError("ResetGrid");
-        yield return new WaitForSeconds(1.5f);
-        StartCoroutine(GameManager.Instance.gridManager.GameReset(GameLevelManager.Instance.GetCurLevel()));
-    }
+
 
     public void RefreshSpecial(int num)
     {
@@ -65,8 +61,12 @@ public class GameUi : MonoBehaviour
     public void SetResetBtnState(bool state)
     {
         resetStart.interactable = state;
-        aiStart.interactable = state;
         Debug.Log($"SetResetBtnState");
+    }
+
+    public void SetAIBtnState(bool state)
+    {
+        aiStart.interactable = state;
     }
 
 

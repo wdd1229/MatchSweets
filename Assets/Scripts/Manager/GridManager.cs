@@ -385,15 +385,40 @@ public class GridManager : MonoBehaviour
         {
             Debug.LogError("----没有匹配格子了----");
 
-            GameManager.Instance.gameUi.SetResetBtnState(true);
-            //没有匹配的格子之后再去生成 
+            if (GameManager.Instance.GetAiState())
+            {
+                StartCoroutine(AiStartCheck());
+                GameManager.Instance.gameUi.SetAIBtnState(false);
+                GameManager.Instance.gameUi.SetResetBtnState(true);
+            }
+            else
+            {
+                GameManager.Instance.gameUi.SetAIBtnState(true);
+                GameManager.Instance.gameUi.SetResetBtnState(true);
+            }
 
+            //没有匹配的格子之后再去生成 
             return;
         }
-        
         //StartCoroutine(ClearAllSpecialCollection(CheckForSpecialCollection()));
-
         StartCoroutine(ClearAllMatchGrid(matchedTiles));
+    }
+
+    IEnumerator AiStartCheck()
+    {
+        yield return new WaitForSeconds(3);
+        if (GameManager.Instance.GetAiState())
+        {
+            GameManager.Instance.gameUi.SetResetBtnState(false);
+            GameManager.Instance.gridManager.TriggerExplosion();
+            //StartCoroutine(GameManager.Instance.gridManager.GameReset(GameLevelManager.Instance.GetCurLevel()));
+            GameManager.Instance.ResetGrid();
+        }
+        else
+        {
+            GameManager.Instance.gameUi.SetResetBtnState(false);
+            GameManager.Instance.gameUi.SetResetBtnState(false);
+        }
     }
 
 

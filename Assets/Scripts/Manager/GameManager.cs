@@ -124,7 +124,6 @@ public class GameManager : Singleton<GameManager>
     //    GameLevelManager.Instance.InitInfo(LoadJson<LevelList>.LoadJsonFromFile("LevelData"));
     //}
 
-    public AllScoreData allScoreData;
     [ContextMenu("ScoreData文件读取")]
     public void ReadScoreData()
     {
@@ -138,7 +137,7 @@ public class GameManager : Singleton<GameManager>
     {
         AllScoreData allScoreData = new AllScoreData();
         allScoreData.scoreDatas = new List<ScoreData>();
-
+        #region
         ScoreData scoreDataList = new ScoreData();
         scoreDataList.curLevelIndex = 0;
         scoreDataList.levelScoreDatas = new List<LevelScoreData>();
@@ -213,6 +212,8 @@ public class GameManager : Singleton<GameManager>
         ScoreData scoreDataList2 = new ScoreData();
         scoreDataList2.curLevelIndex = 1;
         scoreDataList2.levelScoreDatas = new List<LevelScoreData>();
+        scoreDataList2.levelScoreDatas.Add(new LevelScoreData(GridType.Blue, 3, 1));
+        scoreDataList2.levelScoreDatas.Add(new LevelScoreData(GridType.Blue, 4, 1));
         scoreDataList2.levelScoreDatas.Add(new LevelScoreData(GridType.Blue, 5, 2));
         scoreDataList2.levelScoreDatas.Add(new LevelScoreData(GridType.Blue, 6, 4));
         scoreDataList2.levelScoreDatas.Add(new LevelScoreData(GridType.Blue, 7, 5));
@@ -225,6 +226,8 @@ public class GameManager : Singleton<GameManager>
         scoreDataList2.levelScoreDatas.Add(new LevelScoreData(GridType.Blue, 14, 200));
         scoreDataList2.levelScoreDatas.Add(new LevelScoreData(GridType.Blue, 15, 450));
 
+        scoreDataList2.levelScoreDatas.Add(new LevelScoreData(GridType.Yellow, 3, 1));
+        scoreDataList2.levelScoreDatas.Add(new LevelScoreData(GridType.Yellow, 4, 2));
         scoreDataList2.levelScoreDatas.Add(new LevelScoreData(GridType.Yellow, 5, 4));
         scoreDataList2.levelScoreDatas.Add(new LevelScoreData(GridType.Yellow, 6, 5));
         scoreDataList2.levelScoreDatas.Add(new LevelScoreData(GridType.Yellow, 7, 10));
@@ -237,6 +240,8 @@ public class GameManager : Singleton<GameManager>
         scoreDataList2.levelScoreDatas.Add(new LevelScoreData(GridType.Yellow, 14, 750));
         scoreDataList2.levelScoreDatas.Add(new LevelScoreData(GridType.Yellow, 15, 1000));
 
+        scoreDataList2.levelScoreDatas.Add(new LevelScoreData(GridType.Green, 3, 2));
+        scoreDataList2.levelScoreDatas.Add(new LevelScoreData(GridType.Green, 4, 3));
         scoreDataList2.levelScoreDatas.Add(new LevelScoreData(GridType.Green, 5, 5));
         scoreDataList2.levelScoreDatas.Add(new LevelScoreData(GridType.Green, 6, 10));
         scoreDataList2.levelScoreDatas.Add(new LevelScoreData(GridType.Green, 7, 20));
@@ -249,6 +254,8 @@ public class GameManager : Singleton<GameManager>
         scoreDataList2.levelScoreDatas.Add(new LevelScoreData(GridType.Green, 14, 5000));
         scoreDataList2.levelScoreDatas.Add(new LevelScoreData(GridType.Green, 15, 7000));
 
+        scoreDataList2.levelScoreDatas.Add(new LevelScoreData(GridType.Red, 3, 3));
+        scoreDataList2.levelScoreDatas.Add(new LevelScoreData(GridType.Red, 4, 4));
         scoreDataList2.levelScoreDatas.Add(new LevelScoreData(GridType.Red, 5, 10));
         scoreDataList2.levelScoreDatas.Add(new LevelScoreData(GridType.Red, 6, 30));
         scoreDataList2.levelScoreDatas.Add(new LevelScoreData(GridType.Red, 7, 50));
@@ -261,6 +268,8 @@ public class GameManager : Singleton<GameManager>
         scoreDataList2.levelScoreDatas.Add(new LevelScoreData(GridType.Red, 14, 50000));
         scoreDataList2.levelScoreDatas.Add(new LevelScoreData(GridType.Red, 15, 70000));
 
+        scoreDataList2.levelScoreDatas.Add(new LevelScoreData(GridType.Orange, 3, 6));
+        scoreDataList2.levelScoreDatas.Add(new LevelScoreData(GridType.Orange, 4, 8));
         scoreDataList2.levelScoreDatas.Add(new LevelScoreData(GridType.Orange, 5, 20));
         scoreDataList2.levelScoreDatas.Add(new LevelScoreData(GridType.Orange, 6, 50));
         scoreDataList2.levelScoreDatas.Add(new LevelScoreData(GridType.Orange, 7, 100));
@@ -279,6 +288,9 @@ public class GameManager : Singleton<GameManager>
         ScoreData scoreDataList3 = new ScoreData();
         scoreDataList3.curLevelIndex = 2;
         scoreDataList3.levelScoreDatas = new List<LevelScoreData>();
+        scoreDataList3.levelScoreDatas.Add(new LevelScoreData(GridType.Blue, 3, 1));
+        scoreDataList3.levelScoreDatas.Add(new LevelScoreData(GridType.Blue, 4, 1));
+        scoreDataList3.levelScoreDatas.Add(new LevelScoreData(GridType.Blue, 5, 2));
         scoreDataList3.levelScoreDatas.Add(new LevelScoreData(GridType.Blue, 6, 2));
         scoreDataList3.levelScoreDatas.Add(new LevelScoreData(GridType.Blue, 7, 4));
         scoreDataList3.levelScoreDatas.Add(new LevelScoreData(GridType.Blue, 8, 5));
@@ -291,6 +303,9 @@ public class GameManager : Singleton<GameManager>
         scoreDataList3.levelScoreDatas.Add(new LevelScoreData(GridType.Blue, 15, 200));
         scoreDataList3.levelScoreDatas.Add(new LevelScoreData(GridType.Blue, 16, 500));
 
+        scoreDataList3.levelScoreDatas.Add(new LevelScoreData(GridType.Yellow, 3, 1));
+        scoreDataList3.levelScoreDatas.Add(new LevelScoreData(GridType.Yellow, 4, 1));
+        scoreDataList3.levelScoreDatas.Add(new LevelScoreData(GridType.Yellow, 5, 2));
         scoreDataList3.levelScoreDatas.Add(new LevelScoreData(GridType.Yellow, 6, 4));
         scoreDataList3.levelScoreDatas.Add(new LevelScoreData(GridType.Yellow, 7, 5));
         scoreDataList3.levelScoreDatas.Add(new LevelScoreData(GridType.Yellow, 8, 10));
@@ -303,6 +318,9 @@ public class GameManager : Singleton<GameManager>
         scoreDataList3.levelScoreDatas.Add(new LevelScoreData(GridType.Yellow, 15, 750));
         scoreDataList3.levelScoreDatas.Add(new LevelScoreData(GridType.Yellow, 16, 1200));
 
+        scoreDataList3.levelScoreDatas.Add(new LevelScoreData(GridType.Green, 3, 1));
+        scoreDataList3.levelScoreDatas.Add(new LevelScoreData(GridType.Green, 4, 2));
+        scoreDataList3.levelScoreDatas.Add(new LevelScoreData(GridType.Green, 5, 3));
         scoreDataList3.levelScoreDatas.Add(new LevelScoreData(GridType.Green, 6, 5));
         scoreDataList3.levelScoreDatas.Add(new LevelScoreData(GridType.Green, 7, 10));
         scoreDataList3.levelScoreDatas.Add(new LevelScoreData(GridType.Green, 8, 20));
@@ -315,6 +333,9 @@ public class GameManager : Singleton<GameManager>
         scoreDataList3.levelScoreDatas.Add(new LevelScoreData(GridType.Green, 15, 5000));
         scoreDataList3.levelScoreDatas.Add(new LevelScoreData(GridType.Green, 16, 8000));
 
+        scoreDataList3.levelScoreDatas.Add(new LevelScoreData(GridType.Red, 3, 2));
+        scoreDataList3.levelScoreDatas.Add(new LevelScoreData(GridType.Red, 4, 4));
+        scoreDataList3.levelScoreDatas.Add(new LevelScoreData(GridType.Red, 5, 6));
         scoreDataList3.levelScoreDatas.Add(new LevelScoreData(GridType.Red, 6, 10));
         scoreDataList3.levelScoreDatas.Add(new LevelScoreData(GridType.Red, 7, 30));
         scoreDataList3.levelScoreDatas.Add(new LevelScoreData(GridType.Red, 8, 50));
@@ -327,6 +348,9 @@ public class GameManager : Singleton<GameManager>
         scoreDataList3.levelScoreDatas.Add(new LevelScoreData(GridType.Red, 15, 50000));
         scoreDataList3.levelScoreDatas.Add(new LevelScoreData(GridType.Red, 16, 80000));
 
+        scoreDataList3.levelScoreDatas.Add(new LevelScoreData(GridType.Orange, 3, 4));
+        scoreDataList3.levelScoreDatas.Add(new LevelScoreData(GridType.Orange, 4, 8));
+        scoreDataList3.levelScoreDatas.Add(new LevelScoreData(GridType.Orange, 5, 12));
         scoreDataList3.levelScoreDatas.Add(new LevelScoreData(GridType.Orange, 6, 20));
         scoreDataList3.levelScoreDatas.Add(new LevelScoreData(GridType.Orange, 7, 50));
         scoreDataList3.levelScoreDatas.Add(new LevelScoreData(GridType.Orange, 8, 100));
@@ -340,8 +364,8 @@ public class GameManager : Singleton<GameManager>
         scoreDataList3.levelScoreDatas.Add(new LevelScoreData(GridType.Orange, 16, 100000));
 
         allScoreData.scoreDatas.Add(scoreDataList3);
-
-        //LoadJson<AllScoreData>.SaveJsonToFile("ScoreData", allScoreData);
+        #endregion
+        JsonLoader.Instance.SaveJsonToFile("Data/ScoreData.json", allScoreData);
     }
 
 
@@ -455,16 +479,25 @@ public class GameManager : Singleton<GameManager>
     //    TT.Vibrate(pattern);
     //}
 
+    public void ResetGrid()
+    {
+        StartCoroutine(ResetGridCoroutine());
+    }
+
+    IEnumerator ResetGridCoroutine()
+    {
+        Debug.LogError("ResetGrid");
+        
+        yield return new WaitForSeconds(1.5f);
+        StartCoroutine(gridManager.GameReset(GameLevelManager.Instance.GetCurLevel()));
+    }
     public void SetAiState(bool state)
     {
         aiState = state;
-        if (aiState)
-        {
+    }
 
-        }
-        else
-        {
-
-        }
+    public bool GetAiState()
+    {
+        return aiState;
     }
 }
