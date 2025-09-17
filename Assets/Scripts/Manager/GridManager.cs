@@ -83,7 +83,7 @@ public class GridManager : MonoBehaviour
 
     public void GameInit(LevelData levelData)
     {
-        Debug.LogError($"GridManager---GameInit--{JsonUtility.ToJson(levelData,true)}");
+        Debug.Log($"GridManager---GameInit--{JsonUtility.ToJson(levelData,true)}");
 
         Row = levelData.Row;
         Column= levelData.Column;
@@ -597,8 +597,6 @@ public class GridManager : MonoBehaviour
     /// <returns></returns>
     int GetRandomTile(bool isFullScreen = false)
     {
-
-
         //if (UnityEngine.Random.value < SpecialCollection && isFrist==false)
         if(isFullScreen)
         {
@@ -709,9 +707,5 @@ public class GridManager : MonoBehaviour
                 }
             }
         }
-        //foreach (TileTest tile in tiles)
-        //{
-            
-        //}
     }
 }

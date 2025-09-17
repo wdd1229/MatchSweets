@@ -365,7 +365,7 @@ public class GameManager : Singleton<GameManager>
 
         allScoreData.scoreDatas.Add(scoreDataList3);
         #endregion
-        JsonLoader.Instance.SaveJsonToFile("Data/ScoreData.json", allScoreData);
+        //JsonLoader.Instance.SaveJsonToFile("Data/ScoreData.json", allScoreData);
     }
 
 
@@ -445,7 +445,7 @@ public class GameManager : Singleton<GameManager>
 
         Debug.LogError(GameLevelManager.Instance.GetCurLevel().ToString());
 
-
+        Debug.LogError("");
         //gridManager.GameInit(GameLevelManager.Instance.GetCurLevel());
         wallManager.CreatWallOfLevelData(GameLevelManager.Instance.GetCurLevel().wallCount);
 

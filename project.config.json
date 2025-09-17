@@ -3,7 +3,7 @@
   "projectname": "MatchSweets",
   "unity": {
     "build": {
-      "webgl": "C:\\Work\\Demo\\MatchSweetsDemoWebGL\\webgl_package-20250905_115452.zip",
+      "webgl": "C:\\Work\\Demo\\MatchSweetsDemoWebGL\\webgl_package-20250917_103246.zip",
       "native": {
         "il2cpp": "C:\\Work\\Demo\\MatchSweetsDemo\\MatchSweetsDemo-All-20250828_141444\\il2cppOutput.zip",
         "apk": "C:\\Work\\Demo\\MatchSweetsDemo\\MatchSweetsDemo-All-20250904_173344.apk",

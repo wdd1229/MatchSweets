@@ -60,6 +60,7 @@
     <Analyzer Include="C:\Program Files\Tuanjie\Hub\Editor\2022.3.61t3\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\AssetBundle\AssetBundleManager.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventHandler.cs" />
     <Compile Include="Assets\Scripts\JsonLoader.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeA.cs" />
@@ -67,6 +68,7 @@
     <Compile Include="Assets\Scripts\Manager\GridManager.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_ExampleScript_01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMPro_InstructionOverlay.cs" />
+    <Compile Include="Assets\Scripts\AssetBundle\AssetBundleTest.cs" />
     <Compile Include="Assets\Scripts\Data\ScoreData.cs" />
     <Compile Include="Assets\Scripts\Manager\WallManager.cs" />
     <Compile Include="Assets\Scripts\Data\LevelData.cs" />
@@ -76,6 +78,7 @@
     <Compile Include="Assets\Scripts\UI\GameUi.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\EnvMapAnimator.cs" />
     <Compile Include="Assets\Scripts\Manager\LoadSceneManager.cs" />
+    <Compile Include="Assets\Scripts\AssetBundle\AB_BrowserPreloadManager.cs" />
     <Compile Include="Assets\GamedevDreamer\Scripts\ScrollingBackground.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_A.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
@@ -84,6 +87,7 @@
     <Compile Include="Assets\Scripts\Tile.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ChatController.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ObjectSpin.cs" />
+    <Compile Include="Assets\Scripts\AssetBundle\LocalPreloadManager.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_PhoneNumberValidator.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexJitter.cs" />
     <Compile Include="Assets\Scripts\UI\MainUi.cs" />
@@ -1210,6 +1214,10 @@
     <ProjectReference Include="TTLitJson.csproj">
       <Project>{49BE0B00-A2CC-E097-4684-B6431981B647}</Project>
       <Name>TTLitJson</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.AssetBundleBrowser.Editor.csproj">
+      <Project>{B4C61984-4707-BD20-2619-B3987DBA8293}</Project>
+      <Name>Unity.AssetBundleBrowser.Editor</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

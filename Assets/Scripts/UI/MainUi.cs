@@ -38,7 +38,7 @@ public class MainUi : MonoBehaviour
 
     void GameStart()
     {
-        SDKManager.Instance.StopRecord();
+        //SDKManager.Instance.StopRecord();
 
 
         //LoadSceneManager.Instance.LoadScene("Game");
