@@ -17,10 +17,10 @@ MonoBehaviour:
   webGLOutputDir: C:/Work/Demo/MatchSweetsDemoWebGL
   useByteAudioAPI: 0
   wasmMemorySize: 128
-  isWebGL2: 1
+  isWebGL2: 0
   needCompress: 1
-  symbolMode: 0
-  profiling: 1
+  symbolMode: 1
+  profiling: 0
   clearStreamingAssets: 0
   buildOptions: 0
   wasmSubFramework: 0
@@ -36,14 +36,14 @@ MonoBehaviour:
   dontCacheFileNames: []
   isDevBuild: 0
   stripEngineCode: 0
-  apkFileNameBase: MatchSweetsDemo
-  apkOutputDir: C:/Work/Demo/MatchSweetsDemo
+  apkFileNameBase: MatchSweets
+  apkOutputDir: C:/Work/APK
   appHost: 2
   compressMethod: 1
   runtimeEnv: 0
   framework: 1
   architecture: 2
-  miniApkVersion: 0
+  miniApkVersion: 1
   scriptingBackend: 0
   NativeWhiteListRegex:
   - com.bytedance.starksdk
@@ -51,7 +51,7 @@ MonoBehaviour:
   _appId: tt2fe7595ab0e8612407
   version: 
   autoVersion: 0
-  _webglPackagePath: C:\Work\Demo\MatchSweetsDemoWebGL\webgl_package-20250917_103246.zip
+  _webglPackagePath: C:\Work\Demo\MatchSweetsDemoWebGL\webgl_package-20250917_153904.zip
   _orientation: 0
   _iOSPerformancePlus: 0
   _menuButtonStyle: 0

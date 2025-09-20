@@ -23,7 +23,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>Temp\bin\Debug\</OutputPath>
-    <DefineConstants>UNITY_2022_3_61;UNITY_2022_3;UNITY_2022;TUANJIE_1_6_2;TUANJIE_1_6;TUANJIE_1;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_4_OR_NEWER;UNITY_2019_1_OR_NEWER;UNITY_2019_2_OR_NEWER;UNITY_2019_3_OR_NEWER;UNITY_2019_4_OR_NEWER;UNITY_2020_1_OR_NEWER;UNITY_2020_2_OR_NEWER;UNITY_2020_3_OR_NEWER;UNITY_2021_1_OR_NEWER;UNITY_2021_2_OR_NEWER;UNITY_2021_3_OR_NEWER;UNITY_2022_1_OR_NEWER;UNITY_2022_2_OR_NEWER;UNITY_2022_3_OR_NEWER;TUANJIE_2022_3_OR_NEWER;TUANJIE_1_0_OR_NEWER;TUANJIE_1_1_OR_NEWER;TUANJIE_1_2_OR_NEWER;TUANJIE_1_3_OR_NEWER;TUANJIE_1_4_OR_NEWER;TUANJIE_1_5_OR_NEWER;TUANJIE_1_6_OR_NEWER;UNITY_INCLUDE_TESTS;ENABLE_AUDIO;ENABLE_CLOTH;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_TEXTURE_STREAMING;ENABLE_INSTANTASSET_EDITOR;ENABLE_TEXTURE_MANAGER;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_UNITYWEBREQUEST;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_EDITOR_GAME_SERVICES;ENABLE_UNITY_GAME_SERVICES_ANALYTICS_SUPPORT;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_GENERATE_NATIVE_PLUGINS_FOR_ASSEMBLIES_API;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;ENABLE_MANAGED_AUDIO_JOBS;ENABLE_ENGINE_CODE_STRIPPING;ENABLE_ONSCREEN_KEYBOARD;ENABLE_MANAGED_UNITYTLS;RENDER_SOFTWARE_CURSOR;ENABLE_VIDEO;ENABLE_ACCELERATOR_CLIENT_DEBUGGING;ENABLE_NAVIGATION_PACKAGE_DEBUG_VISUALIZATION;ENABLE_NAVIGATION_HEIGHTMESH_RUNTIME_SUPPORT;ENABLE_NAVIGATION_UI_REQUIRES_PACKAGE;PLATFORM_WEBGL;TEXTCORE_1_0_OR_NEWER;UNITY_WEBGL;UNITY_WEBGL_API;UNITY_DISABLE_WEB_VERIFICATION;UNITY_GFX_USE_PLATFORM_VSYNC;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_SPATIALTRACKING;ENABLE_MONO;NET_STANDARD_2_0;NET_STANDARD;NET_STANDARD_2_1;NETSTANDARD;NETSTANDARD2_1;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_SCRIPTS_ENCRYPTON;ENABLE_UNITY_COLLECTIONS_CHECKS;ENABLE_BURST_AOT;UNITY_TEAM_LICENSE;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_DIRECTOR;ENABLE_LOCALIZATION;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_TILEMAP;ENABLE_TIMELINE;ENABLE_LEGACY_INPUT_MANAGER;TEXTCORE_FONT_ENGINE_1_5_OR_NEWER;DOTWEEN;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER</DefineConstants>
+    <DefineConstants>UNITY_2022_3_61;UNITY_2022_3;UNITY_2022;TUANJIE_1_6_2;TUANJIE_1_6;TUANJIE_1;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_4_OR_NEWER;UNITY_2019_1_OR_NEWER;UNITY_2019_2_OR_NEWER;UNITY_2019_3_OR_NEWER;UNITY_2019_4_OR_NEWER;UNITY_2020_1_OR_NEWER;UNITY_2020_2_OR_NEWER;UNITY_2020_3_OR_NEWER;UNITY_2021_1_OR_NEWER;UNITY_2021_2_OR_NEWER;UNITY_2021_3_OR_NEWER;UNITY_2022_1_OR_NEWER;UNITY_2022_2_OR_NEWER;UNITY_2022_3_OR_NEWER;TUANJIE_2022_3_OR_NEWER;TUANJIE_1_0_OR_NEWER;TUANJIE_1_1_OR_NEWER;TUANJIE_1_2_OR_NEWER;TUANJIE_1_3_OR_NEWER;TUANJIE_1_4_OR_NEWER;TUANJIE_1_5_OR_NEWER;TUANJIE_1_6_OR_NEWER;UNITY_INCLUDE_TESTS;ENABLE_AUDIO;ENABLE_CLOTH;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_TEXTURE_STREAMING;ENABLE_INSTANTASSET_EDITOR;ENABLE_TEXTURE_MANAGER;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_UNITYWEBREQUEST;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_EDITOR_GAME_SERVICES;ENABLE_UNITY_GAME_SERVICES_ANALYTICS_SUPPORT;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_GENERATE_NATIVE_PLUGINS_FOR_ASSEMBLIES_API;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;ENABLE_MANAGED_AUDIO_JOBS;ENABLE_ENGINE_CODE_STRIPPING;ENABLE_ONSCREEN_KEYBOARD;ENABLE_MANAGED_UNITYTLS;RENDER_SOFTWARE_CURSOR;ENABLE_VIDEO;ENABLE_ACCELERATOR_CLIENT_DEBUGGING;ENABLE_NAVIGATION_PACKAGE_DEBUG_VISUALIZATION;ENABLE_NAVIGATION_HEIGHTMESH_RUNTIME_SUPPORT;ENABLE_NAVIGATION_UI_REQUIRES_PACKAGE;PLATFORM_WEBGL;PLATFORM_WEIXINMINIGAME;PLATFORM_MINIGAME;TEXTCORE_1_0_OR_NEWER;WEIXINMINIGAME;UNITY_WEBGL;UNITY_WEBGL_API;UNITY_WEIXINMINIGAME;UNITY_WEIXINMINIGAME_API;TUANJIE_WEIXINMINIGAME;TUANJIE_WEIXINMINIGAME_API;UNITY_MINIGAME;UNITY_MINIGAME_API;TUANJIE_MINIGAME;TUANJIE_MINIGAME_API;UNITY_DISABLE_WEB_VERIFICATION;UNITY_GFX_USE_PLATFORM_VSYNC;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_SPATIALTRACKING;ENABLE_MONO;NET_STANDARD_2_0;NET_STANDARD;NET_STANDARD_2_1;NETSTANDARD;NETSTANDARD2_1;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_SCRIPTS_ENCRYPTON;ENABLE_UNITY_COLLECTIONS_CHECKS;ENABLE_BURST_AOT;UNITY_TEAM_LICENSE;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_DIRECTOR;ENABLE_LOCALIZATION;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_TILEMAP;ENABLE_TIMELINE;ENABLE_LEGACY_INPUT_MANAGER;TEXTCORE_FONT_ENGINE_1_5_OR_NEWER;DOTWEEN;MINIGAME_SUBPLATFORM_DOUYIN;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169;USG0001</NoWarn>
@@ -51,7 +51,7 @@
     <UnityProjectGeneratorVersion>2.0.22</UnityProjectGeneratorVersion>
     <UnityProjectGeneratorStyle>Legacy</UnityProjectGeneratorStyle>
     <UnityProjectType>Game:1</UnityProjectType>
-    <UnityBuildTarget>WebGL:20</UnityBuildTarget>
+    <UnityBuildTarget>MiniGame:47</UnityBuildTarget>
     <UnityVersion>2022.3.61t3</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
@@ -60,15 +60,14 @@
     <Analyzer Include="C:\Program Files\Tuanjie\Hub\Editor\2022.3.61t3\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\AssetBundle\AssetBundleManager.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventHandler.cs" />
     <Compile Include="Assets\Scripts\JsonLoader.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeA.cs" />
+    <Compile Include="Assets\UIFrameAnimation.cs" />
     <Compile Include="Assets\Scripts\Manager\SDKManager.cs" />
     <Compile Include="Assets\Scripts\Manager\GridManager.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_ExampleScript_01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMPro_InstructionOverlay.cs" />
-    <Compile Include="Assets\Scripts\AssetBundle\AssetBundleTest.cs" />
     <Compile Include="Assets\Scripts\Data\ScoreData.cs" />
     <Compile Include="Assets\Scripts\Manager\WallManager.cs" />
     <Compile Include="Assets\Scripts\Data\LevelData.cs" />
@@ -78,7 +77,6 @@
     <Compile Include="Assets\Scripts\UI\GameUi.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\EnvMapAnimator.cs" />
     <Compile Include="Assets\Scripts\Manager\LoadSceneManager.cs" />
-    <Compile Include="Assets\Scripts\AssetBundle\AB_BrowserPreloadManager.cs" />
     <Compile Include="Assets\GamedevDreamer\Scripts\ScrollingBackground.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_A.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
@@ -87,7 +85,6 @@
     <Compile Include="Assets\Scripts\Tile.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ChatController.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ObjectSpin.cs" />
-    <Compile Include="Assets\Scripts\AssetBundle\LocalPreloadManager.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_PhoneNumberValidator.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexJitter.cs" />
     <Compile Include="Assets\Scripts\UI\MainUi.cs" />
@@ -116,6 +113,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SkewTextExample.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshProFloatingText.cs" />
+    <Compile Include="Assets\Scripts\LoadJson.cs" />
     <Compile Include="Assets\Scripts\Manager\GameScoreManager.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ShaderPropAnimator.cs" />
     <Compile Include="Assets\Scripts\Manager\GameManager.cs" />
@@ -141,7 +139,6 @@
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\Gem Pack Complete\Gem shines\Full set Gem Shines list.txt" />
-    <None Include="Assets\karsiori\Sprites\Pixel Art Gem Pack - Read Me.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
     <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
@@ -401,10 +398,6 @@
       <HintPath>C:\Program Files\Tuanjie\Hub\Editor\2022.3.61t3\Editor\Data\Managed\UnityEngine\UnityEngine.VFXModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="UnityEngine.VRModule">
-      <HintPath>C:\Program Files\Tuanjie\Hub\Editor\2022.3.61t3\Editor\Data\Managed\UnityEngine\UnityEngine.VRModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="UnityEngine.VehiclesModule">
       <HintPath>C:\Program Files\Tuanjie\Hub\Editor\2022.3.61t3\Editor\Data\Managed\UnityEngine\UnityEngine.VehiclesModule.dll</HintPath>
       <Private>False</Private>
@@ -413,8 +406,8 @@
       <HintPath>C:\Program Files\Tuanjie\Hub\Editor\2022.3.61t3\Editor\Data\Managed\UnityEngine\UnityEngine.VideoModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="UnityEngine.WebGLModule">
-      <HintPath>C:\Program Files\Tuanjie\Hub\Editor\2022.3.61t3\Editor\Data\PlaybackEngines\WebGLSupport\Managed\UnityEngine.WebGLModule.dll</HintPath>
+    <Reference Include="UnityEngine.WeixinMiniGameModule">
+      <HintPath>C:\Program Files\Tuanjie\Hub\Editor\2022.3.61t3\Editor\Data\PlaybackEngines\WeixinMiniGameSupport\Managed\UnityEngine.WeixinMiniGameModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.WindModule">
@@ -513,8 +506,16 @@
       <HintPath>Library\PackageCache\com.unity.nuget.mono-cecil@1.11.4\Mono.Cecil.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="ttsdk">
-      <HintPath>LocalPackages\com.bytedance.starksdk@6.4.5\ttsdk.dll</HintPath>
+    <Reference Include="LitJson">
+      <HintPath>Library\PackageCache\com.qq.weixin.minigame@4443e5a9bc\Runtime\Plugins\LitJson.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.FontABTool">
+      <HintPath>Library\PackageCache\com.qq.weixin.minigame@4443e5a9bc\Runtime\Plugins\Unity.FontABTool.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="wx-runtime-editor">
+      <HintPath>Library\PackageCache\com.qq.weixin.minigame@4443e5a9bc\Runtime\Plugins\wx-runtime-editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.OpenHarmony.Types">
@@ -1037,6 +1038,10 @@
       <HintPath>Library\ScriptAssemblies\Unity.Burst.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="wx-uploader.editor">
+      <HintPath>Library\ScriptAssemblies\wx-uploader.editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.2D.Common.Path.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.2D.Common.Path.Editor.dll</HintPath>
       <Private>False</Private>
@@ -1051,6 +1056,10 @@
     </Reference>
     <Reference Include="Unity.VisualStudio.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Wx">
+      <HintPath>Library\ScriptAssemblies\Wx.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEditor.UI">
@@ -1083,6 +1092,10 @@
     </Reference>
     <Reference Include="Unity.2D.Aseprite.Common">
       <HintPath>Library\ScriptAssemblies\Unity.2D.Aseprite.Common.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="WxEditor">
+      <HintPath>Library\ScriptAssemblies\WxEditor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.2D.Sprite.Editor">
@@ -1177,6 +1190,10 @@
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.State.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Unity.InternalAPIEditorBridge.010">
+      <HintPath>Library\ScriptAssemblies\Unity.InternalAPIEditorBridge.010.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.2D.SpriteShape.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.2D.SpriteShape.Editor.dll</HintPath>
       <Private>False</Private>
@@ -1198,26 +1215,6 @@
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
       <Project>{AAB0AF9C-F365-6225-DDAD-B44C314BBE17}</Project>
       <Name>Assembly-CSharp-firstpass</Name>
-    </ProjectReference>
-    <ProjectReference Include="TTWebGL.csproj">
-      <Project>{4CDA89EA-CAFB-FCFA-4563-8605F8464809}</Project>
-      <Name>TTWebGL</Name>
-    </ProjectReference>
-    <ProjectReference Include="com.bytedance.ttsdk.ref.csproj">
-      <Project>{10EDBDC6-B420-E9AD-3436-353A42BF42D8}</Project>
-      <Name>com.bytedance.ttsdk.ref</Name>
-    </ProjectReference>
-    <ProjectReference Include="com.bytedance.ttsdk-editor.csproj">
-      <Project>{932689BA-F552-EB69-988D-1FC16F93812D}</Project>
-      <Name>com.bytedance.ttsdk-editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="TTLitJson.csproj">
-      <Project>{49BE0B00-A2CC-E097-4684-B6431981B647}</Project>
-      <Name>TTLitJson</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.AssetBundleBrowser.Editor.csproj">
-      <Project>{B4C61984-4707-BD20-2619-B3987DBA8293}</Project>
-      <Name>Unity.AssetBundleBrowser.Editor</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

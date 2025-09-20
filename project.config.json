@@ -3,15 +3,15 @@
   "projectname": "MatchSweets",
   "unity": {
     "build": {
-      "webgl": "C:\\Work\\Demo\\MatchSweetsDemoWebGL\\webgl_package-20250917_103246.zip",
+      "webgl": "C:\\Work\\Demo\\MatchSweetsDemoWebGL\\webgl_package-20250917_153904.zip",
       "native": {
-        "il2cpp": "C:\\Work\\Demo\\MatchSweetsDemo\\MatchSweetsDemo-All-20250828_141444\\il2cppOutput.zip",
-        "apk": "C:\\Work\\Demo\\MatchSweetsDemo\\MatchSweetsDemo-All-20250904_173344.apk",
-        "fullApk": "C:/Work/Demo/MatchSweetsDemo\\MatchSweetsDemo-All-20250904_173344.apk"
+        "il2cpp": "C:\\Work\\Demo\\MatchSweetsDemoWebGL\\webgl_package-20250917_111725.zip",
+        "apk": "C:\\Work\\APK\\MatchSweets-All-20250917_112927\\launcher-release.apk",
+        "fullApk": "C:\\Work\\APK\\MatchSweets-All-20250917_113138.apk"
       },
       "instantGame": ""
     },
-    "publishType": "3",
+    "publishType": "2",
     "starkSdkVersion": "Without StarkSDK",
     "unityToolsVersion": null,
     "unityEngineVersion": "2022.3.61t3",

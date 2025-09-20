@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
-using TTSDK;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
@@ -76,7 +75,7 @@ public class GridManager : MonoBehaviour
     private void Start()
     {
         Debug.Log("--------------------");
-        Debug.Log(TT.GetSystemInfo());
+        //Debug.Log(TT.GetSystemInfo());
         Debug.Log("--------------------");
     }
 
