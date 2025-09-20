@@ -65,7 +65,7 @@ public class GridManager : MonoBehaviour
 
     public Transform canvas;
 
-    private Transform floatingRoot;
+    public Transform floatingRoot;
     private void Awake()
     {
         floatingRoot = canvas.Find("GameUI/floatingRoot");

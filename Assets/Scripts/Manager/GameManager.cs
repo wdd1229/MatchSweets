@@ -49,7 +49,6 @@ public class GameManager : Singleton<GameManager>
     {
         // 只需传入相对路径
         string relativePath = "Data/LevelData.json";
-
         yield return StartCoroutine(JsonLoader.Instance.LoadJsonData<LevelList>(
             relativePath,
             SuccessLoadLevel,
