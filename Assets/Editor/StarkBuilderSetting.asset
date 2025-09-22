@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tag: 0
   wasmResourceUrl: http://
-  webGLOutputDir: C:/Work/Demo/MatchSweetsDemoWebGL
+  OutputDir: C:\Work\MatchSweets\tt-minigame
   useByteAudioAPI: 0
   wasmMemorySize: 128
   isWebGL2: 1
@@ -24,6 +24,9 @@ MonoBehaviour:
   clearStreamingAssets: 0
   buildOptions: 0
   wasmSubFramework: 0
+  hideAfterCallmain: 1
+  disableLoadingPage: 0
+  useDataCDNAsStreamingAssetsUrl: 0
   optimizeWebGLMemoryInBackground: 1
   assetBundleFSEnabled: 1
   assetBundleBufferCapacity: 128
@@ -36,8 +39,6 @@ MonoBehaviour:
   dontCacheFileNames: []
   isDevBuild: 0
   stripEngineCode: 0
-  apkFileNameBase: MatchSweetsDemo
-  apkOutputDir: C:/Work/Demo/MatchSweetsDemo
   appHost: 2
   compressMethod: 1
   runtimeEnv: 0
@@ -51,10 +52,12 @@ MonoBehaviour:
   _appId: tt2fe7595ab0e8612407
   version: 
   autoVersion: 0
-  _webglPackagePath: C:\Work\Demo\MatchSweetsDemoWebGL\webgl_package-20250917_103246.zip
+  _webglPackagePath: C:\Work\MatchSweets\tt-minigame\webgl_package-20250922_135721.zip
   _orientation: 0
   _iOSPerformancePlus: 0
   _menuButtonStyle: 0
   _publishType: 0
   publishDesc: 
   idePath: "C:/Users/42318/AppData/Local/Programs/@bytedminiprogram-ide/\u6296\u97F3\u5F00\u53D1\u8005\u5DE5\u5177.exe"
+  isConvert: 0
+  isOldBuildFormat: 1

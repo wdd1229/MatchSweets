@@ -48,15 +48,15 @@ public class Tile : MonoBehaviour
         this.gridType = gridType;
         xIndex = x;
         yIndex = y;
-        if (gridType == GridType.Empty || gridType == GridType.Top)
-        {
-            name = gridType.ToString() + "(" + xIndex + ", " + yIndex + ")";
+        //if (gridType == GridType.Empty || gridType == GridType.Top)
+        //{
+        //    name = gridType.ToString() + "(" + xIndex + ", " + yIndex + ")";
 
-        }
-        else
-        {
-            name = "Tile (" + xIndex + ", " + yIndex + ")";
-        }
+        //}
+        //else
+        //{
+        //    name = "Tile (" + xIndex + ", " + yIndex + ")";
+        //}
 
         // 设置方块的名字为其坐标
     }
@@ -129,6 +129,13 @@ public class Tile : MonoBehaviour
         //gridManager.CheckForMatchesAt(xIndex, yIndex);
     }
 
+    public void ResetState()
+    {
+        //SetState(TileState.Idle);
+        currentState = TileState.Idle;
+        UpdateAnimationState();
+    }
+
     /// <summary>
     /// 设置不同状态
     /// </summary>
@@ -141,7 +148,7 @@ public class Tile : MonoBehaviour
         UpdateAnimationState();
     }
 
-
+    
 
     public void Clear()
     {
@@ -160,7 +167,7 @@ public class Tile : MonoBehaviour
                 animator.Play("idle");
                 break;
             case TileState.Moving:
-                animator.Play("move");
+                //animator.Play("move");
                 break;
             case TileState.Clearing:
                 if(gameObject.activeSelf)

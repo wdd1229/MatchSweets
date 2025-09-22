@@ -1,13 +1,7 @@
-using Newtonsoft.Json;
 using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using TTSDK;
-using TTSDK.UNBridgeLib.LitJson;
-using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEngine.UI.CanvasScaler;
-
 public class GameManager : Singleton<GameManager>
 {
 
@@ -82,16 +76,15 @@ public class GameManager : Singleton<GameManager>
         Debug.LogError(msg);
     }
 
+
     protected override void Awake()
     {
 
-        
-            
 
 
+        //TestLoadJson();
 
-        StartCoroutine(LoadLevelData());
-        StartCoroutine(LoadScoreData());
+
 
         Canvas = GameObject.Find("Canvas").transform;
 
@@ -112,6 +105,13 @@ public class GameManager : Singleton<GameManager>
 
         levelPopupUI.Init();
     }
+
+    private void Start()
+    {
+        StartCoroutine(LoadLevelData());
+        StartCoroutine(LoadScoreData());
+    }
+
     public void GameStart()
     {
         gridManager.GameInit(GameLevelManager.Instance.GetCurLevel());

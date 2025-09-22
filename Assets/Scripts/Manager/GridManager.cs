@@ -6,7 +6,19 @@ using TTSDK;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
-using static UnityEngine.UI.Image;
+using static UnityEditor.Progress;
+public enum GridType
+{
+    Blue,
+    Yellow,
+    Green,
+    Red,
+    Orange,
+    Empty,
+    Top,//最上层
+    SpecialCollection,//特殊收藏品
+    Null//传入Null可创建空格子也就是背景格
+}
 /// <summary>
 /// 所有格子管理
 /// </summary>
@@ -217,20 +229,25 @@ public class GridManager : MonoBehaviour
                         yield break;
                     }
                 }
+
+
                 tiles[item.xIndex, item.yIndex] = null;
 
-                Destroy(item.gameObject);
+                //Destroy(item.gameObject);
+
+                PrefabManager.Instance.ReturnGridPrefab(item.gameObject,item.gridType);
+
             }
 
             //添加分数
             //AddScore
             normalScore += GameManager.Instance.RefreshScore(items[0].gridType, items.Count);
         }
-        if (specialScore > 0)
-            (PrefabManager.Instance.InstantiatefloatingPrefab(FloatingType.specialFloating, specialScore, floatingRoot, Vector3.zero)).transform.localPosition = new Vector3(0, 150, 0);
+        //if (specialScore > 0)
+            //(PrefabManager.Instance.InstantiatefloatingPrefab(FloatingType.specialFloating, specialScore, floatingRoot, Vector3.zero)).transform.localPosition = new Vector3(0, 150, 0);
 
-        if (normalScore > 0)
-            (PrefabManager.Instance.InstantiatefloatingPrefab(FloatingType.normalFloating, normalScore * 10, floatingRoot, Vector3.zero)).transform.localPosition = new Vector3(0, 0, 0);
+        //if (normalScore > 0)
+            //(PrefabManager.Instance.InstantiatefloatingPrefab(FloatingType.normalFloating, normalScore * 10, floatingRoot, Vector3.zero)).transform.localPosition = new Vector3(0, 0, 0);
 
         //等待一段时间确保销毁完成
         yield return new WaitForSeconds(0.5f * matchTiles.Count);
@@ -342,9 +359,12 @@ public class GridManager : MonoBehaviour
         curGridType = (GridType)GetRandomTile(IsSpecial);
 
         //GameObject obj = CreatGrid(curGridType);
-        GameObject obj=PrefabManager.Instance.InstantiateGridPrefab(curGridType.ToString() + "_Grid", allGridRoot);
+        GameObject obj=PrefabManager.Instance.GetGridPrefab(curGridType, allGridRoot);
 
-        Tile tile = obj.AddComponent<Tile>();
+
+        //Tile tile = obj.AddComponent<Tile>();
+
+        Tile tile = obj.GetComponent<Tile>();
 
         RectTransform grid = obj.GetComponent<RectTransform>();
         //grid.anchorMin = new Vector2(0, 0);
@@ -631,8 +651,8 @@ public class GridManager : MonoBehaviour
             {
                 if (tiles[i, j] != null)
                 {
-
-                    Destroy(tiles[i, j].gameObject);
+                    PrefabManager.Instance.ReturnGridPrefab(tiles[i, j].gameObject, tiles[i, j].gridType);
+                    //Destroy(tiles[i, j].gameObject);
                     tiles[i,j]=null;
                 }
             }

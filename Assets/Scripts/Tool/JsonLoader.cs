@@ -9,43 +9,82 @@ using UnityEngine.Networking;
 
 public class JsonLoader : Singleton<JsonLoader>
 {
-    // 泛型加载方法
     public IEnumerator LoadJsonData<T>(string relativePath, Action<T> onComplete,
-                                       Action<string> onError = null) where T : class
+                                           Action<string> onError = null) where T : class
     {
-        string fullPath = "";
-        string jsonString = null;
+        // 读取第一个JSON文件
+        string filePath1 = Path.Combine(Application.streamingAssetsPath, relativePath);
+        string jsonString = "";
 
-#if UNITY_BYTEDANCE_MINIGAME
-            // 抖音小游戏平台处理
-            fullPath = FormatPath(Application.streamingAssetsPath, relativePath);
-            Debug.Log($"抖音路径: {fullPath}");
-            
-            // 使用抖音特有API调用方式[^1]
-            yield return StartCoroutine(LoadForByteDance(fullPath, 
-                result => jsonString = result,
-                error => HandleError($"抖音加载失败: {error}", onError)));
-#else
-        // 其他平台通用处理
-        fullPath = FormatPath(Application.streamingAssetsPath, relativePath);
-#if UNITY_WEBGL
-        if (!fullPath.StartsWith("http"))
+        if (filePath1.Contains("://"))
         {
-            fullPath = "file://" + fullPath;
+            UnityWebRequest www1 = UnityWebRequest.Get(filePath1);
+            yield return www1.SendWebRequest();
+
+            if (www1.result == UnityWebRequest.Result.Success)
+            {
+                jsonString = www1.downloadHandler.text;
+            }
+            else
+            {
+                Debug.LogError("Failed to load " + relativePath + ": " + www1.error);
+            }
         }
-#endif
+        else
+        {
+            jsonString = File.ReadAllText(filePath1);
+        }
 
-        yield return StartCoroutine(LoadViaUnityWebRequest(fullPath,
-            result => jsonString = result,
-            error => HandleError($"加载失败: {error}", onError)));
-#endif
-
-        // 解析JSON数据
+        // 解析第一个JSON数据
         if (!string.IsNullOrEmpty(jsonString))
         {
-            ParseJsonData<T>(jsonString, onComplete, onError);
+            // 这里可以根据JSON的结构创建对应的类来解析数据
+            // 示例：假设JSON是一个简单的对象
+            // MyData data1 = JsonUtility.FromJson<MyData>(jsonData1);
+
+            ParseJsonData<T>(jsonString,onComplete, onError);
+
+            Debug.Log("Loaded data from " + relativePath + ": " + jsonString);
         }
     }
+
+    // 泛型加载方法
+//    public IEnumerator LoadJsonData<T>(string relativePath, Action<T> onComplete,
+//                                       Action<string> onError = null) where T : class
+//    {
+//        string fullPath = "";
+//        string jsonString = null;
+
+//#if UNITY_BYTEDANCE_MINIGAME
+//            // 抖音小游戏平台处理
+//            fullPath = FormatPath(Application.streamingAssetsPath, relativePath);
+//            Debug.Log($"抖音路径: {fullPath}");
+            
+//            // 使用抖音特有API调用方式[^1]
+//            yield return StartCoroutine(LoadForByteDance(fullPath, 
+//                result => jsonString = result,
+//                error => HandleError($"抖音加载失败: {error}", onError)));
+//#else
+//        // 其他平台通用处理
+//        fullPath = FormatPath(Application.streamingAssetsPath, relativePath);
+//#if UNITY_WEBGL
+//        if (!fullPath.StartsWith("http"))
+//        {
+//            fullPath = "file://" + fullPath;
+//        }
+//#endif
+
+//        yield return StartCoroutine(LoadViaUnityWebRequest(fullPath,
+//            result => jsonString = result,
+//            error => HandleError($"加载失败: {error}", onError)));
+//#endif
+
+//        // 解析JSON数据
+//        if (!string.IsNullOrEmpty(jsonString))
+//        {
+//            ParseJsonData<T>(jsonString, onComplete, onError);
+//        }
+//    }
 
     // 路径格式化方法（复用）
     private string FormatPath(string basePath, string relativePath)
