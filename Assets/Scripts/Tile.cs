@@ -164,7 +164,8 @@ public class Tile : MonoBehaviour
         switch (currentState)
         {
             case TileState.Idle:
-                animator.Play("idle");
+                if(gameObject.activeSelf)
+                    animator.Play("idle");
                 break;
             case TileState.Moving:
                 //animator.Play("move");

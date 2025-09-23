@@ -5,6 +5,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using static Unity.VisualScripting.Dependencies.Sqlite.SQLite3;
 
 public class FloatingScore : MonoBehaviour
 {
@@ -14,22 +15,21 @@ public class FloatingScore : MonoBehaviour
     private float floatDuration = 1f; // 动画持续时间
     private float startTime;
 
+    public FloatingType curType;
+
     private void Awake()
     {
         scoreText=transform.Find("score").GetComponent<Text>();
         rectTransform = transform.GetComponent<RectTransform>();
     }
 
-    public void Init(int score)
+    public void Init(FloatingType floatingType,int score)
     {
+        curType=floatingType;
         scoreText.text=score.ToString();
+        startTime = 0;
     }
-    private float speed = 300; // 漂浮速度（单位：像素/秒）
-    private float time = 1.5f; // 动画持续时间
-    void Start()
-    {
-        startTime =0;
-    }
+
     void Update()
     {
         // 向上漂浮
@@ -38,7 +38,8 @@ public class FloatingScore : MonoBehaviour
         startTime += Time.deltaTime;
         if (startTime >= floatDuration)
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
+            PrefabManager.Instance.ReturnFloatingScorePrefab(gameObject, curType);
         }
     }
 

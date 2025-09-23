@@ -243,11 +243,11 @@ public class GridManager : MonoBehaviour
             //AddScore
             normalScore += GameManager.Instance.RefreshScore(items[0].gridType, items.Count);
         }
-        //if (specialScore > 0)
-            //(PrefabManager.Instance.InstantiatefloatingPrefab(FloatingType.specialFloating, specialScore, floatingRoot, Vector3.zero)).transform.localPosition = new Vector3(0, 150, 0);
+        if (specialScore > 0)
+            (PrefabManager.Instance.GetFloatingScorePrefab(FloatingType.specialFloating, specialScore, floatingRoot)).transform.localPosition = new Vector3(0, 150, 0);
 
-        //if (normalScore > 0)
-            //(PrefabManager.Instance.InstantiatefloatingPrefab(FloatingType.normalFloating, normalScore * 10, floatingRoot, Vector3.zero)).transform.localPosition = new Vector3(0, 0, 0);
+        if (normalScore > 0)
+            (PrefabManager.Instance.GetFloatingScorePrefab(FloatingType.normalFloating, normalScore * 10, floatingRoot)).transform.localPosition = new Vector3(0, 0, 0);
 
         //等待一段时间确保销毁完成
         yield return new WaitForSeconds(0.5f * matchTiles.Count);

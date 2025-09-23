@@ -9,6 +9,8 @@ public class ObjectPooler : Singleton<ObjectPooler>
 {
     public Transform allroot;
 
+    private Transform floatingRoot;
+
     public Dictionary<string, Queue<GameObject>> objectPools = new Dictionary<string, Queue<GameObject>>();
     private int defaultPoolSize = 15;
 
@@ -18,7 +20,7 @@ public class ObjectPooler : Singleton<ObjectPooler>
     {
         base.Awake();
         allroot = GameObject.Find("Canvas/GameUI/allGridRoot").transform;
-        Debug.LogError(allroot);
+        floatingRoot = GameObject.Find("Canvas/GameUI/floatingRoot").transform;
     }
 
     // 初始化池
@@ -38,10 +40,10 @@ public class ObjectPooler : Singleton<ObjectPooler>
             return;
         }
         objectPools[prefabName] = new Queue<GameObject>();
-        Debug.LogError($"prefabName:{prefabName}");
+        Debug.LogError($"prefabName:{prefabName} poolSize:{poolSize}");
         for (int i = 0; i < poolSize; i++)
         {
-            GameObject obj = GameObject.Instantiate(prefab, allroot);
+            GameObject obj = GameObject.Instantiate(prefab, objectType==ObjectType.Grid?allroot:floatingRoot);
             obj.SetActive(false);
             objectPools[prefabName].Enqueue(obj);
         }
@@ -57,6 +59,10 @@ public class ObjectPooler : Singleton<ObjectPooler>
         }
         if (objectPools[prefabName].Count > 0)
         {
+            if (objectType == ObjectType.floatingScore)
+            {
+                Debug.LogError("漂浮---------");
+            }
             GameObject obj = objectPools[prefabName].Dequeue();
             obj.SetActive(true);
             return obj;
