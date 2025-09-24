@@ -6,7 +6,6 @@ using TTSDK;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
-using static UnityEditor.Progress;
 public enum GridType
 {
     Blue,
@@ -117,9 +116,9 @@ public class GridManager : MonoBehaviour
     /// <returns></returns>
     public IEnumerator GameReset(LevelData levelData)
     {
-        yield return StartCoroutine(ClearAllEmptyGrid(levelData));
+        yield return ClearAllEmptyGrid(levelData);
 
-        yield return StartCoroutine(CreatGrid());
+        yield return CreatGrid();
     }
 
     public void StorageClear(LevelData levelData)

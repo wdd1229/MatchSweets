@@ -44,7 +44,7 @@ MonoBehaviour:
   runtimeEnv: 0
   framework: 1
   architecture: 2
-  miniApkVersion: 0
+  miniApkVersion: 1
   scriptingBackend: 0
   NativeWhiteListRegex:
   - com.bytedance.starksdk
@@ -52,7 +52,7 @@ MonoBehaviour:
   _appId: tt2fe7595ab0e8612407
   version: 
   autoVersion: 0
-  _webglPackagePath: C:\Work\MatchSweets\tt-minigame\webgl_package-20250922_135721.zip
+  _webglPackagePath: C:\Work\MatchSweets\tt-minigame\webgl_package-20250924_173822.zip
   _orientation: 0
   _iOSPerformancePlus: 0
   _menuButtonStyle: 0

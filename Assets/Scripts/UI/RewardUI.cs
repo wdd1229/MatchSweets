@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TTSDK;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,6 +8,7 @@ public class RewardUI : MonoBehaviour
 {
     private GameObject rewardTip;
     private Text rewardMsg;
+
     private void Awake()
     {
         rewardTip = transform.Find("RewardTip").gameObject;

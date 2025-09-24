@@ -40,7 +40,7 @@ public class ObjectPooler : Singleton<ObjectPooler>
             return;
         }
         objectPools[prefabName] = new Queue<GameObject>();
-        Debug.LogError($"prefabName:{prefabName} poolSize:{poolSize}");
+        //Debug.LogError($"prefabName:{prefabName} poolSize:{poolSize}");
         for (int i = 0; i < poolSize; i++)
         {
             GameObject obj = GameObject.Instantiate(prefab, objectType==ObjectType.Grid?allroot:floatingRoot);
@@ -59,10 +59,6 @@ public class ObjectPooler : Singleton<ObjectPooler>
         }
         if (objectPools[prefabName].Count > 0)
         {
-            if (objectType == ObjectType.floatingScore)
-            {
-                Debug.LogError("漂浮---------");
-            }
             GameObject obj = objectPools[prefabName].Dequeue();
             obj.SetActive(true);
             return obj;

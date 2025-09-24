@@ -5,8 +5,6 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
-using static Unity.VisualScripting.Dependencies.Sqlite.SQLite3;
-
 public class FloatingScore : MonoBehaviour
 {
     private Text scoreText;

@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="il2cpp">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/native/il2cpp.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

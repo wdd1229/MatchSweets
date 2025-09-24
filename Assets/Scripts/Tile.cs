@@ -164,6 +164,7 @@ public class Tile : MonoBehaviour
         switch (currentState)
         {
             case TileState.Idle:
+                if(CheckAnimator()==false) return;
                 if(gameObject.activeSelf)
                     animator.Play("idle");
                 break;
@@ -171,15 +172,24 @@ public class Tile : MonoBehaviour
                 //animator.Play("move");
                 break;
             case TileState.Clearing:
-                if(gameObject.activeSelf)
+                if (CheckAnimator() == false) return;
+
+                if (gameObject.activeSelf)
                     animator.Play("clear");
                 break;
             case TileState.Checking:
+                if (CheckAnimator() == false) return;
+
                 animator.Play("move");
                 break;
             default: 
                 break;
         }
+    }
+
+    private bool CheckAnimator()
+    {
+        return false;
     }
 
 

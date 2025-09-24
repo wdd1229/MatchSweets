@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using TTSDK;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -23,7 +22,6 @@ public class MainUi : MonoBehaviour
         gameUI = Canvas.Find("GameUI").gameObject;
         startBtn.onClick.AddListener(GameStart);
         
-
     }
 
    
