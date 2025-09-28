@@ -443,7 +443,6 @@ public class GameManager : Singleton<GameManager>
 
         Debug.LogError(GameLevelManager.Instance.GetCurLevel().ToString());
 
-        Debug.LogError("");
         //gridManager.GameInit(GameLevelManager.Instance.GetCurLevel());
         wallManager.CreatWallOfLevelData(GameLevelManager.Instance.GetCurLevel().wallCount);
 

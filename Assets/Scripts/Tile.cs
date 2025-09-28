@@ -20,7 +20,7 @@ public class Tile : MonoBehaviour
 
 
 
-
+    public GameObject Test;
 
 
     public int xIndex;
@@ -29,18 +29,40 @@ public class Tile : MonoBehaviour
     public enum TileState { Idle, Moving, Clearing, Checking };
     public TileState currentState = TileState.Idle;
 
+    private Animator JewelTypeController;
+
+
+
     private Animator animator;
 
     public int fallDistance = 0;
 
     public GridManager gridManager;
 
+    [ContextMenu("GameTest")]
+    public void GameTest()
+    {
+        if (Test != null)
+        {
+            Vector3 worldPosition = Camera.main.ScreenToWorldPoint(transform.localPosition);
+            Vector3 localPosition = Test.transform.parent.InverseTransformPoint(worldPosition);
+            Test.transform.localPosition = localPosition;
+        }
+    }
+
     private void Awake()
     {
+
         rect = GetComponent<RectTransform>();
 
         gridManager = transform.parent.GetComponent<GridManager>();
         animator = GetComponent<Animator>();
+
+        JewelTypeController=transform.Find("body").GetComponent<Animator>();
+        if (JewelTypeController != null)
+        {
+            JewelTypeController.Play(gridType.ToString());
+        }
     }
 
     public void Init(int x,int y,GridType gridType)
@@ -59,6 +81,14 @@ public class Tile : MonoBehaviour
         //}
 
         // 设置方块的名字为其坐标
+
+
+
+        //根据类型设置动画显示对于的帧动画
+        if (JewelTypeController != null)
+        {
+            JewelTypeController.Play(gridType.ToString());
+        }
     }
 
     /// <summary>
@@ -164,23 +194,22 @@ public class Tile : MonoBehaviour
         switch (currentState)
         {
             case TileState.Idle:
-                if(CheckAnimator()==false) return;
-                if(gameObject.activeSelf)
+                if (gameObject.activeSelf)
                     animator.Play("idle");
                 break;
             case TileState.Moving:
                 //animator.Play("move");
                 break;
             case TileState.Clearing:
-                if (CheckAnimator() == false) return;
+                //if (CheckAnimator() == false) return;
 
                 if (gameObject.activeSelf)
                     animator.Play("clear");
                 break;
             case TileState.Checking:
-                if (CheckAnimator() == false) return;
+                //if (CheckAnimator() == false) return;
 
-                animator.Play("move");
+                //animator.Play("move");
                 break;
             default: 
                 break;

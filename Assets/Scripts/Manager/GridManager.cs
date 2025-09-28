@@ -490,18 +490,19 @@ public class GridManager : MonoBehaviour
     {
         Vector2 tt = canvas.GetComponent<RectTransform>().sizeDelta;
         origin = allGridRoot.position;
-        width = (int)(tt.x / cellSize);
-        height = (int)(tt.y / cellSize);
+        width = (int)(tt.x / (cellSize + 10));
+        height = (int)(tt.y / (cellSize + 10));
         //width = (int)(Screen.width / cellSize);
         //height = (int)(Screen.height / cellSize);
 
-        //Debug.LogError($"当前屏幕生成网格 width:{width} height:{height}");
+        //Debug.LogError($"当前屏幕生成网格 width:{width} height:{height}");  x  x  x  x  x  x   y y y y   z z z z z z z
 
         float startX = (width - Row) / 2.0f;
         if (yIndex == Column)
         {
             yIndex = height-3;
         }
+        //Debug.LogError($"xIndex:{xIndex} yIndex:{yIndex}");
         return GridToWorld(new Vector2(xIndex+ startX, yIndex));
 
         if (yIndex == Column)
@@ -531,8 +532,8 @@ public class GridManager : MonoBehaviour
     public Vector3 GridToWorld(Vector2 gridPos)
     {
         return new Vector3(
-            gridPos.x * cellSize + origin.x + cellSize / 2,
-            gridPos.y * cellSize + origin.y + cellSize / 2,
+            gridPos.x * cellSize + origin.x + cellSize / 2+ gridPos.x*20,
+            gridPos.y * cellSize + origin.y + cellSize / 2+gridPos.y*20,
             origin.z
         );
     }

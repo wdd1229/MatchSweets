@@ -3,19 +3,47 @@
   "WorkspaceRootPath": "C:\\Work\\MatchSweets\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{61D54147-2F53-63BB-58D4-3FE90C227BEB}|Assembly-CSharp.csproj|C:\\Work\\MatchSweets\\assets\\scripts\\manager\\gridmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{61D54147-2F53-63BB-58D4-3FE90C227BEB}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\manager\\gridmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{61D54147-2F53-63BB-58D4-3FE90C227BEB}|Assembly-CSharp.csproj|c:\\work\\matchsweets\\assets\\scenes\\tttttttttt.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{61D54147-2F53-63BB-58D4-3FE90C227BEB}|Assembly-CSharp.csproj|solutionrelative:assets\\scenes\\tttttttttt.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61D54147-2F53-63BB-58D4-3FE90C227BEB}|Assembly-CSharp.csproj|c:\\work\\matchsweets\\assets\\scripts\\tile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{61D54147-2F53-63BB-58D4-3FE90C227BEB}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\tile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61D54147-2F53-63BB-58D4-3FE90C227BEB}|Assembly-CSharp.csproj|C:\\Work\\MatchSweets\\assets\\assetstudio_test\\ttttttttttt\\main camera\\rotate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{61D54147-2F53-63BB-58D4-3FE90C227BEB}|Assembly-CSharp.csproj|solutionrelative:assets\\assetstudio_test\\ttttttttttt\\main camera\\rotate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61D54147-2F53-63BB-58D4-3FE90C227BEB}|Assembly-CSharp.csproj|C:\\Work\\MatchSweets\\assets\\assetstudio_test\\shader\\internal-guitextureblit.shader||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{61D54147-2F53-63BB-58D4-3FE90C227BEB}|Assembly-CSharp.csproj|solutionrelative:assets\\assetstudio_test\\shader\\internal-guitextureblit.shader||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61D54147-2F53-63BB-58D4-3FE90C227BEB}|Assembly-CSharp.csproj|C:\\Work\\MatchSweets\\assets\\assetstudio_test\\shader\\illumin-parallaxspec.shader||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{61D54147-2F53-63BB-58D4-3FE90C227BEB}|Assembly-CSharp.csproj|solutionrelative:assets\\assetstudio_test\\shader\\illumin-parallaxspec.shader||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61D54147-2F53-63BB-58D4-3FE90C227BEB}|Assembly-CSharp.csproj|C:\\Work\\MatchSweets\\assets\\assetstudio_test\\shader\\addpass.shader||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{61D54147-2F53-63BB-58D4-3FE90C227BEB}|Assembly-CSharp.csproj|solutionrelative:assets\\assetstudio_test\\shader\\addpass.shader||{3B902123-F8A7-4915-9F01-361F908088D0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{61D54147-2F53-63BB-58D4-3FE90C227BEB}|Assembly-CSharp.csproj|C:\\Work\\MatchSweets\\assets\\scripts\\manager\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{61D54147-2F53-63BB-58D4-3FE90C227BEB}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\manager\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{61D54147-2F53-63BB-58D4-3FE90C227BEB}|Assembly-CSharp.csproj|C:\\Work\\MatchSweets\\assets\\scripts\\manager\\gridmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{61D54147-2F53-63BB-58D4-3FE90C227BEB}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\manager\\gridmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61D54147-2F53-63BB-58D4-3FE90C227BEB}|Assembly-CSharp.csproj|C:\\Work\\MatchSweets\\assets\\scripts\\ui\\levelpopupui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{61D54147-2F53-63BB-58D4-3FE90C227BEB}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ui\\levelpopupui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{61D54147-2F53-63BB-58D4-3FE90C227BEB}|Assembly-CSharp.csproj|C:\\Work\\MatchSweets\\assets\\scripts\\ui\\mainui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{61D54147-2F53-63BB-58D4-3FE90C227BEB}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ui\\mainui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{61D54147-2F53-63BB-58D4-3FE90C227BEB}|Assembly-CSharp.csproj|c:\\work\\matchsweets\\assets\\scripts\\ui\\rewardui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{61D54147-2F53-63BB-58D4-3FE90C227BEB}|Assembly-CSharp.csproj|C:\\Work\\MatchSweets\\assets\\scripts\\ui\\rewardui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{61D54147-2F53-63BB-58D4-3FE90C227BEB}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ui\\rewardui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -29,10 +57,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{61D54147-2F53-63BB-58D4-3FE90C227BEB}|Assembly-CSharp.csproj|C:\\Work\\MatchSweets\\assets\\scripts\\floatingscore.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{61D54147-2F53-63BB-58D4-3FE90C227BEB}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\floatingscore.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{61D54147-2F53-63BB-58D4-3FE90C227BEB}|Assembly-CSharp.csproj|C:\\Work\\MatchSweets\\assets\\scripts\\tile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{61D54147-2F53-63BB-58D4-3FE90C227BEB}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\tile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{61D54147-2F53-63BB-58D4-3FE90C227BEB}|Assembly-CSharp.csproj|C:\\Work\\MatchSweets\\assets\\scripts\\gridprefabmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -49,10 +73,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{61D54147-2F53-63BB-58D4-3FE90C227BEB}|Assembly-CSharp.csproj|C:\\Work\\MatchSweets\\assets\\scripts\\tool\\jsonloader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{61D54147-2F53-63BB-58D4-3FE90C227BEB}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\tool\\jsonloader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{61D54147-2F53-63BB-58D4-3FE90C227BEB}|Assembly-CSharp.csproj|C:\\Work\\MatchSweets\\assets\\scripts\\ui\\levelpopupui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{61D54147-2F53-63BB-58D4-3FE90C227BEB}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ui\\levelpopupui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{61D54147-2F53-63BB-58D4-3FE90C227BEB}|Assembly-CSharp.csproj|C:\\Work\\MatchSweets\\assets\\jsondatareader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -138,25 +158,49 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 7,
               "Title": "GridManager.cs",
               "DocumentMoniker": "C:\\Work\\MatchSweets\\Assets\\Scripts\\Manager\\GridManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Manager\\GridManager.cs",
               "ToolTip": "C:\\Work\\MatchSweets\\Assets\\Scripts\\Manager\\GridManager.cs",
               "RelativeToolTip": "Assets\\Scripts\\Manager\\GridManager.cs",
-              "ViewState": "AgIAAK4BAAAAAAAAAAAAAIcBAAAHAAAAAAAAAA==",
+              "ViewState": "AgIAAOEBAAAAAAAAAAAewPgBAAA9AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-08-22T07:23:13.195Z",
-              "IsPinned": true,
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "TTTTTTTTTT.cs",
+              "DocumentMoniker": "C:\\Work\\MatchSweets\\Assets\\Scenes\\TTTTTTTTTT.cs",
+              "RelativeDocumentMoniker": "Assets\\Scenes\\TTTTTTTTTT.cs",
+              "ToolTip": "C:\\Work\\MatchSweets\\Assets\\Scenes\\TTTTTTTTTT.cs",
+              "RelativeToolTip": "Assets\\Scenes\\TTTTTTTTTT.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvxAAAABBAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-27T07:39:08.641Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
+              "Title": "AddPass.shader",
+              "DocumentMoniker": "C:\\Work\\MatchSweets\\Assets\\AssetStudio_Test\\Shader\\AddPass.shader",
+              "RelativeDocumentMoniker": "Assets\\AssetStudio_Test\\Shader\\AddPass.shader",
+              "ToolTip": "C:\\Work\\MatchSweets\\Assets\\AssetStudio_Test\\Shader\\AddPass.shader",
+              "RelativeToolTip": "Assets\\AssetStudio_Test\\Shader\\AddPass.shader",
+              "ViewState": "AgIAAMIJAAAAAAAAAAAqwAUKAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002777|",
+              "WhenOpened": "2025-09-26T02:26:42.993Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
               "Title": "MainUi.cs",
               "DocumentMoniker": "C:\\Work\\MatchSweets\\Assets\\Scripts\\UI\\MainUi.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\UI\\MainUi.cs",
@@ -164,25 +208,23 @@
               "RelativeToolTip": "Assets\\Scripts\\UI\\MainUi.cs",
               "ViewState": "AgIAABsAAAAAAAAAAAAywCwAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-20T03:18:25.254Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-20T03:18:25.254Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 6,
               "Title": "GameManager.cs",
               "DocumentMoniker": "C:\\Work\\MatchSweets\\Assets\\Scripts\\Manager\\GameManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Manager\\GameManager.cs",
               "ToolTip": "C:\\Work\\MatchSweets\\Assets\\Scripts\\Manager\\GameManager.cs",
               "RelativeToolTip": "Assets\\Scripts\\Manager\\GameManager.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAMAAAAAAAAAA==",
+              "ViewState": "AgIAAL8BAAAAAAAAAABQwMIBAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-25T08:04:13.036Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-25T08:04:13.036Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 13,
               "Title": "FloatingScore.cs",
               "DocumentMoniker": "C:\\Work\\MatchSweets\\Assets\\Scripts\\FloatingScore.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\FloatingScore.cs",
@@ -194,7 +236,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 17,
               "Title": "JsonLoader.cs",
               "DocumentMoniker": "C:\\Work\\MatchSweets\\Assets\\Scripts\\Tool\\JsonLoader.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Tool\\JsonLoader.cs",
@@ -206,7 +248,56 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Tile.cs",
+              "DocumentMoniker": "C:\\Work\\MatchSweets\\Assets\\Scripts\\Tile.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Tile.cs",
+              "ToolTip": "C:\\Work\\MatchSweets\\Assets\\Scripts\\Tile.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Tile.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAADwvy4AAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-14T07:27:35.698Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Illumin-ParallaxSpec.shader",
+              "DocumentMoniker": "C:\\Work\\MatchSweets\\Assets\\AssetStudio_Test\\Shader\\Illumin-ParallaxSpec.shader",
+              "RelativeDocumentMoniker": "Assets\\AssetStudio_Test\\Shader\\Illumin-ParallaxSpec.shader",
+              "ToolTip": "C:\\Work\\MatchSweets\\Assets\\AssetStudio_Test\\Shader\\Illumin-ParallaxSpec.shader",
+              "RelativeToolTip": "Assets\\AssetStudio_Test\\Shader\\Illumin-ParallaxSpec.shader",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvxgAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002777|",
+              "WhenOpened": "2025-09-26T03:14:38.137Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 3,
+              "Title": "Internal-GUITextureBlit.shader",
+              "DocumentMoniker": "C:\\Work\\MatchSweets\\Assets\\AssetStudio_Test\\Shader\\Internal-GUITextureBlit.shader",
+              "RelativeDocumentMoniker": "Assets\\AssetStudio_Test\\Shader\\Internal-GUITextureBlit.shader",
+              "ToolTip": "C:\\Work\\MatchSweets\\Assets\\AssetStudio_Test\\Shader\\Internal-GUITextureBlit.shader",
+              "RelativeToolTip": "Assets\\AssetStudio_Test\\Shader\\Internal-GUITextureBlit.shader",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAKIAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002777|",
+              "WhenOpened": "2025-09-26T03:14:19.296Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Rotate.cs",
+              "DocumentMoniker": "C:\\Work\\MatchSweets\\Assets\\AssetStudio_Test\\TTTTTTTTTTT\\Main Camera\\Rotate.cs",
+              "RelativeDocumentMoniker": "Assets\\AssetStudio_Test\\TTTTTTTTTTT\\Main Camera\\Rotate.cs",
+              "ToolTip": "C:\\Work\\MatchSweets\\Assets\\AssetStudio_Test\\TTTTTTTTTTT\\Main Camera\\Rotate.cs",
+              "RelativeToolTip": "Assets\\AssetStudio_Test\\TTTTTTTTTTT\\Main Camera\\Rotate.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvxAAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-26T08:14:16.328Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "RewardUI.cs",
               "DocumentMoniker": "C:\\Work\\MatchSweets\\Assets\\Scripts\\UI\\RewardUI.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\UI\\RewardUI.cs",
@@ -214,12 +305,11 @@
               "RelativeToolTip": "Assets\\Scripts\\UI\\RewardUI.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAuwAcAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-27T03:16:33.11Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-27T03:16:33.11Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 15,
               "Title": "GameObjectsData.cs",
               "DocumentMoniker": "C:\\Work\\MatchSweets\\Assets\\Scripts\\GameObjectsData.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\GameObjectsData.cs",
@@ -231,19 +321,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Tile.cs",
-              "DocumentMoniker": "C:\\Work\\MatchSweets\\Assets\\Scripts\\Tile.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Tile.cs",
-              "ToolTip": "C:\\Work\\MatchSweets\\Assets\\Scripts\\Tile.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Tile.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAKcAAAAUAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-14T07:27:35.698Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 19,
               "Title": "GameScoreManager.cs",
               "DocumentMoniker": "C:\\Work\\MatchSweets\\Assets\\Scripts\\Manager\\GameScoreManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Manager\\GameScoreManager.cs",
@@ -255,7 +333,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 8,
+              "Title": "LevelPopupUI.cs",
+              "DocumentMoniker": "C:\\Work\\MatchSweets\\Assets\\Scripts\\UI\\LevelPopupUI.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\UI\\LevelPopupUI.cs",
+              "ToolTip": "C:\\Work\\MatchSweets\\Assets\\Scripts\\UI\\LevelPopupUI.cs",
+              "RelativeToolTip": "Assets\\Scripts\\UI\\LevelPopupUI.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-25T08:15:21.511Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
               "Title": "GameLevelManager.cs",
               "DocumentMoniker": "C:\\Work\\MatchSweets\\Assets\\Scripts\\Manager\\GameLevelManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Manager\\GameLevelManager.cs",
@@ -267,7 +357,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 11,
               "Title": "PrefabManager.cs",
               "DocumentMoniker": "C:\\Work\\MatchSweets\\Assets\\Scripts\\Manager\\PrefabManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Manager\\PrefabManager.cs",
@@ -279,7 +369,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 12,
               "Title": "ObjectPooler.cs",
               "DocumentMoniker": "C:\\Work\\MatchSweets\\Assets\\Scripts\\Manager\\ObjectPooler.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Manager\\ObjectPooler.cs",
@@ -291,7 +381,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 14,
               "Title": "GridPrefabManager.cs",
               "DocumentMoniker": "C:\\Work\\MatchSweets\\Assets\\Scripts\\GridPrefabManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\GridPrefabManager.cs",
@@ -303,19 +393,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "LevelPopupUI.cs",
-              "DocumentMoniker": "C:\\Work\\MatchSweets\\Assets\\Scripts\\UI\\LevelPopupUI.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\UI\\LevelPopupUI.cs",
-              "ToolTip": "C:\\Work\\MatchSweets\\Assets\\Scripts\\UI\\LevelPopupUI.cs",
-              "RelativeToolTip": "Assets\\Scripts\\UI\\LevelPopupUI.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-25T08:15:21.511Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 18,
               "Title": "JsonDataReader.cs",
               "DocumentMoniker": "C:\\Work\\MatchSweets\\Assets\\JsonDataReader.cs",
               "RelativeDocumentMoniker": "Assets\\JsonDataReader.cs",
@@ -327,7 +405,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 35,
               "Title": "AssetBundleTest.cs",
               "DocumentMoniker": "C:\\Work\\MatchSweets\\Assets\\Scripts\\AssetBundle\\AssetBundleTest.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\AssetBundle\\AssetBundleTest.cs",
@@ -335,11 +413,12 @@
               "RelativeToolTip": "Assets\\Scripts\\AssetBundle\\AssetBundleTest.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAFsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-17T02:08:34.039Z"
+              "WhenOpened": "2025-09-17T02:08:34.039Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 36,
               "Title": "LocalPreloadManager.cs",
               "DocumentMoniker": "C:\\Work\\MatchSweets\\Assets\\Scripts\\AssetBundle\\LocalPreloadManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\AssetBundle\\LocalPreloadManager.cs",
@@ -347,11 +426,12 @@
               "RelativeToolTip": "Assets\\Scripts\\AssetBundle\\LocalPreloadManager.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAADwvwcAAAA5AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-16T07:26:20.579Z"
+              "WhenOpened": "2025-09-16T07:26:20.579Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 29,
               "Title": "RewardTrigger.cs",
               "DocumentMoniker": "C:\\Work\\MatchSweets\\Assets\\Scripts\\RewardTrigger.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\RewardTrigger.cs",
@@ -359,11 +439,12 @@
               "RelativeToolTip": "Assets\\Scripts\\RewardTrigger.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-27T03:07:25.841Z"
+              "WhenOpened": "2025-08-27T03:07:25.841Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 26,
               "Title": "WallManager.cs",
               "DocumentMoniker": "C:\\Work\\MatchSweets\\Assets\\Scripts\\WallManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\WallManager.cs",
@@ -371,11 +452,12 @@
               "RelativeToolTip": "Assets\\Scripts\\WallManager.cs",
               "ViewState": "AgIAAAsAAAAAAAAAAADwvxwAAABNAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-18T06:34:58.093Z"
+              "WhenOpened": "2025-08-18T06:34:58.093Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 20,
               "Title": "GameUi.cs",
               "DocumentMoniker": "C:\\Work\\MatchSweets\\Assets\\Scripts\\UI\\GameUi.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\UI\\GameUi.cs",
@@ -387,7 +469,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 25,
               "Title": "LevelData.cs",
               "DocumentMoniker": "C:\\Work\\MatchSweets\\Assets\\Scripts\\LevelData.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\LevelData.cs",
@@ -398,7 +480,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 28,
               "Title": "LoadSceneManager.cs",
               "DocumentMoniker": "C:\\Work\\MatchSweets\\Assets\\Scripts\\LoadSceneManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\LoadSceneManager.cs",
@@ -406,11 +488,12 @@
               "RelativeToolTip": "Assets\\Scripts\\LoadSceneManager.cs",
               "ViewState": "AgIAABMAAAAAAAAAAAAAwBwAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-12T05:28:58.974Z"
+              "WhenOpened": "2025-08-12T05:28:58.974Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 30,
               "Title": "BeatTrigger.cs",
               "DocumentMoniker": "C:\\Work\\MatchSweets\\Assets\\Scripts\\BeatTrigger.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\BeatTrigger.cs",
@@ -418,11 +501,12 @@
               "RelativeToolTip": "Assets\\Scripts\\BeatTrigger.cs",
               "ViewState": "AgIAAC8AAAAAAAAAAAAQwEoAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-27T01:44:36.104Z"
+              "WhenOpened": "2025-08-27T01:44:36.104Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 31,
               "Title": "ObstacleTrigger.cs",
               "DocumentMoniker": "C:\\Work\\MatchSweets\\Assets\\Scripts\\ObstacleTrigger.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\ObstacleTrigger.cs",
@@ -430,11 +514,12 @@
               "RelativeToolTip": "Assets\\Scripts\\ObstacleTrigger.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-27T02:00:26.192Z"
+              "WhenOpened": "2025-08-27T02:00:26.192Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 27,
               "Title": "LoadJson.cs",
               "DocumentMoniker": "C:\\Work\\MatchSweets\\Assets\\Scripts\\LoadJson.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\LoadJson.cs",
@@ -442,11 +527,12 @@
               "RelativeToolTip": "Assets\\Scripts\\LoadJson.cs",
               "ViewState": "AgIAAAgAAAAAAAAAAADwvwUAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-18T06:00:40.112Z"
+              "WhenOpened": "2025-08-18T06:00:40.112Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 32,
               "Title": "TriggerBase.cs",
               "DocumentMoniker": "C:\\Work\\MatchSweets\\Assets\\Scripts\\TriggerBase.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\TriggerBase.cs",
@@ -454,11 +540,12 @@
               "RelativeToolTip": "Assets\\Scripts\\TriggerBase.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-27T01:38:52.122Z"
+              "WhenOpened": "2025-08-27T01:38:52.122Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 34,
               "Title": "LoadJson.cs",
               "DocumentMoniker": "C:\\Work\\MatchSweets\\Assets\\Scripts\\Data\\LoadJson.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Data\\LoadJson.cs",
@@ -466,11 +553,12 @@
               "RelativeToolTip": "Assets\\Scripts\\Data\\LoadJson.cs",
               "ViewState": "AgIAADEAAAAAAAAAAAAYwEMAAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-28T07:24:07.889Z"
+              "WhenOpened": "2025-08-28T07:24:07.889Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 21,
               "Title": "GridSystem.cs",
               "DocumentMoniker": "C:\\Work\\MatchSweets\\Assets\\Scripts\\Tool\\GridSystem.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Tool\\GridSystem.cs",
@@ -482,7 +570,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 24,
               "Title": "BeatTrigger.cs",
               "DocumentMoniker": "C:\\Work\\MatchSweets\\Assets\\Scripts\\Trigger\\BeatTrigger.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Trigger\\BeatTrigger.cs",
@@ -494,7 +582,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 22,
               "Title": "Test.cs",
               "DocumentMoniker": "C:\\Work\\MatchSweets\\Assets\\Scripts\\Test.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Test.cs",
@@ -506,7 +594,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 23,
               "Title": "TriggerBase.cs",
               "DocumentMoniker": "C:\\Work\\MatchSweets\\Assets\\Scripts\\Trigger\\TriggerBase.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Trigger\\TriggerBase.cs",
@@ -518,7 +606,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 33,
               "Title": "Singleton.cs",
               "DocumentMoniker": "C:\\Work\\MatchSweets\\Assets\\Scripts\\Singleton.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Singleton.cs",
@@ -526,7 +614,8 @@
               "RelativeToolTip": "Assets\\Scripts\\Singleton.cs",
               "ViewState": "AgIAAAsAAAAAAAAAAADwvwIAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-19T03:10:56.384Z"
+              "WhenOpened": "2025-08-19T03:10:56.384Z",
+              "EditorCaption": ""
             }
           ]
         }
